@@ -1,3 +1,5 @@
+import CaseStudyImage from "@/components/services/CaseStudyImage";
+
 const results = [
   { label: "Units Delivered", value: "5,000+" },
   { label: "Re-order Volume", value: "10,000+" },
@@ -19,22 +21,9 @@ export default function TshirtCaseStudy() {
         </div>
 
         <div className="mt-16 overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white shadow-sm">
-          <div className="grid lg:grid-cols-5">
-            {/* Left: image placeholder */}
-            <div className="relative flex items-center justify-center bg-slate-100 lg:col-span-2">
-              <div className="flex h-full min-h-[280px] w-full items-center justify-center p-10">
-                <div className="text-center">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-amber-100">
-                    <svg className="h-10 w-10 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.41a2.25 2.25 0 013.182 0l2.909 2.91m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                    </svg>
-                  </div>
-                  <p className="mt-4 text-sm text-slate-400">
-                    Project photo placeholder
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="grid items-stretch lg:grid-cols-5">
+            <CaseStudyImage />
+
 
             {/* Right: content */}
             <div className="p-8 lg:col-span-3 lg:p-12">
@@ -80,7 +69,7 @@ export default function TshirtCaseStudy() {
               </div>
 
               <blockquote className="mt-6 border-l-2 border-amber-400 pl-4 text-sm italic text-slate-500">
-                &ldquo;Consistent quality and reliable delivery — we re-ordered
+                &ldquo;Consistent quality and reliable delivery �?we re-ordered
                 10,000+ pieces for our next collection.&rdquo;
               </blockquote>
 

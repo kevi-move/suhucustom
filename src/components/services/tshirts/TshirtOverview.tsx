@@ -1,3 +1,4 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 
 const stats = [
@@ -56,7 +57,7 @@ export default function TshirtOverview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="YOUR_OVERVIEW_IMAGE_URL"
+                src={resolveImageSrc("/generated/services/t-shirts/suhucustom-t-shirt-factory-overview-oem-odm-production.png")}
                 alt="Suhu Custom t-shirt factory overview"
                 className="h-auto w-full object-cover"
               />

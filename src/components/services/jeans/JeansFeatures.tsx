@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Denim Sourcing",
     description:
       "We source high-twill, heavyweight and stretch denim fabrics with superior shape retention, soft hand feel and long-wearing durability.",
-    image: "YOUR_JEANS_FEATURE_SOURCING_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-premium-denim-sourcing-selvedge-stretch-fabric.png",
   },
   {
     title: "Reinforced Durable Construction",
     description:
       "Heavy-duty double-needle stitching, bartack reinforcements at high-stress points, sturdy metal hardware and secured rivets for extended lifespan.",
-    image: "YOUR_JEANS_FEATURE_CONSTRUCTION_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-cutting-sewing-chain-stitch-production.png",
   },
   {
     title: "Custom Wash & Finishing",
     description:
       "Professional denim treatments including stone wash, acid wash, vintage fade, whiskering, distressing, sanding and monochrome dyeing.",
-    image: "YOUR_JEANS_FEATURE_WASH_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-washing-finishing-stone-enzyme-acid-wash.png",
   },
   {
     title: "Strict Quality Control",
     description:
       "5-step full inspection: fabric shrinkage test, precision cutting, sewing with hardware installation, wash treatment and final packaging.",
-    image: "YOUR_JEANS_FEATURE_QC_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-quality-control-wash-hardware-measurement.png",
   },
   {
     title: "Full Customization Flexibility",
     description:
       "Customizable fits, styles, hardware, labels and detailing with flexible adjustments for small-batch and large-scale orders.",
-    image: "YOUR_JEANS_FEATURE_CUSTOM_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-wash-finish-options-distressed-overdyed-denim.png",
   },
 ];
 
@@ -123,7 +124,7 @@ export default function JeansFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

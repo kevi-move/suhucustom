@@ -1,19 +1,22 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 import Link from "next/link";
+import { SITE_WHATSAPP_URL } from "@/lib/siteContact";
 
 export default function TshirtHero() {
   return (
     <div className="relative overflow-hidden bg-slate-900">
       <div className="absolute inset-0">
         <img
-          src="YOUR_TSHIRT_HERO_IMAGE_URL"
+          src={resolveImageSrc("/generated/services/t-shirts/custom-t-shirt-manufacturing-hero-model-right-side.png")}
           alt="Custom T-shirt manufacturing"
-          className="h-full w-full object-cover opacity-40"
+          className="h-full w-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/45 via-slate-900/30 to-slate-900/45" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <nav className="pt-8 text-sm text-slate-400">
+        <nav className="pt-8 text-center text-sm text-slate-400">
           <Link href="/services" className="hover:text-amber-400 transition">
             Services
           </Link>
@@ -25,29 +28,28 @@ export default function TshirtHero() {
           <span className="text-white">T-Shirts</span>
         </nav>
 
-        <div className="flex min-h-[55vh] flex-col justify-center py-16 lg:py-24">
+        <div className="flex min-h-[55vh] flex-col items-center justify-center py-16 text-center lg:py-24">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">
             OEM / ODM Custom Manufacturing
           </p>
-          <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Custom <span className="text-amber-400">T-Shirt</span>{" "}
-            Manufacturing
+          <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Custom <span className="text-amber-400">T-Shirt</span> Manufacturing
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-            From basic crew necks to performance athletic tees — full-service
-            design, sampling, mass production, and global shipping for brands of
-            every size.
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+            From basic crew necks to performance athletic tees — full-service design,
+            sampling, mass production, and global shipping for brands of every size.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/contact-us"
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <QuoteButton
+              title="Get a Free Quote"
+              productCategory="T-shirts"
               className="inline-flex items-center rounded-full bg-amber-500 px-8 py-3.5 text-sm font-semibold text-slate-900 shadow-lg shadow-amber-500/25 transition hover:bg-amber-400"
             >
               Get a Free Quote
-            </Link>
-            <a
-              href="https://wa.me/YOUR_PHONE"
+            </QuoteButton>
+            <Link
+              href={SITE_WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"
@@ -57,7 +59,7 @@ export default function TshirtHero() {
                 <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.56 4.143 1.54 5.885L0 24l6.305-1.654A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.93 0-3.72-.564-5.227-1.536l-.375-.224-3.888 1.02 1.037-3.79-.246-.39A9.716 9.716 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z" />
               </svg>
               Chat with Expert
-            </a>
+            </Link>
           </div>
         </div>
       </div>

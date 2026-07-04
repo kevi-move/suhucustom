@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including performance fabric testing.",
-    image: "YOUR_ACTIVEWEAR_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-design-sampling-tech-pack-fabric-swatches.png",
   },
   {
     step: "02",
     title: "Fabric Cutting",
     description:
       "Automated precision cutting ensures consistent sizing and minimal fabric waste, critical for performance stretch fabrics.",
-    image: "YOUR_ACTIVEWEAR_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-fabric-cutting-pattern-table-production.png",
   },
   {
     step: "03",
     title: "Sewing & Assembly",
     description:
       "Skilled seamstresses handle flatlock stitching, waistband/elastic attachment, and seam finishing for optimal mobility.",
-    image: "YOUR_ACTIVEWEAR_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-sewing-assembly-flatlock-waistband.png",
   },
   {
     step: "04",
     title: "Decoration Application",
     description:
       "Custom sublimation/print/embroidery applied per your design, with color matching and wash-performance testing.",
-    image: "YOUR_ACTIVEWEAR_PROCESS_DECO_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-decoration-application-heat-press-printing.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Every piece is checked for stitching integrity, decoration alignment, fabric stretch, and performance defects.",
-    image: "YOUR_ACTIVEWEAR_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-final-quality-inspection-stitching-stretch.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Final packaging and consolidation for sea/air freight to your US/EU warehouse.",
-    image: "YOUR_ACTIVEWEAR_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-packaging-shipping-small-batch-cartons.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function ActivewearProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

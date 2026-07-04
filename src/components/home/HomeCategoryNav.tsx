@@ -1,10 +1,14 @@
 "use client";
 
+import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 import { useState } from "react";
+import { EditableText } from "@/components/cms";
+import { useCMS } from "@/contexts/CMSContext";
 import { serviceGroups } from "@/lib/navigation";
+import { categoryImages } from "@/lib/generated/categoryImages";
 
-const taglines: Record<string, string> = {
+const DEFAULT_TAGLINES: Record<string, string> = {
   "t-shirts": "Soft cotton bases with sharp, durable prints.",
   "hoodies-sweatshirts": "Heavyweight fleece, clean sewing and stable fit.",
   "activewear-athleisure": "Quick‑dry, 4‑way stretch, anti‑pilling fabrics.",
@@ -23,17 +27,24 @@ const taglines: Record<string, string> = {
   "cushion-covers": "Shape‑stable fabric and clean hidden zippers.",
 };
 
-const allServiceItems = serviceGroups.flatMap((group) =>
-  group.items.map((item) => ({
-    slug: item.slug,
-    title: item.nameEn,
-    image: `CATEGORY_IMAGE_${item.slug.toUpperCase()}_URL`,
-    href: `/services/${item.slug}`,
-    tagline: taglines[item.slug] ?? "Factory‑level sewing quality and consistent sizing.",
-  }))
-);
-
 export default function HomeCategoryNav() {
+  const { getDisplayValue } = useCMS();
+  const taglines = getDisplayValue<Record<string, string>>("categories.taglines", DEFAULT_TAGLINES);
+  const defaultTagline = getDisplayValue<string>(
+    "categories.taglines.default",
+    "Factory‑level sewing quality and consistent sizing."
+  );
+
+  const allServiceItems = serviceGroups.flatMap((group) =>
+    group.items.map((item) => ({
+      slug: item.slug,
+      title: item.nameEn,
+      image: categoryImages[item.slug] ?? `/generated/home/category-${item.slug}.webp`,
+      href: `/services/${item.slug}`,
+      tagline: taglines[item.slug] ?? defaultTagline,
+    }))
+  );
+
   const [page, setPage] = useState(0);
   const pageSize = 8;
   const pageCount = Math.ceil(allServiceItems.length / pageSize);
@@ -45,10 +56,14 @@ export default function HomeCategoryNav() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Core Product Categories</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              <EditableText path="categories.title" value="Core Product Categories" />
+            </h2>
             <p className="mt-3 max-w-xl text-sm text-slate-600 sm:text-base">
-              Browse all apparel categories we manufacture. Each tile links directly to a detailed service page with
-              fabrics, MOQ and customization options.
+              <EditableText
+                path="categories.subtitle"
+                value="Browse all apparel categories we manufacture. Each tile links directly to a detailed service page with fabrics, MOQ and customization options."
+              />
             </p>
           </div>
         </div>
@@ -61,9 +76,8 @@ export default function HomeCategoryNav() {
               className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl"
             >
               <div className="relative h-32 overflow-hidden sm:h-36">
-                {/* 每个具体类目的代表性单品图，占位，替换 src 即可 */}
                 <img
-                  src={item.image}
+                  src={resolveImageSrc(item.image)}
                   alt={item.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />
@@ -78,9 +92,14 @@ export default function HomeCategoryNav() {
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-xs text-slate-500">{item.tagline}</p>
+                <p className="text-xs text-slate-500">
+                  <EditableText
+                    path={`categories.taglines.${item.slug}`}
+                    value={DEFAULT_TAGLINES[item.slug] ?? defaultTagline}
+                  />
+                </p>
                 <span className="mt-3 inline-flex items-center text-xs font-medium text-amber-600 group-hover:text-amber-700">
-                  View service details
+                  <EditableText path="categories.viewDetails" value="View service details" />
                   <svg
                     className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5"
                     fill="none"
@@ -95,7 +114,6 @@ export default function HomeCategoryNav() {
           ))}
         </div>
 
-        {/* 分页指示器 */}
         {pageCount > 1 && (
           <div className="mt-6 flex justify-center gap-2">
             {Array.from({ length: pageCount }).map((_, index) => (
@@ -115,4 +133,3 @@ export default function HomeCategoryNav() {
     </div>
   );
 }
-

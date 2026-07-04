@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +9,7 @@ const options = [
   {
     id: "fabric",
     category: "Fabric & Tech",
-    image: "YOUR_SWIMWEAR_FABRIC_OPTION_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-fabric-options-recycled-nylon-upf-spandex.png",
     highlights: [
       "Recycled Nylon (ECONYL®)",
       "Chlorine-Resistant Polyester Blend",
@@ -20,7 +22,7 @@ const options = [
   {
     id: "style",
     category: "Styles",
-    image: "YOUR_SWIMWEAR_STYLE_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-style-options-bikini-one-piece-rash-guard-trunks.png",
     highlights: [
       "Bikini (Triangle, Bandeau, Halter)",
       "One-Piece & Monokini",
@@ -33,7 +35,7 @@ const options = [
   {
     id: "print",
     category: "Printing & Decoration",
-    image: "YOUR_SWIMWEAR_PRINT_OPTION_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-printing-decoration-sublimation-foil-labels.png",
     highlights: [
       "Full Sublimation (Unlimited Colors)",
       "Placement Prints & Panels",
@@ -46,7 +48,7 @@ const options = [
   {
     id: "sizing",
     category: "Sizing & Fit",
-    image: "YOUR_SWIMWEAR_SIZING_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-sizing-fit-options-inclusive-adjustable-padding.png",
     highlights: [
       "Sizes XS – 3XL",
       "Cup Sizes A – G",
@@ -59,7 +61,7 @@ const options = [
   {
     id: "packaging",
     category: "Packaging",
-    image: "YOUR_SWIMWEAR_PACKAGING_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-packaging-options-polybag-hanger-beach-pouch.png",
     highlights: [
       "Individual polybag packaging",
       "Custom swing tags with UPF info",
@@ -104,7 +106,7 @@ export default function SwimwearCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -129,12 +131,13 @@ export default function SwimwearCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="Swimwear"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

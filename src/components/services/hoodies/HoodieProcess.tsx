@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days).",
-    image: "YOUR_HOODIE_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-design-sampling-tech-pack-fleece-swatches.png",
   },
   {
     step: "02",
     title: "Fabric Cutting",
     description:
       "Automated precision cutting ensures consistent sizing and minimal fabric waste.",
-    image: "YOUR_HOODIE_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-fabric-cutting-pattern-table-production.png",
   },
   {
     step: "03",
     title: "Sewing & Assembly",
     description:
       "Skilled seamstresses handle hood attachment, pocket sewing, and ribbed cuff/hem finishing.",
-    image: "YOUR_HOODIE_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-sewing-assembly-industrial-production-line.png",
   },
   {
     step: "04",
     title: "Decoration Application",
     description:
       "Custom embroidery/printing applied per your design, with color matching and wash-testing.",
-    image: "YOUR_HOODIE_PROCESS_DECO_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-decoration-application-embroidery-screen-print.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Every piece is checked for stitching alignment, decoration placement, and fabric defects.",
-    image: "YOUR_HOODIE_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-quality-control-inspection-process.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Final packaging and consolidation for sea/air freight to your US/EU warehouse.",
-    image: "YOUR_HOODIE_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-packaging-shipping-export-cartons.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function HoodieProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

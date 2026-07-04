@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Stretch Fabric Sourcing",
     description:
       "We source buttery-soft, 4-way stretch fabrics that offer maximum flexibility, breathability, and shape retention—perfect for all-day comfort and active use.",
-    image: "YOUR_LEGGINGS_FABRIC_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-premium-stretch-fabric-sourcing-spandex.png",
   },
   {
     title: "Legging-Specific Construction",
     description:
       "High-waisted seamless waistbands (prevents rolling), flatlock stitching (chafe-resistant), and contoured seams for a flattering fit, with reinforced hems for durability.",
-    image: "YOUR_LEGGINGS_CONSTRUCTION_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-flatlock-stitching-high-waistband-construction.png",
   },
   {
     title: "Custom Branding & Design",
     description:
       "Full support for sublimation printing (full-color patterns), screen print, heat transfer, embroidery, and custom woven labels—ideal for brand identity.",
-    image: "YOUR_LEGGINGS_BRANDING_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-branding-design-sublimation-heat-transfer.png",
   },
   {
     title: "Strict Quality Control",
     description:
       "5-step inspection: fabric (stretch/shape retention test) → cutting → sewing → decoration → final packaging to ensure zero defects and consistent fit.",
-    image: "YOUR_LEGGINGS_QC_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-quality-control-stretch-fit-inspection.png",
   },
   {
     title: "Flexible Customization",
     description:
       "Fully customizable fits (high-waisted/mid-waisted, compression/relaxed), lengths (full-length/capri/cropped), sizes (XS–4XL), and wash-resistant designs.",
-    image: "YOUR_LEGGINGS_CUSTOM_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-flexible-customization-lengths-pockets-colors.png",
   },
 ];
 
@@ -106,7 +107,7 @@ export default function LeggingsFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

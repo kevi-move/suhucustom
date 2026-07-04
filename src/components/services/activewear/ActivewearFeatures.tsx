@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Performance Fabric Sourcing",
     description:
       "We source moisture-wicking polyester, 4-way stretch spandex, and eco-friendly performance blends for breathability, quick-drying, and long-lasting wear.",
-    image: "YOUR_ACTIVEWEAR_FABRIC_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-performance-fabric-sourcing-stretch-swatches.png",
   },
   {
     title: "Precision Athletic Construction",
     description:
       "Reinforced flatlock stitching, contoured seams, and elasticated waistbands for maximum mobility and comfort during active use.",
-    image: "YOUR_ACTIVEWEAR_CONSTRUCTION_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-flatlock-stitching-athletic-construction.png",
   },
   {
     title: "Custom Decoration",
     description:
       "Full support for sublimation printing, screen print, heat transfer, embroidery, and custom woven label/neck tag options for athletic branding.",
-    image: "YOUR_ACTIVEWEAR_DECORATION_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-decoration-heat-transfer-embroidery-labels.png",
   },
   {
     title: "Strict Quality Control",
     description:
       "5-step inspection: fabric → cutting → sewing → decoration → final packaging to ensure zero defects and consistent performance.",
-    image: "YOUR_ACTIVEWEAR_QC_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-quality-control-stretch-measurement.png",
   },
   {
     title: "Flexible Customization",
     description:
       "Fully customizable fits (slim/regular/athletic), styles (leggings/tanks/sports bras), sizes (XS–4XL), and wash-resistant performance designs.",
-    image: "YOUR_ACTIVEWEAR_CUSTOMIZATION_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-flexible-customization-styles-colors-sizes.png",
   },
 ];
 
@@ -104,7 +105,7 @@ export default function ActivewearFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

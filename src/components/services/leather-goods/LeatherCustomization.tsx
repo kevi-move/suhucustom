@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +9,7 @@ const options = [
   {
     id: "leather",
     category: "Leather Type",
-    image: "YOUR_LEATHER_TYPE_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-type-options-full-grain-top-grain-pull-up-vegan.png",
     highlights: [
       "Full-Grain Italian Leather",
       "Top-Grain Cowhide — smooth & durable",
@@ -20,7 +22,7 @@ const options = [
   {
     id: "hardware",
     category: "Hardware & Fittings",
-    image: "YOUR_LEATHER_HARDWARE_OPT_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-hardware-fittings-options-buckles-rivets-zippers.png",
     highlights: [
       "YKK / SBS branded zippers",
       "Solid brass buckles & clasps",
@@ -33,7 +35,7 @@ const options = [
   {
     id: "branding",
     category: "Embossing & Branding",
-    image: "YOUR_LEATHER_BRANDING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-embossing-branding-options-debossing-foil.png",
     highlights: [
       "Blind debossing (no color)",
       "Gold / Silver foil hot stamping",
@@ -46,7 +48,7 @@ const options = [
   {
     id: "color",
     category: "Colors & Finish",
-    image: "YOUR_LEATHER_COLOR_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-colors-finish-options-matte-glossy-distressed.png",
     highlights: [
       "Natural vegetable-tanned colors",
       "Aniline & semi-aniline dyeing",
@@ -59,7 +61,7 @@ const options = [
   {
     id: "packaging",
     category: "Packaging",
-    image: "YOUR_LEATHER_PACKAGING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-packaging-options-gift-box-dust-bag.png",
     highlights: [
       "Luxury gift box with magnetic closure",
       "Branded dust bags & tissue wrap",
@@ -104,7 +106,7 @@ export default function LeatherCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -129,12 +131,13 @@ export default function LeatherCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="Leather Goods"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

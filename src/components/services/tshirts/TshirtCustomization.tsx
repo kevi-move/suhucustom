@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +9,7 @@ const options = [
   {
     id: "fabric",
     category: "Fabric",
-    image: "YOUR_FABRIC_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-fabric-options-cotton-polyester-bamboo.png",
     highlights: [
       "100% Ring-Spun Cotton (180–220 GSM)",
       "Poly-Cotton Blend for durability",
@@ -20,7 +22,7 @@ const options = [
   {
     id: "fit",
     category: "Fit & Cut",
-    image: "YOUR_FIT_CUT_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-fit-cut-options-blank-silhouettes.png",
     highlights: [
       "Crew Neck, V-Neck, Scoop Neck",
       "Slim Fit, Regular Fit, Relaxed Fit",
@@ -33,7 +35,7 @@ const options = [
   {
     id: "decoration",
     category: "Decoration",
-    image: "YOUR_DECORATION_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-decoration-options-screen-print-embroidery.png",
     highlights: [
       "Screen Printing (up to 8 colors)",
       "Direct-to-Garment (DTG)",
@@ -46,7 +48,7 @@ const options = [
   {
     id: "color",
     category: "Colors & Sizing",
-    image: "YOUR_COLORS_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-colors-sizing-custom-colorways.png",
     highlights: [
       "Pantone-matched solid colors",
       "Sizes XS – 4XL",
@@ -59,7 +61,7 @@ const options = [
   {
     id: "packaging",
     category: "Packaging",
-    image: "YOUR_PACKAGING_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-packaging-options-polybag-hangtag-box.png",
     highlights: [
       "Individual polybag packaging",
       "Custom hang tags & care labels",
@@ -106,7 +108,7 @@ export default function TshirtCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -132,12 +134,13 @@ export default function TshirtCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="T-shirts"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

@@ -1,3 +1,4 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
@@ -67,7 +68,7 @@ export default function GymProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

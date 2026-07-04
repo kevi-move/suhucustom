@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Performance Fabric Technology",
     description:
       "Chlorine-resistant, UV-protective, and quick-dry fabrics engineered for pool, beach, and competition use.",
-    image: "YOUR_SWIMWEAR_FABRIC_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-performance-fabric-uv-chlorine-quick-dry.png",
   },
   {
     title: "Sublimation Printing",
     description:
       "Vibrant, all-over digital sublimation prints that won't fade, crack, or peel — even after 100+ washes.",
-    image: "YOUR_SWIMWEAR_PRINT_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-sublimation-printing-tropical-patterns.png",
   },
   {
     title: "Precision Construction",
     description:
       "Flatlock stitching, bonded seams, and reinforced stress points for comfort and long-lasting durability.",
-    image: "YOUR_SWIMWEAR_CONSTRUCTION_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-flatlock-stitching-precision-construction.png",
   },
   {
     title: "UV & Chlorine Testing",
     description:
       "Every fabric batch tested for UPF rating, chlorine resistance, colorfastness, and pilling resistance.",
-    image: "YOUR_SWIMWEAR_TESTING_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-fabric-testing-chlorine-uv-stretch-recovery.png",
   },
   {
     title: "Custom Design Freedom",
     description:
       "Fully customizable cuts, prints, linings, tie details, hardware, and removable padding options.",
-    image: "YOUR_SWIMWEAR_DESIGN_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-design-options-cuts-linings-straps-padding.png",
   },
 ];
 
@@ -104,7 +105,7 @@ export default function SwimwearFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

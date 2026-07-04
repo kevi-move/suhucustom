@@ -1,22 +1,21 @@
+import { categoryImages } from "@/lib/generated/categoryImages";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 import Link from "next/link";
 
 export default function JeansHero() {
   return (
     <div className="relative overflow-hidden bg-slate-900">
       <div className="absolute inset-0">
-        <div className="grid h-full w-full grid-cols-1 lg:grid-cols-2">
-          <img
-            src="YOUR_JEANS_HERO_MODEL_IMAGE_URL"
-            alt="Custom-fit denim jeans on a model"
-            className="h-full w-full object-cover opacity-45"
-          />
-          <img
-            src="YOUR_JEANS_HERO_STITCHING_IMAGE_URL"
-            alt="Close-up of reinforced stitching, hardware, and denim texture"
-            className="hidden h-full w-full object-cover opacity-45 lg:block"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-900/65 to-slate-900/85" />
+        <img
+          src={resolveImageSrc(
+            categoryImages["jeans-denim"] ||
+              "/generated/services/jeans-denim/custom-jeans-denim-manufacturing-hero-model-right-side.png"
+          )}
+          alt="Custom jeans and denim manufacturing"
+          className="h-full w-full object-cover opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/45 via-slate-900/30 to-slate-900/45" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -43,12 +42,13 @@ export default function JeansHero() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact-us"
+            <QuoteButton
+              title="Get a Free Quote"
+              productCategory="Jeans & Denim"
               className="inline-flex items-center rounded-full bg-amber-500 px-8 py-3.5 text-sm font-semibold text-slate-900 shadow-lg shadow-amber-500/25 transition hover:bg-amber-400"
             >
               Get a Free Quote
-            </Link>
+            </QuoteButton>
             <Link
               href="/contact-us"
               className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"

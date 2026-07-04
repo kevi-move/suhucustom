@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -39,3 +40,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local dev / personal notes — never push to GitHub
+local-only/
+DEVELOPMENT_PLAYBOOK.md
+codex-dev-server*.log
+suhucustom-文案导出/
+
+# Large generated images — upload via CMS/Supabase, not git
+public/generated/

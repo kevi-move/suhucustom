@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We refine your tech pack, denim style and wash requirements, then produce a pre-production sample for approval within 3-5 days.",
-    image: "YOUR_JEANS_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-design-tech-pack-denim-swatches-patterns.png",
   },
   {
     step: "02",
     title: "Fabric Cutting",
     description:
       "Automated precision cutting with pre-shrinkage testing ensures consistent sizing and minimal fabric waste.",
-    image: "YOUR_JEANS_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-fabric-sourcing-lab-dips-selvedge-samples.png",
   },
   {
     step: "03",
     title: "Sewing & Hardware",
     description:
       "Skilled tailors complete heavy-duty stitching, rivet/button installation and pocket construction with industrial-grade machinery.",
-    image: "YOUR_JEANS_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-cutting-sewing-chain-stitch-production.png",
   },
   {
     step: "04",
     title: "Wash & Finishing Treatment",
     description:
       "Professional custom washing, distressing and finishing are applied per your brand specs, with color consistency testing.",
-    image: "YOUR_JEANS_PROCESS_WASH_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-washing-finishing-industrial-denim-process.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Every piece is checked for stitching strength, hardware stability, sizing accuracy, wash effect and overall defects.",
-    image: "YOUR_JEANS_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-quality-inspection-qc-measurement-hardware.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Final folding, labeling and packaging with consolidated sea/air freight delivery to your US/EU warehouse.",
-    image: "YOUR_JEANS_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-packaging-shipping-export-cartons.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function JeansProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

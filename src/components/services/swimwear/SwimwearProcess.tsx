@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We develop your design, create digital prints, and produce a pre-production sample for fit and color approval (3–5 days).",
-    image: "YOUR_SWIMWEAR_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-design-sampling-patterns-fabric-swatches.png",
   },
   {
     step: "02",
     title: "Fabric Testing",
     description:
       "All fabrics tested for chlorine resistance, UV protection, colorfastness, and stretch recovery.",
-    image: "YOUR_SWIMWEAR_PROCESS_TESTING_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-uv-chlorine-fabric-testing.png",
   },
   {
     step: "03",
     title: "Print & Cut",
     description:
       "Digital sublimation printing followed by precision cutting for all pattern pieces.",
-    image: "YOUR_SWIMWEAR_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-sublimation-print-cut-process.png",
   },
   {
     step: "04",
     title: "Sewing & Assembly",
     description:
       "Flatlock stitching, elastic binding, lining attachment, and hardware integration by skilled workers.",
-    image: "YOUR_SWIMWEAR_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-sewing-assembly-flatlock-elastic-lining.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Every piece checked for print alignment, seam strength, elastic tension, and fit accuracy.",
-    image: "YOUR_SWIMWEAR_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-quality-inspection-print-seam-elastic-fit.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Custom tags, individual packaging, and freight consolidation for global delivery.",
-    image: "YOUR_SWIMWEAR_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/swimwear/custom-swimwear-packaging-shipping-small-batch-cartons.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function SwimwearProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -104,7 +106,7 @@ export default function HatCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -129,12 +131,13 @@ export default function HatCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="Hats & Headwear"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

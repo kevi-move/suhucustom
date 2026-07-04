@@ -1,3 +1,4 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 
 const stats = [
@@ -73,7 +74,7 @@ export default function HoodieOverview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="YOUR_HOODIE_OVERVIEW_IMAGE_URL"
+                src={resolveImageSrc("/generated/services/hoodies-sweatshirts/suhucustom-hoodie-sweatshirt-factory-overview-oem-odm-production.png")}
                 alt="Suhu Custom hoodie factory overview"
                 className="h-auto w-full object-cover"
               />

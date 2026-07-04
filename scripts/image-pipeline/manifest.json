@@ -1,0 +1,2667 @@
+{
+  "generatedAt": "2026-06-29T08:08:22.511Z",
+  "project": "suhucustom",
+  "totalSlots": 169,
+  "brandNote": "SuhuCustom — custom apparel OEM/ODM factory in Humen, Dongguan, China",
+  "slots": [
+    {
+      "id": "ABOUT_US_CTA_BACKGROUNDIMAGE",
+      "slotType": "cta",
+      "size": "2560x1440",
+      "product": "about us",
+      "context": [],
+      "files": [
+        "src/lib/aboutUsDefaults.ts"
+      ],
+      "prompt": "Warm professional photo: two confident Asian businesswomen in a garment district office with fabric samples and factory view, founders of an apparel manufacturing company in Dongguan. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/about-us/cta-backgroundImage.webp"
+    },
+    {
+      "id": "ABOUT_US_FACTORY_IMAGE",
+      "slotType": "factory",
+      "size": "1920x1280",
+      "product": "about us",
+      "context": [
+        "Factory & Production",
+        "Inside Our Production Process",
+        "We work with experienced manufacturing teams to ensure every order meets quality and delivery expectations.",
+        "Every order goes through sampling, production checks, and final inspection before shipping."
+      ],
+      "files": [
+        "src/lib/aboutUsDefaults.ts"
+      ],
+      "prompt": "Apparel factory in Humen Dongguan China: Factory & Production. Inside Our Production Process. We work with experienced manufacturing teams to ensure every order meets quality and delivery expectations.. Every order goes through sampling, production checks, and final inspection before shipping.. Authentic manufacturing environment. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/about-us/factory-image.webp"
+    },
+    {
+      "id": "ABOUT_US_HERO_HEROIMAGE",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "about us",
+      "context": [
+        "About SuhuCustom",
+        "Built by Two Sisters Who Know Garment Manufacturing Inside Out",
+        "We help brands, startups, and creators turn apparel ideas into high-quality custom products - from hoodies and caps to gloves and uniforms."
+      ],
+      "files": [
+        "src/lib/aboutUsDefaults.ts"
+      ],
+      "prompt": "Warm professional photo: two confident Asian businesswomen in a garment district office with fabric samples and factory view, founders of an apparel manufacturing company in Dongguan. About SuhuCustom. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/about-us/hero-heroImage.webp"
+    },
+    {
+      "id": "ABOUT_US_HUMEN_IMAGE",
+      "slotType": "factory",
+      "size": "1920x1280",
+      "product": "about us",
+      "context": [
+        "Why Humen, Dongguan Matters",
+        "Why We Manufacture in Humen",
+        "Located in Humen, Dongguan, we work closely with experienced garment factories, fabric markets, embroidery workshops, and printing suppliers.",
+        "From startup streetwear brands to corporate uniform orders, we help clients move from idea to production efficiently."
+      ],
+      "files": [
+        "src/lib/aboutUsDefaults.ts"
+      ],
+      "prompt": "Apparel factory in Humen Dongguan China: Why Humen, Dongguan Matters. Why We Manufacture in Humen. Located in Humen, Dongguan, we work closely with experienced garment factories, fabric markets, embroidery workshops, and printing suppliers.. From startup streetwear brands to corporate uniform orders, we help clients move from idea to production efficiently.. Authentic manufacturing environment. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/about-us/humen-image.webp"
+    },
+    {
+      "id": "ABOUT_US_STORY_IMAGE",
+      "slotType": "factory",
+      "size": "1920x1280",
+      "product": "about us",
+      "context": [
+        "Our Story",
+        "SuhuCustom started with two sisters who grew up around garment factories in Humen, Dongguan - one of China's largest apparel manufacturing hubs.",
+        "After years of working with fabric suppliers, sampling teams, and production factories, we realized many overseas brands struggled to find reliable partners for custom apparel production.",
+        "So we built SuhuCustom to make apparel manufacturing easier, faster, and more transparent.",
+        "Today, we help clients worldwide create custom hoodies, hats, gloves, workwear, and more - with flexible MOQs, hands-on support, and reliable production."
+      ],
+      "files": [
+        "src/lib/aboutUsDefaults.ts"
+      ],
+      "prompt": "Apparel factory in Humen Dongguan China: Our Story. SuhuCustom started with two sisters who grew up around garment factories in Humen, Dongguan - one of China's largest apparel manufacturing hubs.. After years of working with fabric suppliers, sampling teams, and production factories, we realized many overseas brands struggled to find reliable partners for custom apparel production.. So we built SuhuCustom to make apparel manufacturing easier, faster, and more transparent.. Today, we help clients worldwide create custom hoodies, hats, gloves, workwear, and more - with flexible MOQs, hands-on support, and reliable production.. Authentic manufacturing environment. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/about-us/story-image.webp"
+    },
+    {
+      "id": "ABOUT_US_TEAM_IMAGE",
+      "slotType": "factory",
+      "size": "1920x1280",
+      "product": "about us",
+      "context": [
+        "Our Team",
+        "Meet the Team",
+        "At SuhuCustom, we believe good manufacturing starts with good communication.",
+        "As a small and hands-on team, we work closely with every client throughout sampling and production.",
+        "From fabric sourcing to shipment updates, we stay involved in every step."
+      ],
+      "files": [
+        "src/lib/aboutUsDefaults.ts"
+      ],
+      "prompt": "Apparel factory in Humen Dongguan China: Our Team. Meet the Team. At SuhuCustom, we believe good manufacturing starts with good communication.. As a small and hands-on team, we work closely with every client throughout sampling and production.. From fabric sourcing to shipment updates, we stay involved in every step.. Authentic manufacturing environment. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/about-us/team-image.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_ACTIVEWEAR_ATHLEISURE_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Activewear & Athleisure",
+        "Quick‑dry, 4‑way stretch, anti‑pilling fabrics."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Activewear & Athleisure, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-activewear-athleisure.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_BABY_KIDS_CLOTHING_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Baby & Kids Clothing",
+        "Gentle, comfortable fabrics with safe trims."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Baby & Kids Clothing, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-baby-kids-clothing.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_CUSHION_COVERS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Cushion Covers",
+        "Shape‑stable fabric and clean hidden zippers."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Cushion Covers, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-cushion-covers.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_GYM_SPORTSWEAR_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Gym & Sportswear",
+        "Moisture‑wicking performance knits for training use."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Gym & Sportswear, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-gym-sportswear.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_HATS_HEADWEAR_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Hats & Headwear",
+        "Clean embroidery and crisp logo placement."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Hats & Headwear, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-hats-headwear.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_HOODIES_SWEATSHIRTS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Hoodies & Sweatshirts",
+        "Heavyweight fleece, clean sewing and stable fit."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Hoodies & Sweatshirts, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-hoodies-sweatshirts.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_JEANS_DENIM_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Jeans & Denim",
+        "Consistent washing, strong stitching and true sizing."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Jeans & Denim, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-jeans-denim.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_LEATHER_GOODS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Leather Goods",
+        "Precise edge painting and neat top‑stitching."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Leather Goods, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-leather-goods.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_LEGGINGS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Leggings"
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Leggings, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-leggings.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_NECK_GAITERS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Neck Gaiters",
+        "Breathable, all‑over print with smooth edges."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Neck Gaiters, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-neck-gaiters.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_SOCKS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Socks"
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Socks, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-socks.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_SWIMWEAR_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Swimwear"
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Swimwear, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-swimwear.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_T_SHIRTS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "T-shirts",
+        "Soft cotton bases with sharp, durable prints."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: T-shirts, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-t-shirts.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_TOWELS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Towels"
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Towels, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-towels.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_UNDERWEAR_BRAS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Underwear & Bras",
+        "Seamless construction with skin‑friendly materials."
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Underwear & Bras, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-underwear-bras.webp"
+    },
+    {
+      "id": "CATEGORY_IMAGE_UNIFORMS_URL",
+      "slotType": "category",
+      "size": "1280x720",
+      "product": "home",
+      "context": [
+        "Uniforms"
+      ],
+      "files": [
+        "src/components/home/HomeCategoryNav.tsx"
+      ],
+      "prompt": "Product category thumbnail: Uniforms, clean studio product shot on neutral background, e-commerce quality, shallow depth of field. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/home/category-uniforms.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_COLOR_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [],
+      "files": [
+        "src/components/services/activewear/ActivewearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for activewear and athleisure production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/customization-activewear-color-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_CONSTRUCTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "Premium Performance Fabric Sourcing",
+        "We source moisture-wicking polyester, 4-way stretch spandex, and eco-friendly performance blends for breathability, quick-drying, and long-lasting wear.",
+        "Precision Athletic Construction",
+        "Reinforced flatlock stitching, contoured seams, and elasticated waistbands for maximum mobility and comfort during active use.",
+        "Custom Decoration"
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearFeatures.tsx"
+      ],
+      "prompt": "Premium Performance Fabric Sourcing. We source moisture-wicking polyester, 4-way stretch spandex, and eco-friendly performance blends for breathability, quick-drying, and long-lasting wear.. Precision Athletic Construction. Reinforced flatlock stitching, contoured seams, and elasticated waistbands for maximum mobility and comfort during active use.. Custom Decoration — activewear and athleisure manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/other-activewear-construction-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_CUSTOMIZATION_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "Custom Decoration",
+        "Full support for sublimation printing, screen print, heat transfer, embroidery, and custom woven label/neck tag options for athletic branding.",
+        "Strict Quality Control",
+        "5-step inspection: fabric → cutting → sewing → decoration → final packaging to ensure zero defects and consistent performance.",
+        "Flexible Customization",
+        "Fully customizable fits (slim/regular/athletic), styles (leggings/tanks/sports bras), sizes (XS–4XL), and wash-resistant performance designs."
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearFeatures.tsx"
+      ],
+      "prompt": "Custom Decoration for activewear and athleisure production. Full support for sublimation printing, screen print, heat transfer, embroidery, and custom woven label/neck tag options for athletic branding.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/customization-activewear-customization-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_DECO_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [],
+      "files": [
+        "src/components/services/activewear/ActivewearCustomization.tsx"
+      ],
+      "prompt": " — activewear and athleisure manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/other-activewear-deco-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_DECORATION_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "Premium Performance Fabric Sourcing",
+        "We source moisture-wicking polyester, 4-way stretch spandex, and eco-friendly performance blends for breathability, quick-drying, and long-lasting wear.",
+        "Precision Athletic Construction",
+        "Reinforced flatlock stitching, contoured seams, and elasticated waistbands for maximum mobility and comfort during active use.",
+        "Custom Decoration",
+        "Full support for sublimation printing, screen print, heat transfer, embroidery, and custom woven label/neck tag options for athletic branding."
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearFeatures.tsx"
+      ],
+      "prompt": "Premium Performance Fabric Sourcing for activewear and athleisure production. We source moisture-wicking polyester, 4-way stretch spandex, and eco-friendly performance blends for breathability, quick-drying, and long-lasting wear.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/feature-activewear-decoration-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "Premium Performance Fabric Sourcing",
+        "We source moisture-wicking polyester, 4-way stretch spandex, and eco-friendly performance blends for breathability, quick-drying, and long-lasting wear.",
+        "Precision Athletic Construction"
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearFeatures.tsx"
+      ],
+      "prompt": "Premium Performance Fabric Sourcing for activewear and athleisure production. We source moisture-wicking polyester, 4-way stretch spandex, and eco-friendly performance blends for breathability, quick-drying, and long-lasting wear.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/feature-activewear-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_FABRIC_OPTION_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [],
+      "files": [
+        "src/components/services/activewear/ActivewearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for activewear and athleisure production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/feature-activewear-fabric-option-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_HERO_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "activewear",
+      "context": [],
+      "files": [
+        "src/components/services/activewear/ActivewearHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing activewear and athleisure manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/hero-activewear-hero-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "activewear",
+      "context": [],
+      "files": [
+        "src/components/services/activewear/ActivewearOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for activewear and athleisure OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/overview-activewear-overview-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [],
+      "files": [
+        "src/components/services/activewear/ActivewearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for activewear and athleisure production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/customization-activewear-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_PROCESS_CUTTING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including performance fabric testing.",
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing and minimal fabric waste, critical for performance stretch fabrics."
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearProcess.tsx"
+      ],
+      "prompt": "Automated fabric cutting machine in a clean garment factory, stacked cotton fabric layers, precision manufacturing. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/process-activewear-process-cutting-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_PROCESS_DECO_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing and minimal fabric waste, critical for performance stretch fabrics.",
+        "03",
+        "Sewing & Assembly",
+        "Skilled seamstresses handle flatlock stitching, waistband/elastic attachment, and seam finishing for optimal mobility."
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearProcess.tsx"
+      ],
+      "prompt": "Screen printing station with custom t-shirt design being applied, vibrant inks, professional print shop. Context: 02. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/process-activewear-process-deco-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including performance fabric testing.",
+        "02",
+        "Fabric Cutting"
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/process-activewear-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_PROCESS_QC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "03",
+        "Sewing & Assembly",
+        "Skilled seamstresses handle flatlock stitching, waistband/elastic attachment, and seam finishing for optimal mobility.",
+        "04",
+        "Decoration Application",
+        "Custom sublimation/print/embroidery applied per your design, with color matching and wash-performance testing."
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearProcess.tsx"
+      ],
+      "prompt": "Quality inspector checking finished garments on a table, measuring tape and checklist, bright QC station. Context: 03. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/process-activewear-process-qc-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_PROCESS_SEWING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including performance fabric testing.",
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing and minimal fabric waste, critical for performance stretch fabrics."
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearProcess.tsx"
+      ],
+      "prompt": "Industrial sewing machines on a bright garment production line, skilled workers stitching apparel, factory floor. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/process-activewear-process-sewing-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "Skilled seamstresses handle flatlock stitching, waistband/elastic attachment, and seam finishing for optimal mobility.",
+        "04",
+        "Decoration Application",
+        "Custom sublimation/print/embroidery applied per your design, with color matching and wash-performance testing.",
+        "05",
+        "Quality Inspection"
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: Skilled seamstresses handle flatlock stitching, waistband/elastic attachment, and seam finishing for optimal mobility.. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/process-activewear-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_QC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [
+        "Precision Athletic Construction",
+        "Reinforced flatlock stitching, contoured seams, and elasticated waistbands for maximum mobility and comfort during active use.",
+        "Custom Decoration",
+        "Full support for sublimation printing, screen print, heat transfer, embroidery, and custom woven label/neck tag options for athletic branding.",
+        "Strict Quality Control",
+        "5-step inspection: fabric → cutting → sewing → decoration → final packaging to ensure zero defects and consistent performance."
+      ],
+      "files": [
+        "src/components/services/activewear/ActivewearFeatures.tsx"
+      ],
+      "prompt": "Precision Athletic Construction for activewear and athleisure production. Reinforced flatlock stitching, contoured seams, and elasticated waistbands for maximum mobility and comfort during active use.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/feature-activewear-qc-image.webp"
+    },
+    {
+      "id": "YOUR_ACTIVEWEAR_STYLE_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "activewear",
+      "context": [],
+      "files": [
+        "src/components/services/activewear/ActivewearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for activewear and athleisure production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/activewear/customization-activewear-style-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_BRANDING_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsCustomization.tsx"
+      ],
+      "prompt": " — baby and kids clothing manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/other-babykids-branding-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_COMFORT_CONSTRUCTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "Child-Friendly Comfort Construction",
+        "Every piece is crafted with flatlock stitching to eliminate rough seams that irritate skin, with tagless interior designs to avoid scratchy labels against delicate skin. For baby styles, we use soft, adjustable snap closures and stretchy neck openings for easy dressing and diaper changes, with no rough buttons or hard embellishments that pose choking hazards. Reinforced, gentle elastic at waistbands and cuffs stays secure without digging into skin, perfect for active kids all day long.",
+        "Safe, Durable Custom Branding"
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsFeatures.tsx"
+      ],
+      "prompt": "Child-Friendly Comfort Construction. Every piece is crafted with flatlock stitching to eliminate rough seams that irritate skin, with tagless interior designs to avoid scratchy labels against delicate skin. For baby styles, we use soft, adjustable snap closures and stretchy neck openings for easy dressing and diaper changes, with no rough buttons or hard embellishments that pose choking hazards. Reinforced, gentle elastic at waistbands and cuffs stays secure without digging into skin, perfect for active kids all day long.. Safe, Durable Custom Branding — baby and kids clothing manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/other-babykids-comfort-construction-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_CUSTOMIZATION_FLEXIBILITY_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "Full Customization Flexibility",
+        "We offer full customization for all baby and kids styles, covering newborn to youth sizes, with adjustable fits, gender-neutral or gender-specific designs, and seasonal options. Our flexible production accommodates small boutique orders and large bulk retail orders, with consistent quality and safety across all quantities. We support custom color matching, fun prints and minimalist designs, catering to boutique, everyday and premium children"
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsFeatures.tsx"
+      ],
+      "prompt": "Full Customization Flexibility for baby and kids clothing production. We offer full customization for all baby and kids styles, covering newborn to youth sizes, with adjustable fits, gender-neutral or gender-specific designs, and seasonal options. Our flexible production accommodates small boutique orders and large bulk retail orders, with consistent quality and safety across all quantities. We support custom color matching, fun prints and minimalist designs, catering to boutique, everyday and premium children. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/customization-babykids-customization-flexibility-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for baby and kids clothing production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/feature-babykids-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_HERO_FABRIC_STITCHING_TAGLESS_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing baby and kids clothing manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/hero-babykids-hero-fabric-stitching-tagless-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_HERO_MODEL_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing baby and kids clothing manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/hero-babykids-hero-model-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for baby and kids clothing OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/overview-babykids-overview-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for baby and kids clothing production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/customization-babykids-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PROCESS_BRANDING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "03",
+        "Precision Cutting",
+        "Automated child-safe precision cutting ensures consistent sizing across all pieces, with smooth edge finishing to avoid rough seams on delicate skin.",
+        "04",
+        "Sewing & Assembly",
+        "Skilled artisans complete flatlock stitching, soft closure attachment and gentle elastic installation, following strict child-safe construction standards with no rough edges."
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsProcess.tsx"
+      ],
+      "prompt": "03. Precision Cutting. Automated child-safe precision cutting ensures consistent sizing across all pieces, with smooth edge finishing to avoid rough seams on delicate skin.. 04. Sewing & Assembly. Skilled artisans complete flatlock stitching, soft closure attachment and gentle elastic installation, following strict child-safe construction standards with no rough edges. — baby and kids clothing manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/process-babykids-process-branding-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PROCESS_CUTTING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "01",
+        "Design & Safety Sampling",
+        "We review your brand guidelines, style specs and safety requirements, then produce a pre-production sample within 3-5 days, including softness, safety and fit testing for the target age group.",
+        "02",
+        "Fabric Preparation",
+        "All fabrics undergo pre-washing and pre-shrinking treatment to eliminate shrinkage and remove any residual irritants, followed by strict safety testing to confirm OEKO-TEX compliance."
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsProcess.tsx"
+      ],
+      "prompt": "Automated fabric cutting machine in a clean garment factory, stacked cotton fabric layers, precision manufacturing. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/process-babykids-process-cutting-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "01",
+        "Design & Safety Sampling",
+        "We review your brand guidelines, style specs and safety requirements, then produce a pre-production sample within 3-5 days, including softness, safety and fit testing for the target age group.",
+        "02",
+        "Fabric Preparation"
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/process-babykids-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PROCESS_FABRIC_PREP_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "01",
+        "Design & Safety Sampling",
+        "We review your brand guidelines, style specs and safety requirements, then produce a pre-production sample within 3-5 days, including softness, safety and fit testing for the target age group.",
+        "02",
+        "Fabric Preparation",
+        "All fabrics undergo pre-washing and pre-shrinking treatment to eliminate shrinkage and remove any residual irritants, followed by strict safety testing to confirm OEKO-TEX compliance."
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsProcess.tsx"
+      ],
+      "prompt": "01. Design & Safety Sampling. We review your brand guidelines, style specs and safety requirements, then produce a pre-production sample within 3-5 days, including softness, safety and fit testing for the target age group.. 02. Fabric Preparation. All fabrics undergo pre-washing and pre-shrinking treatment to eliminate shrinkage and remove any residual irritants, followed by strict safety testing to confirm OEKO-TEX compliance. — baby and kids clothing manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/process-babykids-process-fabric-prep-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PROCESS_QC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "04",
+        "Sewing & Assembly",
+        "Skilled artisans complete flatlock stitching, soft closure attachment and gentle elastic installation, following strict child-safe construction standards with no rough edges.",
+        "05",
+        "Safe Branding Application",
+        "Non-toxic, skin-friendly branding applied per your guidelines, with extra checks to ensure no rough backing or small hazards are present."
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsProcess.tsx"
+      ],
+      "prompt": "Quality inspector checking finished garments on a table, measuring tape and checklist, bright QC station. Context: 04. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/process-babykids-process-qc-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PROCESS_SEWING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "02",
+        "Fabric Preparation",
+        "All fabrics undergo pre-washing and pre-shrinking treatment to eliminate shrinkage and remove any residual irritants, followed by strict safety testing to confirm OEKO-TEX compliance.",
+        "03",
+        "Precision Cutting",
+        "Automated child-safe precision cutting ensures consistent sizing across all pieces, with smooth edge finishing to avoid rough seams on delicate skin."
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsProcess.tsx"
+      ],
+      "prompt": "Industrial sewing machines on a bright garment production line, skilled workers stitching apparel, factory floor. Context: 02. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/process-babykids-process-sewing-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "05",
+        "Safe Branding Application",
+        "Non-toxic, skin-friendly branding applied per your guidelines, with extra checks to ensure no rough backing or small hazards are present.",
+        "06",
+        "Safety & Quality Inspection",
+        "Every piece is individually checked for safety compliance, softness, stitching quality and branding, with full safety certification before packaging."
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: 05. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/process-babykids-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_SAFE_BRANDING_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "Safe, Durable Custom Branding",
+        "Our custom branding options are fully child-safe, including soft water-based printing, tagless heat-transfer logos, gentle embroidery with soft backing, and woven labels stitched to the outside or seam to avoid skin contact. All branding materials are non-toxic and crack-resistant, holding up to frequent washing without fading or peeling. We avoid small buttons, rhinestones or loose embellishments on baby styles to meet strict CPSIA and international children",
+        "Strict Safety & Quality Control",
+        "We follow a rigorous 6-step inspection process tailored for children"
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsFeatures.tsx"
+      ],
+      "prompt": "Safe, Durable Custom Branding. Our custom branding options are fully child-safe, including soft water-based printing, tagless heat-transfer logos, gentle embroidery with soft backing, and woven labels stitched to the outside or seam to avoid skin contact. All branding materials are non-toxic and crack-resistant, holding up to frequent washing without fading or peeling. We avoid small buttons, rhinestones or loose embellishments on baby styles to meet strict CPSIA and international children. Strict Safety & Quality Control. We follow a rigorous 6-step inspection process tailored for children — baby and kids clothing manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/other-babykids-safe-branding-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_SAFE_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "Baby-Safe Ultra-Soft Fabric Sourcing",
+        "We exclusively source OEKO-TEX Standard 100 Class 1 certified fabrics, the highest safety grade for baby and children",
+        "Child-Friendly Comfort Construction"
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsFeatures.tsx"
+      ],
+      "prompt": "Baby-Safe Ultra-Soft Fabric Sourcing for baby and kids clothing production. We exclusively source OEKO-TEX Standard 100 Class 1 certified fabrics, the highest safety grade for baby and children. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/feature-babykids-safe-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_SAFETY_COMFORT_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsCustomization.tsx"
+      ],
+      "prompt": " — baby and kids clothing manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/other-babykids-safety-comfort-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_SAFETY_QC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [
+        "Strict Safety & Quality Control",
+        "We follow a rigorous 6-step inspection process tailored for children",
+        "Full Customization Flexibility"
+      ],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsFeatures.tsx"
+      ],
+      "prompt": "Strict Safety & Quality Control for baby and kids clothing production. We follow a rigorous 6-step inspection process tailored for children. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/feature-babykids-safety-qc-image.webp"
+    },
+    {
+      "id": "YOUR_BABYKIDS_STYLE_AGE_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "baby kids clothing",
+      "context": [],
+      "files": [
+        "src/components/services/baby-kids-clothing/BabyKidsCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for baby and kids clothing production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/baby-kids-clothing/customization-babykids-style-age-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_BRANDING_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "High-Performance Fabric Sourcing",
+        "We source premium sweat-wicking, compression, and quick-dry fabrics that stand up to high-intensity workouts, with excellent breathability and long-term durability.",
+        "Gym-Specific Construction",
+        "Reinforced flatlock stitching (prevents chafing), compression fit for muscle support, and mesh paneling for enhanced ventilation—critical for gym and training wear.",
+        "Custom Branding Solutions",
+        "Full support for sublimation printing (full-color workout designs), heat transfer, embroidery, and custom woven labels—perfect for gym brand identity."
+      ],
+      "files": [
+        "src/components/services/gym/GymFeatures.tsx"
+      ],
+      "prompt": "High-Performance Fabric Sourcing. We source premium sweat-wicking, compression, and quick-dry fabrics that stand up to high-intensity workouts, with excellent breathability and long-term durability.. Gym-Specific Construction. Reinforced flatlock stitching (prevents chafing), compression fit for muscle support, and mesh paneling for enhanced ventilation—critical for gym and training wear.. Custom Branding Solutions. Full support for sublimation printing (full-color workout designs), heat transfer, embroidery, and custom woven labels—perfect for gym brand identity. — gym and sportswear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/other-gym-branding-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_COLORS_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [],
+      "files": [
+        "src/components/services/gym/GymCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for gym and sportswear production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/customization-gym-colors-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_CONSTRUCTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "High-Performance Fabric Sourcing",
+        "We source premium sweat-wicking, compression, and quick-dry fabrics that stand up to high-intensity workouts, with excellent breathability and long-term durability.",
+        "Gym-Specific Construction",
+        "Reinforced flatlock stitching (prevents chafing), compression fit for muscle support, and mesh paneling for enhanced ventilation—critical for gym and training wear.",
+        "Custom Branding Solutions"
+      ],
+      "files": [
+        "src/components/services/gym/GymFeatures.tsx"
+      ],
+      "prompt": "High-Performance Fabric Sourcing. We source premium sweat-wicking, compression, and quick-dry fabrics that stand up to high-intensity workouts, with excellent breathability and long-term durability.. Gym-Specific Construction. Reinforced flatlock stitching (prevents chafing), compression fit for muscle support, and mesh paneling for enhanced ventilation—critical for gym and training wear.. Custom Branding Solutions — gym and sportswear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/other-gym-construction-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_CUSTOMIZATION_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "Custom Branding Solutions",
+        "Full support for sublimation printing (full-color workout designs), heat transfer, embroidery, and custom woven labels—perfect for gym brand identity.",
+        "Strict Quality Control",
+        "5-step inspection: fabric (stretch/durability test) → cutting → sewing → decoration → final packaging to ensure zero defects and consistent performance.",
+        "Flexible Customization",
+        "Fully customizable fits (compression/regular/relaxed), styles (gym tops/shorts/leggings/jackets), sizes (XS–4XL), and sweat-resistant custom designs."
+      ],
+      "files": [
+        "src/components/services/gym/GymFeatures.tsx"
+      ],
+      "prompt": "Custom Branding Solutions for gym and sportswear production. Full support for sublimation printing (full-color workout designs), heat transfer, embroidery, and custom woven labels—perfect for gym brand identity.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/customization-gym-customization-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_DECORATION_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [],
+      "files": [
+        "src/components/services/gym/GymCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for gym and sportswear production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/feature-gym-decoration-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "High-Performance Fabric Sourcing",
+        "We source premium sweat-wicking, compression, and quick-dry fabrics that stand up to high-intensity workouts, with excellent breathability and long-term durability.",
+        "Gym-Specific Construction"
+      ],
+      "files": [
+        "src/components/services/gym/GymFeatures.tsx"
+      ],
+      "prompt": "High-Performance Fabric Sourcing for gym and sportswear production. We source premium sweat-wicking, compression, and quick-dry fabrics that stand up to high-intensity workouts, with excellent breathability and long-term durability.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/feature-gym-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_FABRIC_OPTION_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [],
+      "files": [
+        "src/components/services/gym/GymCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for gym and sportswear production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/feature-gym-fabric-option-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_HERO_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "gym",
+      "context": [],
+      "files": [
+        "src/components/services/gym/GymHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing gym and sportswear manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/hero-gym-hero-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "gym",
+      "context": [],
+      "files": [
+        "src/components/services/gym/GymOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for gym and sportswear OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/overview-gym-overview-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [],
+      "files": [
+        "src/components/services/gym/GymCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for gym and sportswear production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/customization-gym-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_PROCESS_CUTTING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including fabric stretch and sweat-wicking performance testing.",
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing and minimal fabric waste, especially critical for compression and stretch gym fabrics."
+      ],
+      "files": [
+        "src/components/services/gym/GymProcess.tsx"
+      ],
+      "prompt": "Automated fabric cutting machine in a clean garment factory, stacked cotton fabric layers, precision manufacturing. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/process-gym-process-cutting-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_PROCESS_DECORATION_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing and minimal fabric waste, especially critical for compression and stretch gym fabrics.",
+        "03",
+        "Sewing & Assembly",
+        "Skilled seamstresses handle flatlock stitching (chafe-resistant), elastic waistband attachment, and mesh panel integration for optimal comfort."
+      ],
+      "files": [
+        "src/components/services/gym/GymProcess.tsx"
+      ],
+      "prompt": "Screen printing station with custom t-shirt design being applied, vibrant inks, professional print shop. Context: 02. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/process-gym-process-decoration-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including fabric stretch and sweat-wicking performance testing.",
+        "02",
+        "Fabric Cutting"
+      ],
+      "files": [
+        "src/components/services/gym/GymProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/process-gym-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_PROCESS_QC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "03",
+        "Sewing & Assembly",
+        "Skilled seamstresses handle flatlock stitching (chafe-resistant), elastic waistband attachment, and mesh panel integration for optimal comfort.",
+        "04",
+        "Decoration Application",
+        "Custom sublimation/print/embroidery applied per your design, with color matching and sweat-resistance testing."
+      ],
+      "files": [
+        "src/components/services/gym/GymProcess.tsx"
+      ],
+      "prompt": "Quality inspector checking finished garments on a table, measuring tape and checklist, bright QC station. Context: 03. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/process-gym-process-qc-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_PROCESS_SEWING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including fabric stretch and sweat-wicking performance testing.",
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing and minimal fabric waste, especially critical for compression and stretch gym fabrics."
+      ],
+      "files": [
+        "src/components/services/gym/GymProcess.tsx"
+      ],
+      "prompt": "Industrial sewing machines on a bright garment production line, skilled workers stitching apparel, factory floor. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/process-gym-process-sewing-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "04",
+        "Decoration Application",
+        "Custom sublimation/print/embroidery applied per your design, with color matching and sweat-resistance testing.",
+        "05",
+        "Quality Inspection",
+        "Every piece is checked for stitching integrity, fabric stretch, decoration alignment, and performance defects (e.g., sweat-wicking ability)."
+      ],
+      "files": [
+        "src/components/services/gym/GymProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: 04. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/process-gym-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_QC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [
+        "Gym-Specific Construction",
+        "Reinforced flatlock stitching (prevents chafing), compression fit for muscle support, and mesh paneling for enhanced ventilation—critical for gym and training wear.",
+        "Custom Branding Solutions",
+        "Full support for sublimation printing (full-color workout designs), heat transfer, embroidery, and custom woven labels—perfect for gym brand identity.",
+        "Strict Quality Control",
+        "5-step inspection: fabric (stretch/durability test) → cutting → sewing → decoration → final packaging to ensure zero defects and consistent performance."
+      ],
+      "files": [
+        "src/components/services/gym/GymFeatures.tsx"
+      ],
+      "prompt": "Gym-Specific Construction for gym and sportswear production. Reinforced flatlock stitching (prevents chafing), compression fit for muscle support, and mesh paneling for enhanced ventilation—critical for gym and training wear.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/feature-gym-qc-image.webp"
+    },
+    {
+      "id": "YOUR_GYM_STYLE_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "gym",
+      "context": [],
+      "files": [
+        "src/components/services/gym/GymCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for gym and sportswear production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/gym/customization-gym-style-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_CLOSURE_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [],
+      "files": [
+        "src/components/services/hats-headwear/HatCustomization.tsx"
+      ],
+      "prompt": " — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/other-hat-closure-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_CONSTRUCTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "Premium Material Sourcing",
+        "Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.",
+        "Expert Construction",
+        "5-panel, 6-panel, unstructured, and structured builds with precision stitching and quality sweatbands.",
+        "Custom Decoration",
+        "3D puff embroidery, flat embroidery, screen print, woven patches, and leather strap closures."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatFeatures.tsx"
+      ],
+      "prompt": "Premium Material Sourcing. Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.. Expert Construction. 5-panel, 6-panel, unstructured, and structured builds with precision stitching and quality sweatbands.. Custom Decoration. 3D puff embroidery, flat embroidery, screen print, woven patches, and leather strap closures. — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/other-hat-construction-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_DECO_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [],
+      "files": [
+        "src/components/services/hats-headwear/HatCustomization.tsx"
+      ],
+      "prompt": " — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/other-hat-deco-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_DECORATION_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "Premium Material Sourcing",
+        "Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.",
+        "Expert Construction",
+        "5-panel, 6-panel, unstructured, and structured builds with precision stitching and quality sweatbands.",
+        "Custom Decoration",
+        "3D puff embroidery, flat embroidery, screen print, woven patches, and leather strap closures."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatFeatures.tsx"
+      ],
+      "prompt": "Premium Material Sourcing for custom hats and headwear production. Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/feature-hat-decoration-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_FLEXIBILITY_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "Expert Construction",
+        "5-panel, 6-panel, unstructured, and structured builds with precision stitching and quality sweatbands.",
+        "Custom Decoration",
+        "3D puff embroidery, flat embroidery, screen print, woven patches, and leather strap closures.",
+        "Strict Quality Control",
+        "Every hat inspected for shape consistency, embroidery accuracy, color matching, and brim alignment."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatFeatures.tsx"
+      ],
+      "prompt": "Expert Construction. 5-panel, 6-panel, unstructured, and structured builds with precision stitching and quality sweatbands.. Custom Decoration. 3D puff embroidery, flat embroidery, screen print, woven patches, and leather strap closures.. Strict Quality Control. Every hat inspected for shape consistency, embroidery accuracy, color matching, and brim alignment. — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/other-hat-flexibility-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_HERO_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "hats headwear",
+      "context": [],
+      "files": [
+        "src/components/services/hats-headwear/HatHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing custom hats and headwear manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/hero-hat-hero-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_MATERIAL_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "Premium Material Sourcing",
+        "Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.",
+        "Expert Construction"
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatFeatures.tsx"
+      ],
+      "prompt": "Premium Material Sourcing. Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.. Expert Construction — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/other-hat-material-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_MATERIAL_OPTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [],
+      "files": [
+        "src/components/services/hats-headwear/HatCustomization.tsx"
+      ],
+      "prompt": " — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/other-hat-material-option-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "hats headwear",
+      "context": [],
+      "files": [
+        "src/components/services/hats-headwear/HatOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for custom hats and headwear OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/overview-hat-overview-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [],
+      "files": [
+        "src/components/services/hats-headwear/HatCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for custom hats and headwear production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/customization-hat-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_PROCESS_ASSEMBLY_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork, select materials, and produce a sample hat for your approval (1–3 days).",
+        "02",
+        "Material Preparation",
+        "Fabric cutting, panel shaping, and brim preparation with precision die-cut equipment."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatProcess.tsx"
+      ],
+      "prompt": "Industrial sewing machines on a bright garment production line, skilled workers stitching apparel, factory floor. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/process-hat-process-assembly-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_PROCESS_DECORATION_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork, select materials, and produce a sample hat for your approval (1–3 days).",
+        "02",
+        "Material Preparation",
+        "Fabric cutting, panel shaping, and brim preparation with precision die-cut equipment."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatProcess.tsx"
+      ],
+      "prompt": "Screen printing station with custom t-shirt design being applied, vibrant inks, professional print shop. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/process-hat-process-decoration-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork, select materials, and produce a sample hat for your approval (1–3 days).",
+        "02",
+        "Material Preparation"
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/process-hat-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_PROCESS_FINISHING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "02",
+        "Material Preparation",
+        "Fabric cutting, panel shaping, and brim preparation with precision die-cut equipment.",
+        "03",
+        "Panel Assembly",
+        "Expert stitching of panels, sweatband attachment, and structural reinforcement."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatProcess.tsx"
+      ],
+      "prompt": "02. Material Preparation. Fabric cutting, panel shaping, and brim preparation with precision die-cut equipment.. 03. Panel Assembly. Expert stitching of panels, sweatband attachment, and structural reinforcement. — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/process-hat-process-finishing-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_PROCESS_MATERIAL_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We refine your artwork, select materials, and produce a sample hat for your approval (1–3 days).",
+        "02",
+        "Material Preparation",
+        "Fabric cutting, panel shaping, and brim preparation with precision die-cut equipment."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatProcess.tsx"
+      ],
+      "prompt": "01. Design & Sampling. We refine your artwork, select materials, and produce a sample hat for your approval (1–3 days).. 02. Material Preparation. Fabric cutting, panel shaping, and brim preparation with precision die-cut equipment. — custom hats and headwear manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/process-hat-process-material-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "03",
+        "Panel Assembly",
+        "Expert stitching of panels, sweatband attachment, and structural reinforcement.",
+        "04",
+        "Decoration",
+        "Embroidery, printing, or patch application with precise placement and color matching."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: 03. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/process-hat-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_QC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [
+        "Premium Material Sourcing",
+        "Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.",
+        "Expert Construction",
+        "5-panel, 6-panel, unstructured, and structured builds with precision stitching and quality sweatbands.",
+        "Custom Decoration",
+        "3D puff embroidery, flat embroidery, screen print, woven patches, and leather strap closures."
+      ],
+      "files": [
+        "src/components/services/hats-headwear/HatFeatures.tsx"
+      ],
+      "prompt": "Premium Material Sourcing for custom hats and headwear production. Cotton twill, wool blend, polyester mesh, corduroy, and leather — selected for structure, comfort, and durability.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/feature-hat-qc-image.webp"
+    },
+    {
+      "id": "YOUR_HAT_STYLE_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "hats headwear",
+      "context": [],
+      "files": [
+        "src/components/services/hats-headwear/HatCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for custom hats and headwear production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/hats-headwear/customization-hat-style-image.webp"
+    },
+    {
+      "id": "YOUR_NECKGAITER_HERO_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "neck gaiters",
+      "context": [],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing neck gaiters and buffs manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/hero-neckgaiter-hero-image.webp"
+    },
+    {
+      "id": "YOUR_NECKGAITER_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "neck gaiters",
+      "context": [],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for neck gaiters and buffs OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/overview-neckgaiter-overview-image.webp"
+    },
+    {
+      "id": "YOUR_NG_BREATHABLE_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "UV-Protective Fabrics",
+        "UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.",
+        "Seamless Construction",
+        "Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.",
+        "Full Sublimation Printing",
+        "360° edge-to-edge sublimation delivers vibrant, photographic-quality prints that never fade or crack."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterFeatures.tsx"
+      ],
+      "prompt": "UV-Protective Fabrics. UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.. Seamless Construction. Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.. Full Sublimation Printing. 360° edge-to-edge sublimation delivers vibrant, photographic-quality prints that never fade or crack. — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/other-ng-breathable-image.webp"
+    },
+    {
+      "id": "YOUR_NG_COLOR_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for neck gaiters and buffs production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/customization-ng-color-image.webp"
+    },
+    {
+      "id": "YOUR_NG_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for neck gaiters and buffs production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/feature-ng-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_NG_MULTIFUNCTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "Seamless Construction",
+        "Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.",
+        "Full Sublimation Printing",
+        "360° edge-to-edge sublimation delivers vibrant, photographic-quality prints that never fade or crack.",
+        "Breathable & Moisture-Wicking",
+        "Lightweight mesh weaves and quick-dry fibers keep wearers cool and dry in any conditions."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterFeatures.tsx"
+      ],
+      "prompt": "Seamless Construction. Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.. Full Sublimation Printing. 360° edge-to-edge sublimation delivers vibrant, photographic-quality prints that never fade or crack.. Breathable & Moisture-Wicking. Lightweight mesh weaves and quick-dry fibers keep wearers cool and dry in any conditions. — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/other-ng-multifunction-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for neck gaiters and buffs production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/customization-ng-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PRINT_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "UV-Protective Fabrics",
+        "UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.",
+        "Seamless Construction",
+        "Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.",
+        "Full Sublimation Printing",
+        "360° edge-to-edge sublimation delivers vibrant, photographic-quality prints that never fade or crack."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterFeatures.tsx"
+      ],
+      "prompt": "UV-Protective Fabrics. UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.. Seamless Construction. Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.. Full Sublimation Printing. 360° edge-to-edge sublimation delivers vibrant, photographic-quality prints that never fade or crack. — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/other-ng-print-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PRINTING_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterCustomization.tsx"
+      ],
+      "prompt": " — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/other-ng-printing-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "01",
+        "Design & Artwork",
+        "Our design team converts your artwork into a print-ready template optimized for sublimation (2–3 days).",
+        "02",
+        "Fabric Preparation"
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/process-ng-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PROCESS_FABRIC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "01",
+        "Design & Artwork",
+        "Our design team converts your artwork into a print-ready template optimized for sublimation (2–3 days).",
+        "02",
+        "Fabric Preparation",
+        "White polyester microfiber is pre-treated and cut to size, ensuring optimal ink absorption."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterProcess.tsx"
+      ],
+      "prompt": "01. Design & Artwork. Our design team converts your artwork into a print-ready template optimized for sublimation (2–3 days).. 02. Fabric Preparation. White polyester microfiber is pre-treated and cut to size, ensuring optimal ink absorption. — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/process-ng-process-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PROCESS_PRINT_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "01",
+        "Design & Artwork",
+        "Our design team converts your artwork into a print-ready template optimized for sublimation (2–3 days).",
+        "02",
+        "Fabric Preparation",
+        "White polyester microfiber is pre-treated and cut to size, ensuring optimal ink absorption."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterProcess.tsx"
+      ],
+      "prompt": "Screen printing station with custom t-shirt design being applied, vibrant inks, professional print shop. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/process-ng-process-print-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PROCESS_QC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "02",
+        "Fabric Preparation",
+        "White polyester microfiber is pre-treated and cut to size, ensuring optimal ink absorption.",
+        "03",
+        "Sublimation Printing",
+        "High-resolution dye-sublimation transfers your design permanently into the fabric fibers."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterProcess.tsx"
+      ],
+      "prompt": "Quality inspector checking finished garments on a table, measuring tape and checklist, bright QC station. Context: 02. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/process-ng-process-qc-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PROCESS_SEWING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "01",
+        "Design & Artwork",
+        "Our design team converts your artwork into a print-ready template optimized for sublimation (2–3 days).",
+        "02",
+        "Fabric Preparation",
+        "White polyester microfiber is pre-treated and cut to size, ensuring optimal ink absorption."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterProcess.tsx"
+      ],
+      "prompt": "Industrial sewing machines on a bright garment production line, skilled workers stitching apparel, factory floor. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/process-ng-process-sewing-image.webp"
+    },
+    {
+      "id": "YOUR_NG_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "03",
+        "Sublimation Printing",
+        "High-resolution dye-sublimation transfers your design permanently into the fabric fibers.",
+        "04",
+        "Cutting & Sewing",
+        "Precision cutting and overlock stitching create a clean, seamless tubular shape."
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: 03. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/process-ng-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_NG_SEAMLESS_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "UV-Protective Fabrics",
+        "UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.",
+        "Seamless Construction",
+        "Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.",
+        "Full Sublimation Printing"
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterFeatures.tsx"
+      ],
+      "prompt": "UV-Protective Fabrics. UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.. Seamless Construction. Tubular knitting technology creates a smooth, seamless tube with no uncomfortable seams against the skin.. Full Sublimation Printing — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/other-ng-seamless-image.webp"
+    },
+    {
+      "id": "YOUR_NG_SIZE_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterCustomization.tsx"
+      ],
+      "prompt": " — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/other-ng-size-image.webp"
+    },
+    {
+      "id": "YOUR_NG_UV_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "neck gaiters",
+      "context": [
+        "UV-Protective Fabrics",
+        "UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.",
+        "Seamless Construction"
+      ],
+      "files": [
+        "src/components/services/neck-gaiters/NeckGaiterFeatures.tsx"
+      ],
+      "prompt": "UV-Protective Fabrics. UPF 50+ rated polyester microfiber blocks 98% of UV rays, ideal for outdoor and sports use.. Seamless Construction — neck gaiters and buffs manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/neck-gaiters/other-ng-uv-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_ABSORBENCY_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "Premium Cotton Sourcing",
+        "Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.",
+        "Advanced Weaving Technology",
+        "Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.",
+        "Custom Jacquard Patterns",
+        "Intricate woven logos, borders, and designs that become part of the towel fabric — never fading or peeling."
+      ],
+      "files": [
+        "src/components/services/towels/TowelFeatures.tsx"
+      ],
+      "prompt": "Premium Cotton Sourcing. Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.. Advanced Weaving Technology. Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.. Custom Jacquard Patterns. Intricate woven logos, borders, and designs that become part of the towel fabric — never fading or peeling. — custom towels manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/other-towel-absorbency-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_COLOR_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [],
+      "files": [
+        "src/components/services/towels/TowelCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for custom towels production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/customization-towel-color-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_COTTON_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "Premium Cotton Sourcing",
+        "Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.",
+        "Advanced Weaving Technology"
+      ],
+      "files": [
+        "src/components/services/towels/TowelFeatures.tsx"
+      ],
+      "prompt": "Premium Cotton Sourcing. Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.. Advanced Weaving Technology — custom towels manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/other-towel-cotton-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_DESIGN_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [],
+      "files": [
+        "src/components/services/towels/TowelCustomization.tsx"
+      ],
+      "prompt": " — custom towels manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/other-towel-design-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_DYEING_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "Advanced Weaving Technology",
+        "Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.",
+        "Custom Jacquard Patterns",
+        "Intricate woven logos, borders, and designs that become part of the towel fabric — never fading or peeling.",
+        "Superior Absorbency",
+        "High-density loop construction and combed yarn ensure maximum water absorption and quick drying."
+      ],
+      "files": [
+        "src/components/services/towels/TowelFeatures.tsx"
+      ],
+      "prompt": "Advanced Weaving Technology. Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.. Custom Jacquard Patterns. Intricate woven logos, borders, and designs that become part of the towel fabric — never fading or peeling.. Superior Absorbency. High-density loop construction and combed yarn ensure maximum water absorption and quick drying. — custom towels manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/other-towel-dyeing-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_HERO_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "towels",
+      "context": [],
+      "files": [
+        "src/components/services/towels/TowelHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing custom towels manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/hero-towel-hero-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_JACQUARD_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "Premium Cotton Sourcing",
+        "Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.",
+        "Advanced Weaving Technology",
+        "Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.",
+        "Custom Jacquard Patterns",
+        "Intricate woven logos, borders, and designs that become part of the towel fabric — never fading or peeling."
+      ],
+      "files": [
+        "src/components/services/towels/TowelFeatures.tsx"
+      ],
+      "prompt": "Premium Cotton Sourcing. Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.. Advanced Weaving Technology. Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.. Custom Jacquard Patterns. Intricate woven logos, borders, and designs that become part of the towel fabric — never fading or peeling. — custom towels manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/other-towel-jacquard-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_MATERIAL_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [],
+      "files": [
+        "src/components/services/towels/TowelCustomization.tsx"
+      ],
+      "prompt": " — custom towels manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/other-towel-material-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "towels",
+      "context": [],
+      "files": [
+        "src/components/services/towels/TowelOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for custom towels OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/overview-towel-overview-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [],
+      "files": [
+        "src/components/services/towels/TowelCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for custom towels production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/customization-towel-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We create your custom jacquard pattern or print design and produce a pre-production sample (5–7 days).",
+        "02",
+        "Yarn Preparation"
+      ],
+      "files": [
+        "src/components/services/towels/TowelProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/process-towel-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_PROCESS_DYEING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We create your custom jacquard pattern or print design and produce a pre-production sample (5–7 days).",
+        "02",
+        "Yarn Preparation",
+        "Premium cotton yarn is wound, warped, and sized for optimal weaving performance and softness."
+      ],
+      "files": [
+        "src/components/services/towels/TowelProcess.tsx"
+      ],
+      "prompt": "Fabric dyeing vats in a professional textile factory, rich colors. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/process-towel-process-dyeing-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_PROCESS_QC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "02",
+        "Yarn Preparation",
+        "Premium cotton yarn is wound, warped, and sized for optimal weaving performance and softness.",
+        "03",
+        "Weaving",
+        "High-speed jacquard or dobby looms weave your design into plush, densely-packed terry fabric."
+      ],
+      "files": [
+        "src/components/services/towels/TowelProcess.tsx"
+      ],
+      "prompt": "Quality inspector checking finished garments on a table, measuring tape and checklist, bright QC station. Context: 02. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/process-towel-process-qc-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "03",
+        "Weaving",
+        "High-speed jacquard or dobby looms weave your design into plush, densely-packed terry fabric.",
+        "04",
+        "Dyeing & Finishing",
+        "Reactive dyeing for vibrant colors, followed by softening, tumble-drying, and shearing for a plush hand feel."
+      ],
+      "files": [
+        "src/components/services/towels/TowelProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: 03. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/process-towel-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_PROCESS_WEAVING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We create your custom jacquard pattern or print design and produce a pre-production sample (5–7 days).",
+        "02",
+        "Yarn Preparation",
+        "Premium cotton yarn is wound, warped, and sized for optimal weaving performance and softness."
+      ],
+      "files": [
+        "src/components/services/towels/TowelProcess.tsx"
+      ],
+      "prompt": "Textile yarn and weaving machinery in a modern factory, soft natural lighting. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/process-towel-process-weaving-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_PROCESS_YARN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We create your custom jacquard pattern or print design and produce a pre-production sample (5–7 days).",
+        "02",
+        "Yarn Preparation",
+        "Premium cotton yarn is wound, warped, and sized for optimal weaving performance and softness."
+      ],
+      "files": [
+        "src/components/services/towels/TowelProcess.tsx"
+      ],
+      "prompt": "Textile yarn and weaving machinery in a modern factory, soft natural lighting. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/process-towel-process-yarn-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_SIZE_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [],
+      "files": [
+        "src/components/services/towels/TowelCustomization.tsx"
+      ],
+      "prompt": " — custom towels manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/other-towel-size-image.webp"
+    },
+    {
+      "id": "YOUR_TOWEL_WEAVING_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "towels",
+      "context": [
+        "Premium Cotton Sourcing",
+        "Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.",
+        "Advanced Weaving Technology",
+        "Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.",
+        "Custom Jacquard Patterns"
+      ],
+      "files": [
+        "src/components/services/towels/TowelFeatures.tsx"
+      ],
+      "prompt": "Premium Cotton Sourcing for custom towels production. Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/towels/feature-towel-weaving-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_COLOR_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for underwear and bras production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/customization-underwear-color-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_COMFORT_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "Premium Fabric Selection",
+        "Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.",
+        "Precision Pattern Making",
+        "3D body mapping and grading technology ensures perfect fit across all sizes, from XS to 5XL.",
+        "Comfort Engineering",
+        "Bonded seams, laser-cut edges, and tagless labels eliminate irritation for all-day comfort."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearFeatures.tsx"
+      ],
+      "prompt": "Premium Fabric Selection. Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.. Precision Pattern Making. 3D body mapping and grading technology ensures perfect fit across all sizes, from XS to 5XL.. Comfort Engineering. Bonded seams, laser-cut edges, and tagless labels eliminate irritation for all-day comfort. — underwear and bras manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/other-underwear-comfort-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_DESIGN_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "Precision Pattern Making",
+        "3D body mapping and grading technology ensures perfect fit across all sizes, from XS to 5XL.",
+        "Comfort Engineering",
+        "Bonded seams, laser-cut edges, and tagless labels eliminate irritation for all-day comfort.",
+        "Strict Quality Control",
+        "5-step QC: fabric → cutting → sewing → elastic testing → final fit check to ensure zero defects."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearFeatures.tsx"
+      ],
+      "prompt": "Precision Pattern Making. 3D body mapping and grading technology ensures perfect fit across all sizes, from XS to 5XL.. Comfort Engineering. Bonded seams, laser-cut edges, and tagless labels eliminate irritation for all-day comfort.. Strict Quality Control. 5-step QC: fabric → cutting → sewing → elastic testing → final fit check to ensure zero defects. — underwear and bras manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/other-underwear-design-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "Premium Fabric Selection",
+        "Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.",
+        "Precision Pattern Making"
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearFeatures.tsx"
+      ],
+      "prompt": "Premium Fabric Selection for underwear and bras production. Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/feature-underwear-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_FABRIC_OPTION_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for underwear and bras production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/feature-underwear-fabric-option-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_HERO_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "underwear bras",
+      "context": [],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing underwear and bras manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/hero-underwear-hero-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "underwear bras",
+      "context": [],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for underwear and bras OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/overview-underwear-overview-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for underwear and bras production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/customization-underwear-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PATTERN_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "Premium Fabric Selection",
+        "Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.",
+        "Precision Pattern Making",
+        "3D body mapping and grading technology ensures perfect fit across all sizes, from XS to 5XL.",
+        "Comfort Engineering",
+        "Bonded seams, laser-cut edges, and tagless labels eliminate irritation for all-day comfort."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearFeatures.tsx"
+      ],
+      "prompt": "Premium Fabric Selection. Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.. Precision Pattern Making. 3D body mapping and grading technology ensures perfect fit across all sizes, from XS to 5XL.. Comfort Engineering. Bonded seams, laser-cut edges, and tagless labels eliminate irritation for all-day comfort. — underwear and bras manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/other-underwear-pattern-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PROCESS_CUTTING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "01",
+        "Design & Prototyping",
+        "We refine your design, create patterns, and produce fit samples for your review and approval (3–5 days).",
+        "02",
+        "Pattern Development",
+        "3D body mapping and precision grading ensure consistent fit across the full size range."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearProcess.tsx"
+      ],
+      "prompt": "Automated fabric cutting machine in a clean garment factory, stacked cotton fabric layers, precision manufacturing. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/process-underwear-process-cutting-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "01",
+        "Design & Prototyping",
+        "We refine your design, create patterns, and produce fit samples for your review and approval (3–5 days).",
+        "02",
+        "Pattern Development"
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/process-underwear-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PROCESS_PATTERN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "01",
+        "Design & Prototyping",
+        "We refine your design, create patterns, and produce fit samples for your review and approval (3–5 days).",
+        "02",
+        "Pattern Development",
+        "3D body mapping and precision grading ensure consistent fit across the full size range."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearProcess.tsx"
+      ],
+      "prompt": "Automated fabric cutting machine in a clean garment factory, stacked cotton fabric layers, precision manufacturing. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/process-underwear-process-pattern-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PROCESS_QC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "02",
+        "Pattern Development",
+        "3D body mapping and precision grading ensure consistent fit across the full size range.",
+        "03",
+        "Fabric Cutting",
+        "Automated laser cutting for seamless styles, precision die cutting for traditional construction."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearProcess.tsx"
+      ],
+      "prompt": "Quality inspector checking finished garments on a table, measuring tape and checklist, bright QC station. Context: 02. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/process-underwear-process-qc-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PROCESS_SEWING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "Design & Prototyping",
+        "We refine your design, create patterns, and produce fit samples for your review and approval (3–5 days).",
+        "02",
+        "Pattern Development",
+        "3D body mapping and precision grading ensure consistent fit across the full size range.",
+        "03"
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearProcess.tsx"
+      ],
+      "prompt": "Industrial sewing machines on a bright garment production line, skilled workers stitching apparel, factory floor. Context: Design & Prototyping. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/process-underwear-process-sewing-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "03",
+        "Fabric Cutting",
+        "Automated laser cutting for seamless styles, precision die cutting for traditional construction.",
+        "04",
+        "Sewing & Assembly",
+        "Expert seamstresses handle flatlock stitching, elastic attachment, and trim integration."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: 03. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/process-underwear-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_QC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [
+        "Premium Fabric Selection",
+        "Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.",
+        "Precision Pattern Making",
+        "3D body mapping and grading technology ensures perfect fit across all sizes, from XS to 5XL.",
+        "Comfort Engineering",
+        "Bonded seams, laser-cut edges, and tagless labels eliminate irritation for all-day comfort."
+      ],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearFeatures.tsx"
+      ],
+      "prompt": "Premium Fabric Selection for underwear and bras production. Breathable modal, micro-fiber, organic cotton, and seamless nylon — chosen for comfort, stretch, and skin-friendliness.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/feature-underwear-qc-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_STYLE_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for underwear and bras production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/customization-underwear-style-image.webp"
+    },
+    {
+      "id": "YOUR_UNDERWEAR_SUPPORT_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "underwear bras",
+      "context": [],
+      "files": [
+        "src/components/services/underwear-bras/UnderwearCustomization.tsx"
+      ],
+      "prompt": " — underwear and bras manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/underwear-bras/other-underwear-support-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_BRANDING_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformCustomization.tsx"
+      ],
+      "prompt": " — work uniforms manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/other-uniform-branding-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_CUSTOM_BRANDING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "Professional Custom Branding",
+        "We offer durable, professional branding solutions tailored for uniforms, including embroidery, screen printing, heat transfer and custom woven labels, all designed to withstand frequent laundering without fading, peeling or cracking. Logos and branding are placed strategically for a polished, cohesive team look, with strict Pantone color matching to ensure full brand consistency across every uniform piece. We also accommodate custom name embroidery and department badging for personalized team wear.",
+        "Strict Quality Control"
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformFeatures.tsx"
+      ],
+      "prompt": "Professional Custom Branding for work uniforms production. We offer durable, professional branding solutions tailored for uniforms, including embroidery, screen printing, heat transfer and custom woven labels, all designed to withstand frequent laundering without fading, peeling or cracking. Logos and branding are placed strategically for a polished, cohesive team look, with strict Pantone color matching to ensure full brand consistency across every uniform piece. We also accommodate custom name embroidery and department badging for personalized team wear.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/customization-uniform-custom-branding-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_CUSTOMIZATION_FLEXIBILITY_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "Full Customization Flexibility",
+        "We support full customization for all uniform types, with adjustable styles, fits, colors and detailing to match any business or industry requirement. From formal corporate attire and casual team polos to heavy-duty workwear and specialized hospitality uniforms, we cater to all industry needs. Our flexible production accommodates small team orders and large enterprise bulk orders, with consistent sizing and quality across every order quantity."
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformFeatures.tsx"
+      ],
+      "prompt": "Full Customization Flexibility for work uniforms production. We support full customization for all uniform types, with adjustable styles, fits, colors and detailing to match any business or industry requirement. From formal corporate attire and casual team polos to heavy-duty workwear and specialized hospitality uniforms, we cater to all industry needs. Our flexible production accommodates small team orders and large enterprise bulk orders, with consistent sizing and quality across every order quantity.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/customization-uniform-customization-flexibility-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for work uniforms production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/feature-uniform-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_FIT_FUNCTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformCustomization.tsx"
+      ],
+      "prompt": " — work uniforms manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/other-uniform-fit-function-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_HERO_MODEL_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing work uniforms manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/hero-uniform-hero-model-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_HERO_STITCHING_FABRIC_LOGO_IMAGE_URL",
+      "slotType": "hero",
+      "size": "2560x1440",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformHero.tsx"
+      ],
+      "prompt": "Dramatic hero banner showcasing work uniforms manufacturing — premium product flat lay and factory production context. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/hero-uniform-hero-stitching-fabric-logo-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_OVERVIEW_IMAGE_URL",
+      "slotType": "overview",
+      "size": "1920x1280",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformOverview.tsx"
+      ],
+      "prompt": "Editorial overview photo for work uniforms OEM manufacturing — products, fabrics, and factory details combined in one aspirational scene. . Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/overview-uniform-overview-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PACKAGING_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for work uniforms production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/customization-uniform-packaging-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PREMIUM_FABRIC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "Premium Uniform-Grade Fabric Sourcing",
+        "We source heavy-duty, professional-grade fabrics built for daily repeated wear, frequent washing and long-term durability. Our selection includes wrinkle-resistant easy-care blends, stain-repellent workwear materials, moisture-wicking performance fabrics and soft breathable options for all-day comfort, fully compliant with OEKO-TEX standards and free of harmful chemicals. All fabrics hold their shape and color through countless washes, maintaining a polished professional look for teams.",
+        "Reinforced Industrial Construction"
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformFeatures.tsx"
+      ],
+      "prompt": "Premium Uniform-Grade Fabric Sourcing for work uniforms production. We source heavy-duty, professional-grade fabrics built for daily repeated wear, frequent washing and long-term durability. Our selection includes wrinkle-resistant easy-care blends, stain-repellent workwear materials, moisture-wicking performance fabrics and soft breathable options for all-day comfort, fully compliant with OEKO-TEX standards and free of harmful chemicals. All fabrics hold their shape and color through countless washes, maintaining a polished professional look for teams.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/feature-uniform-premium-fabric-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PROCESS_BRANDING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing across all pieces, with minimal fabric waste and strict alignment to pattern specs for uniform tailoring.",
+        "03",
+        "Sewing & Assembly",
+        "Skilled production team completes reinforced stitching, pocket installation, collar and cuff attachment, and functional detailing, with extra reinforcements for workwear and high-use uniforms."
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformProcess.tsx"
+      ],
+      "prompt": "02. Fabric Cutting. Automated precision cutting ensures consistent sizing across all pieces, with minimal fabric waste and strict alignment to pattern specs for uniform tailoring.. 03. Sewing & Assembly. Skilled production team completes reinforced stitching, pocket installation, collar and cuff attachment, and functional detailing, with extra reinforcements for workwear and high-use uniforms. — work uniforms manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/process-uniform-process-branding-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PROCESS_CUTTING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We review your brand guidelines, uniform style requirements and branding specs, then produce a pre-production sample for approval within 3-5 days, including fit, fabric and branding testing to match your exact needs.",
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing across all pieces, with minimal fabric waste and strict alignment to pattern specs for uniform tailoring."
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformProcess.tsx"
+      ],
+      "prompt": "Automated fabric cutting machine in a clean garment factory, stacked cotton fabric layers, precision manufacturing. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/process-uniform-process-cutting-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PROCESS_DESIGN_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "01",
+        "Design & Sampling",
+        "We review your brand guidelines, uniform style requirements and branding specs, then produce a pre-production sample for approval within 3-5 days, including fit, fabric and branding testing to match your exact needs.",
+        "02",
+        "Fabric Cutting"
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformProcess.tsx"
+      ],
+      "prompt": "Garment designer reviewing tech pack and fabric swatches on a light table in a modern Dongguan apparel studio, professional product development scene. Context: 01. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/process-uniform-process-design-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PROCESS_QC_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "03",
+        "Sewing & Assembly",
+        "Skilled production team completes reinforced stitching, pocket installation, collar and cuff attachment, and functional detailing, with extra reinforcements for workwear and high-use uniforms.",
+        "04",
+        "Branding Application",
+        "Professional embroidery, printing or label application completed per your brand guidelines, with post-application checks for placement, color accuracy and durability."
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformProcess.tsx"
+      ],
+      "prompt": "Quality inspector checking finished garments on a table, measuring tape and checklist, bright QC station. Context: 03. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/process-uniform-process-qc-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PROCESS_SEWING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "We review your brand guidelines, uniform style requirements and branding specs, then produce a pre-production sample for approval within 3-5 days, including fit, fabric and branding testing to match your exact needs.",
+        "02",
+        "Fabric Cutting",
+        "Automated precision cutting ensures consistent sizing across all pieces, with minimal fabric waste and strict alignment to pattern specs for uniform tailoring.",
+        "03",
+        "Sewing & Assembly"
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformProcess.tsx"
+      ],
+      "prompt": "Industrial sewing machines on a bright garment production line, skilled workers stitching apparel, factory floor. Context: We review your brand guidelines, uniform style requirements and branding specs, then produce a pre-production sample for approval within 3-5 days, including fit, fabric and branding testing to match your exact needs.. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/process-uniform-process-sewing-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_PROCESS_SHIPPING_IMAGE_URL",
+      "slotType": "process",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "04",
+        "Branding Application",
+        "Professional embroidery, printing or label application completed per your brand guidelines, with post-application checks for placement, color accuracy and durability.",
+        "05",
+        "Quality Inspection",
+        "Every uniform piece is individually inspected for stitching quality, sizing accuracy, branding integrity and overall finish, with any imperfections corrected before packaging."
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformProcess.tsx"
+      ],
+      "prompt": "Neatly folded apparel cartons on pallets in a warehouse ready for export shipping, logistics scene. Context: 04. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/process-uniform-process-shipping-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_QC_IMAGE_URL",
+      "slotType": "feature",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "Strict Quality Control",
+        "Our 5-step full inspection process guarantees consistent, defect-free uniforms for every order: fabric durability and colorfastness test, precision cutting, sewing and reinforcement, branding application, and final pressing and packaging. Every piece is checked for sizing accuracy, stitching integrity, branding placement and overall finish to meet strict professional standards, ensuring a uniform, polished look for entire teams.",
+        "Full Customization Flexibility"
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformFeatures.tsx"
+      ],
+      "prompt": "Strict Quality Control for work uniforms production. Our 5-step full inspection process guarantees consistent, defect-free uniforms for every order: fabric durability and colorfastness test, precision cutting, sewing and reinforcement, branding application, and final pressing and packaging. Every piece is checked for sizing accuracy, stitching integrity, branding placement and overall finish to meet strict professional standards, ensuring a uniform, polished look for entire teams.. Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/feature-uniform-qc-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_REINFORCED_CONSTRUCTION_IMAGE_URL",
+      "slotType": "other",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [
+        "Reinforced Industrial Construction",
+        "Every uniform is built with reinforced double-needle stitching at high-stress points including seams, pockets, collars and cuffs to prevent fraying and tearing during daily use. We add sturdy bartack reinforcements, clean finished seams and durable hem construction, with tailored fits that balance professionalism and mobility. For workwear and industrial uniforms, we include extra durable panels and reinforced pocketing for heavy-duty functionality.",
+        "Professional Custom Branding"
+      ],
+      "files": [
+        "src/components/services/uniforms/UniformFeatures.tsx"
+      ],
+      "prompt": "Reinforced Industrial Construction. Every uniform is built with reinforced double-needle stitching at high-stress points including seams, pockets, collars and cuffs to prevent fraying and tearing during daily use. We add sturdy bartack reinforcements, clean finished seams and durable hem construction, with tailored fits that balance professionalism and mobility. For workwear and industrial uniforms, we include extra durable panels and reinforced pocketing for heavy-duty functionality.. Professional Custom Branding — work uniforms manufacturing. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/other-uniform-reinforced-construction-image.webp"
+    },
+    {
+      "id": "YOUR_UNIFORM_STYLE_IMAGE_URL",
+      "slotType": "customization",
+      "size": "1280x960",
+      "product": "uniforms",
+      "context": [],
+      "files": [
+        "src/components/services/uniforms/UniformCustomization.tsx"
+      ],
+      "prompt": "manufacturing capability for work uniforms production. . Close-up commercial manufacturing or materials photo. Professional B2B apparel manufacturing website photography.\nClean, modern, trustworthy. Warm amber/gold accent mood, slate gray neutrals.\nNatural lighting, sharp focus, no text overlays, no watermarks, no logos.\nPhotorealistic commercial photography — NOT illustration, NOT cartoon.\nAvoid distorted hands, faces, or unreadable text on products.",
+      "outputPath": "/generated/services/uniforms/customization-uniform-style-image.webp"
+    }
+  ]
+}

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Providers } from "@/components/Providers";
+import { STATIC_SEO } from "@/lib/seoDefaults";
+import { getRequestLocale } from "@/lib/i18n/server";
+import { LOCALE_HTML_LANG } from "@/lib/i18n/locales";
+import { buildHreflangAlternates } from "@/lib/i18n/paths";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,21 +18,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Suhu Custom - Professional Apparel Customization & Wholesale",
-  description: "Custom apparel manufacturing. T-shirts, hoodies, activewear, uniforms & more. Quality B2B clothing solutions.",
+  title: {
+    default: STATIC_SEO["/"].title,
+    template: "%s",
+  },
+  description: STATIC_SEO["/"].description,
+  keywords: STATIC_SEO["/"].keywords,
+  alternates: {
+    languages: buildHreflangAlternates("/"),
+  },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getRequestLocale();
+
   return (
-    <html lang="en">
+    <html lang={LOCALE_HTML_LANG[locale]}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
-        <main className="min-h-[calc(100vh-8rem)]">{children}</main>
-        <Footer />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -104,7 +105,7 @@ export default function UnderwearFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

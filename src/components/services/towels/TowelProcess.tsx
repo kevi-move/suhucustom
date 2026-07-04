@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We create your custom jacquard pattern or print design and produce a pre-production sample (5–7 days).",
-    image: "YOUR_TOWEL_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-design-sampling-jacquard-swatches-color-cards.png",
   },
   {
     step: "02",
     title: "Yarn Preparation",
     description:
       "Premium cotton yarn is wound, warped, and sized for optimal weaving performance and softness.",
-    image: "YOUR_TOWEL_PROCESS_YARN_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-yarn-preparation-cotton-warping-process.png",
   },
   {
     step: "03",
     title: "Weaving",
     description:
       "High-speed jacquard or dobby looms weave your design into plush, densely-packed terry fabric.",
-    image: "YOUR_TOWEL_PROCESS_WEAVING_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-weaving-process-jacquard-terry-loom.png",
   },
   {
     step: "04",
     title: "Dyeing & Finishing",
     description:
       "Reactive dyeing for vibrant colors, followed by softening, tumble-drying, and shearing for a plush hand feel.",
-    image: "YOUR_TOWEL_PROCESS_DYEING_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-dyeing-finishing-softening-colorfast-process.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Each batch is tested for absorbency, color fastness, weight, and dimensional stability.",
-    image: "YOUR_TOWEL_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-quality-inspection-absorbency-gsm-measurement.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Folded, tagged, and bundled for container shipping to your hotel, warehouse, or retail partner.",
-    image: "YOUR_TOWEL_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-packaging-shipping-small-batch-cartons.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function TowelProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

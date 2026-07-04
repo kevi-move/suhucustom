@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +9,7 @@ const options = [
   {
     id: "fabric",
     category: "Fabric",
-    image: "YOUR_LEGGINGS_FABRIC_OPT_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-fabric-options-spandex-polyester-viscose-compression.png",
     highlights: [
       "4-Way Stretch Spandex Blend (180–220 GSM)",
       "Moisture-Wicking Polyester",
@@ -21,7 +23,7 @@ const options = [
   {
     id: "style",
     category: "Style & Cut",
-    image: "YOUR_LEGGINGS_STYLE_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-style-cut-options-high-waisted-capri-pocket.png",
     highlights: [
       "High-Waisted Leggings",
       "Mid-Waisted Leggings",
@@ -35,7 +37,7 @@ const options = [
   {
     id: "decoration",
     category: "Decoration",
-    image: "YOUR_LEGGINGS_DECO_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-decoration-options-sublimation-heat-transfer-labels.png",
     highlights: [
       "Sublimation Printing (full-color patterns)",
       "Heat Transfer Vinyl",
@@ -49,7 +51,7 @@ const options = [
   {
     id: "color",
     category: "Colors & Sizing",
-    image: "YOUR_LEGGINGS_COLORS_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-colors-sizing-printed-pattern-plus-size.png",
     highlights: [
       "Pantone-matched solid colors",
       "Heather blends & custom printed patterns",
@@ -62,7 +64,7 @@ const options = [
   {
     id: "packaging",
     category: "Packaging",
-    image: "YOUR_LEGGINGS_PKG_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-packaging-options-polybag-hangtag-mailer.png",
     highlights: [
       "Individual polybag packaging",
       "Custom hang tags (with size/fabric labels)",
@@ -109,7 +111,7 @@ export default function LeggingsCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -135,12 +137,13 @@ export default function LeggingsCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="Leggings"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Cotton Sourcing",
     description:
       "Long-staple Egyptian cotton, Xinjiang cotton, and organic cotton for ultra-soft, highly absorbent towels.",
-    image: "YOUR_TOWEL_COTTON_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-premium-cotton-sourcing-terry-swatches.png",
   },
   {
     title: "Advanced Weaving Technology",
     description:
       "Jacquard, dobby, and velour weaving techniques create rich textures, patterns, and plush pile surfaces.",
-    image: "YOUR_TOWEL_WEAVING_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-advanced-weaving-technology-terry-loom.png",
   },
   {
     title: "Custom Jacquard Patterns",
     description:
       "Intricate woven logos, borders, and designs that become part of the towel fabric — never fading or peeling.",
-    image: "YOUR_TOWEL_JACQUARD_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-jacquard-pattern-woven-border-samples.png",
   },
   {
     title: "Superior Absorbency",
     description:
       "High-density loop construction and combed yarn ensure maximum water absorption and quick drying.",
-    image: "YOUR_TOWEL_ABSORBENCY_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-absorbency-testing-terry-loop-texture.png",
   },
   {
     title: "Eco-Friendly Dyeing",
     description:
       "Reactive dyeing with Oeko-Tex certified colorants — vibrant, colorfast, and safe for skin contact.",
-    image: "YOUR_TOWEL_DYEING_IMAGE_URL",
+    image: "/generated/services/towels/custom-towel-eco-friendly-dyeing-colorfast-lab-dips.png",
   },
 ];
 
@@ -103,7 +104,7 @@ export default function TowelFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

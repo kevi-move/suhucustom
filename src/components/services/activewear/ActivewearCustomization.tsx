@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +9,7 @@ const options = [
   {
     id: "fabric",
     category: "Fabric",
-    image: "YOUR_ACTIVEWEAR_FABRIC_OPTION_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-fabric-options-moisture-wicking-spandex.png",
     highlights: [
       "Moisture-Wicking Polyester (150–180 GSM)",
       "4-Way Stretch Spandex Blend",
@@ -20,7 +22,7 @@ const options = [
   {
     id: "style",
     category: "Style & Cut",
-    image: "YOUR_ACTIVEWEAR_STYLE_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-style-cut-options-leggings-tanks-sports-bras.png",
     highlights: [
       "High-Waisted Leggings, Compression Leggings",
       "Racerback Tank, Sports Bra, Cropped Active Top",
@@ -33,7 +35,7 @@ const options = [
   {
     id: "decoration",
     category: "Decoration",
-    image: "YOUR_ACTIVEWEAR_DECO_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-decoration-options-sublimation-heat-transfer.png",
     highlights: [
       "Sublimation Printing (full-color custom patterns)",
       "Screen Printing (up to 8 colors)",
@@ -46,7 +48,7 @@ const options = [
   {
     id: "color",
     category: "Colors & Sizing",
-    image: "YOUR_ACTIVEWEAR_COLOR_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-colors-sizing-options-muted-colorways.png",
     highlights: [
       "Pantone-matched solid colors",
       "Custom printed patterns",
@@ -59,7 +61,7 @@ const options = [
   {
     id: "packaging",
     category: "Packaging",
-    image: "YOUR_ACTIVEWEAR_PACKAGING_IMAGE_URL",
+    image: "/generated/services/activewear-athleisure/custom-activewear-packaging-options-polybag-hangtag-mailer.png",
     highlights: [
       "Individual polybag packaging",
       "Custom hang tags with size/performance labels",
@@ -104,7 +106,7 @@ export default function ActivewearCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -129,12 +131,13 @@ export default function ActivewearCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="Activewear & Athleisure"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

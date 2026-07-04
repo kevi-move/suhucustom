@@ -1,3 +1,4 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 
 const stats = [
@@ -54,7 +55,7 @@ export default function UnderwearOverview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="YOUR_UNDERWEAR_OVERVIEW_IMAGE_URL"
+                src={resolveImageSrc("YOUR_UNDERWEAR_OVERVIEW_IMAGE_URL")}
                 alt="Suhu Custom intimate apparel factory overview"
                 className="h-auto w-full object-cover"
               />

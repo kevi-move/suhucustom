@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days), including fabric stretch, fit, and wash-testing.",
-    image: "YOUR_LEGGINGS_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-design-sampling-tech-pack-stretch-swatches.png",
   },
   {
     step: "02",
     title: "Fabric Cutting",
     description:
       "Automated precision cutting ensures consistent sizing and minimal fabric waste, critical for stretch fabrics to maintain fit and shape.",
-    image: "YOUR_LEGGINGS_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-fabric-cutting-pattern-table-small-factory.png",
   },
   {
     step: "03",
     title: "Sewing & Assembly",
     description:
       "Skilled seamstresses handle seamless waistband attachment, flatlock stitching, and hem finishing—prioritizing comfort and durability.",
-    image: "YOUR_LEGGINGS_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-sewing-assembly-flatlock-waistband-small-workshop.png",
   },
   {
     step: "04",
     title: "Decoration Application",
     description:
       "Custom sublimation/print/embroidery applied per your design, with color matching and wash-resistance testing.",
-    image: "YOUR_LEGGINGS_PROCESS_DECO_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-decoration-application-sublimation-heat-transfer.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Every pair is checked for stitching integrity, fabric stretch, decoration alignment, fit consistency, and any defects.",
-    image: "YOUR_LEGGINGS_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-quality-inspection-qc-stretch-measurement.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Final packaging and consolidation for sea/air freight to your US/EU warehouse.",
-    image: "YOUR_LEGGINGS_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/leggings/custom-leggings-packaging-shipping-small-batch-cartons.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function LeggingsProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

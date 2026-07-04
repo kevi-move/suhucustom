@@ -1,3 +1,4 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 
 const stats = [
@@ -54,7 +55,7 @@ export default function HatOverview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="YOUR_HAT_OVERVIEW_IMAGE_URL"
+                src={resolveImageSrc("YOUR_HAT_OVERVIEW_IMAGE_URL")}
                 alt="Suhu Custom headwear factory overview"
                 className="h-auto w-full object-cover"
               />

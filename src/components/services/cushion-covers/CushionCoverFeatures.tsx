@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Fabric Options",
     description:
       "Velvet, linen, cotton canvas, faux leather, and outdoor-rated polyester for every application and aesthetic.",
-    image: "YOUR_CUSHION_FABRIC_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-covers-premium-fabric-options-velvet-linen-canvas.png",
   },
   {
     title: "Custom Digital Printing",
     description:
       "High-resolution digital printing delivers photographic artwork, patterns, and brand graphics with vivid detail.",
-    image: "YOUR_CUSHION_PRINT_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-covers-digital-printing-botanical-patterns.png",
   },
   {
     title: "Precision Sewing",
     description:
       "Double-stitched seams, piped edges, and tailored corners ensure a structured, premium appearance.",
-    image: "YOUR_CUSHION_SEWING_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-covers-precision-sewing-piped-edge.png",
   },
   {
     title: "Zipper & Closure Options",
     description:
       "Invisible zippers, envelope backs, and button closures for easy cover removal and cleaning.",
-    image: "YOUR_CUSHION_ZIPPER_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-covers-zipper-closure-options-invisible-envelope-button.png",
   },
   {
     title: "Design Flexibility",
     description:
       "Mix prints on front/back, add tassels, pom-poms, embroidery, or appliqué for unique designer looks.",
-    image: "YOUR_CUSHION_DESIGN_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-covers-design-flexibility-embroidery-tassels-applique.png",
   },
 ];
 
@@ -103,7 +104,7 @@ export default function CushionCoverFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

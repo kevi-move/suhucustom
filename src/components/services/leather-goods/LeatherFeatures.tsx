@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Leather Sourcing",
     description:
       "Full-grain, top-grain, and genuine leather sourced from certified tanneries in Italy, India, and China.",
-    image: "YOUR_LEATHER_SOURCING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-premium-leather-sourcing-swatches.png",
   },
   {
     title: "Expert Hand-Stitching",
     description:
       "Saddle-stitching and lock-stitch techniques by master artisans ensure durability and a luxurious finish.",
-    image: "YOUR_LEATHER_STITCHING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-expert-hand-stitching-wallet.png",
   },
   {
     title: "Custom Embossing & Branding",
     description:
       "Hot stamping, debossing, laser engraving, and foil printing for logos and personalized details.",
-    image: "YOUR_LEATHER_EMBOSSING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-embossing-branding-hot-stamping.png",
   },
   {
     title: "Premium Hardware Selection",
     description:
       "Brass, zinc alloy, and stainless steel zippers, buckles, and clasps with custom plating options.",
-    image: "YOUR_LEATHER_HARDWARE_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-premium-hardware-buckles-zippers-clasps.png",
   },
   {
     title: "Precision Edge Finishing",
     description:
       "Burnished, painted, or folded edges with consistent color and smoothness on every piece.",
-    image: "YOUR_LEATHER_EDGE_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-precision-edge-finishing-burnished-painted.png",
   },
 ];
 
@@ -103,7 +104,7 @@ export default function LeatherFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

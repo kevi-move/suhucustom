@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +9,7 @@ const options = [
   {
     id: "fabric",
     category: "Fabric",
-    image: "YOUR_JEANS_CUSTOM_FABRIC_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-denim-fabric-options-raw-selvedge-stretch.png",
     highlights: [
       "9-14oz Raw Denim",
       "2-Way Stretch Denim",
@@ -20,7 +22,7 @@ const options = [
   {
     id: "style",
     category: "Style & Cut",
-    image: "YOUR_JEANS_CUSTOM_STYLE_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-fit-style-options-skinny-slim-wide-leg.png",
     highlights: [
       "Straight Leg, Slim Fit, Skinny, Tapered",
       "Baggy, Wide Leg, and Cargo Denim",
@@ -33,7 +35,7 @@ const options = [
   {
     id: "finishing",
     category: "Finishing & Details",
-    image: "YOUR_JEANS_CUSTOM_FINISHING_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-washing-finishing-industrial-denim-process.png",
     highlights: [
       "Stone Wash, Acid Wash, Vintage Fade",
       "Distressing, Whiskering, Ripped Details",
@@ -46,7 +48,7 @@ const options = [
   {
     id: "branding",
     category: "Hardware & Branding",
-    image: "YOUR_JEANS_CUSTOM_BRANDING_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-hardware-detail-options-rivets-zippers-patches.png",
     highlights: [
       "Custom metal buttons, zippers, and rivets",
       "Leather waist patches and woven labels",
@@ -59,7 +61,7 @@ const options = [
   {
     id: "sizing",
     category: "Sizing & Packaging",
-    image: "YOUR_JEANS_CUSTOM_PACKAGING_IMAGE_URL",
+    image: "/generated/services/jeans-denim/custom-jeans-packaging-options-polybag-hangtag-gift-box.png",
     highlights: [
       "Sizes XS-4XL with plus size options",
       "Individual polybag packaging",
@@ -104,7 +106,7 @@ export default function JeansCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -132,12 +134,13 @@ export default function JeansCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="Jeans & Denim"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

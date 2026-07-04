@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We digitize your artwork and produce a pre-production sample with your chosen fabric and decoration (3–5 days).",
-    image: "YOUR_CUSHION_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-design-sampling-fabric-swatches-prototype.png",
   },
   {
     step: "02",
     title: "Fabric Sourcing",
     description:
       "Premium fabrics are sourced and quality-checked for color, texture, weight, and shrinkage standards.",
-    image: "YOUR_CUSHION_PROCESS_FABRIC_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-fabric-sourcing-texture-quality-check.png",
   },
   {
     step: "03",
     title: "Printing / Embroidery",
     description:
       "Custom designs are digitally printed or embroidered onto fabric panels with precise color matching.",
-    image: "YOUR_CUSHION_PROCESS_PRINT_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-printing-embroidery-production-process.png",
   },
   {
     step: "04",
     title: "Cutting & Sewing",
     description:
       "Panels are precision-cut and sewn with zippers, piping, or envelope closures per specification.",
-    image: "YOUR_CUSHION_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-cutting-sewing-process-invisible-zipper.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Each cover is checked for stitching quality, print accuracy, zipper function, and dimensional consistency.",
-    image: "YOUR_CUSHION_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-quality-inspection-qc-stitching-zipper.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Individually packed, labeled, and consolidated for sea or air freight to your warehouse or fulfillment center.",
-    image: "YOUR_CUSHION_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-packaging-shipping-small-batch-cartons.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function CushionCoverProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

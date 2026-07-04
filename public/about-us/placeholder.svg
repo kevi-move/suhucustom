@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F1F5F9"/>
+  <rect x="48" y="48" width="704" height="504" rx="24" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="4"/>
+  <circle cx="320" cy="240" r="48" fill="#CBD5E1"/>
+  <path d="M160 420c56-72 128-108 240-108s184 36 240 108" stroke="#94A3B8" stroke-width="16" stroke-linecap="round"/>
+  <path d="M120 480l160-140 120 100 100-80 200 180" stroke="#CBD5E1" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="540" text-anchor="middle" font-family="system-ui, Arial, sans-serif" font-size="28" fill="#64748B">
+    About Us — Image Placeholder
+  </text>
+</svg>

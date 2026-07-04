@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Fabric Sourcing",
     description:
       "We source ring-spun cotton and performance blends for softness, durability, and color retention.",
-    image: "YOUR_FABRIC_SOURCING_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-premium-fabric-sourcing-cotton-jersey.png",
   },
   {
     title: "Precision Stitching",
     description:
       "Reinforced shoulder seams, double-needle hems, and clean side seams for long-lasting wear.",
-    image: "YOUR_STITCHING_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-precision-stitching-double-needle-seams.png",
   },
   {
     title: "Custom Decoration",
     description:
       "Full support for screen print, DTG, embroidery, heat transfer, and custom label/neck tag options.",
-    image: "YOUR_DECORATION_CRAFT_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-printing-embroidery-decoration-craft.png",
   },
   {
     title: "Strict Quality Control",
     description:
       "5-step inspection: fabric → cutting → sewing → printing → final packaging to ensure zero defects.",
-    image: "YOUR_QUALITY_CONTROL_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-quality-inspection-qc-measurement.png",
   },
   {
     title: "Flexible Customization",
     description:
       "Fully customizable fits (slim/regular/relaxed), sizes (XS–4XL), and wash-resistant custom details.",
-    image: "YOUR_CUSTOMIZATION_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-flexible-customization-fits-sizes-colors.png",
   },
 ];
 
@@ -108,7 +109,7 @@ export default function TshirtFeatures() {
               {/* Image */}
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

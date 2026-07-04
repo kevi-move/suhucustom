@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Fleece Sourcing",
     description:
       "We source heavyweight brushed fleece and soft blends for warmth, pill resistance, and long-lasting comfort.",
-    image: "YOUR_HOODIE_FLEECE_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-premium-fleece-sourcing-heavyweight-fabric.png",
   },
   {
     title: "Reinforced Construction",
     description:
       "Double-needle stitching at seams, reinforced kangaroo pockets, and ribbed cuffs/hem for durability.",
-    image: "YOUR_HOODIE_CONSTRUCTION_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-reinforced-construction-seams-rib-cuffs.png",
   },
   {
     title: "Custom Decoration",
     description:
       "Full support for embroidery, screen print, DTG, appliqué, and custom woven label/neck tag options.",
-    image: "YOUR_HOODIE_DECORATION_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-embroidery-printing-decoration-craft.png",
   },
   {
     title: "Strict Quality Control",
     description:
       "5-step inspection: fabric → cutting → sewing → decoration → final packaging to ensure zero defects.",
-    image: "YOUR_HOODIE_QC_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-quality-inspection-qc-measurement.png",
   },
   {
     title: "Flexible Customization",
     description:
       "Fully customizable fits (slim/regular/relaxed), styles (pullover/zip-up), sizes (XS–4XL), and wash-resistant custom designs.",
-    image: "YOUR_HOODIE_CUSTOM_IMAGE_URL",
+    image: "/generated/services/hoodies-sweatshirts/custom-hoodie-flexible-customization-styles-fits-colors.png",
   },
 ];
 
@@ -104,7 +105,7 @@ export default function HoodieFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

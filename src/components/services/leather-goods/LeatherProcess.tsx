@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Prototyping",
     description:
       "Our designers create detailed tech packs and produce a handmade prototype for your approval (5–7 days).",
-    image: "YOUR_LEATHER_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-design-prototyping-tech-pack-patterns.png",
   },
   {
     step: "02",
     title: "Leather Selection",
     description:
       "Premium hides are hand-selected, graded for quality, and matched to your specified color and texture.",
-    image: "YOUR_LEATHER_PROCESS_SELECT_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-selection-process-premium-hides-grading.png",
   },
   {
     step: "03",
     title: "Precision Cutting",
     description:
       "Die-cutting or hand-cutting ensures each piece is accurately shaped with minimal waste.",
-    image: "YOUR_LEATHER_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-precision-cutting-process-wallet-bag-parts.png",
   },
   {
     step: "04",
     title: "Stitching & Assembly",
     description:
       "Master artisans hand-stitch or machine-stitch each component, install hardware, and assemble the final product.",
-    image: "YOUR_LEATHER_PROCESS_STITCHING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-stitching-assembly-process-hardware-installation.png",
   },
   {
     step: "05",
     title: "Edge Finishing & QC",
     description:
       "Edges are burnished and dyed, surfaces conditioned, and each piece inspected for flawless quality.",
-    image: "YOUR_LEATHER_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-edge-finishing-quality-control-inspection.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Dust-bagged, gift-boxed, and carefully packed for worldwide delivery via air or sea.",
-    image: "YOUR_LEATHER_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/leather-goods/custom-leather-goods-packaging-shipping-small-batch-boxes.png",
   },
 ];
 
@@ -67,7 +68,7 @@ export default function LeatherProcess() {
             >
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />

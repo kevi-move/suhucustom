@@ -1,0 +1,26 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function AdminPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/admin/blog");
+  }, [router]);
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#121212",
+      }}
+    >
+      <div style={{ color: "#D09947", fontSize: "18px" }}>Redirecting...</div>
+    </div>
+  );
+}

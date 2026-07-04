@@ -1,3 +1,4 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 
 const stats = [
@@ -78,7 +79,7 @@ export default function LeggingsOverview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="YOUR_LEGGINGS_OVERVIEW_IMAGE_URL"
+                src={resolveImageSrc("/generated/services/leggings/suhucustom-leggings-small-factory-overview-oem-odm-production.png")}
                 alt="Custom leggings factory overview"
                 className="h-auto w-full object-cover"
               />

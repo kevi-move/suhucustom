@@ -1,4 +1,6 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +9,7 @@ const options = [
   {
     id: "fabric",
     category: "Fabric",
-    image: "YOUR_CUSHION_FABRIC_OPT_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-fabric-options-velvet-linen-polyester.png",
     highlights: [
       "Velvet — soft, luxurious sheen",
       "Linen — natural, textured look",
@@ -20,7 +22,7 @@ const options = [
   {
     id: "size",
     category: "Size & Shape",
-    image: "YOUR_CUSHION_SIZE_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-size-shape-options-square-round-bolster.png",
     highlights: [
       "Square — 45×45 cm / 50×50 cm",
       "Rectangular — 30×50 cm / 40×60 cm",
@@ -33,7 +35,7 @@ const options = [
   {
     id: "decoration",
     category: "Printing & Embroidery",
-    image: "YOUR_CUSHION_DECO_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-printing-embroidery-decoration-options.png",
     highlights: [
       "Digital printing — unlimited colors",
       "Screen printing — solid designs",
@@ -46,7 +48,7 @@ const options = [
   {
     id: "color",
     category: "Colors & Patterns",
-    image: "YOUR_CUSHION_COLOR_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-colors-patterns-botanical-geometric-abstract.png",
     highlights: [
       "Pantone-matched solid colors",
       "Botanical, geometric, abstract patterns",
@@ -59,7 +61,7 @@ const options = [
   {
     id: "packaging",
     category: "Packaging",
-    image: "YOUR_CUSHION_PACKAGING_IMAGE_URL",
+    image: "/generated/services/cushion-covers/custom-cushion-cover-packaging-options-polybag-belly-band-gift-box.png",
     highlights: [
       "Individual polybag packaging",
       "Custom belly band & hang tags",
@@ -104,7 +106,7 @@ export default function CushionCoverCustomization() {
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full overflow-hidden rounded-2xl bg-slate-50">
               <img
-                src={active.image}
+                src={resolveImageSrc(active.image)}
                 alt={active.category}
                 className="h-auto min-h-[320px] w-full object-cover"
               />
@@ -129,12 +131,13 @@ export default function CushionCoverCustomization() {
               <p className="mt-4 text-xs text-slate-400">{active.note}</p>
 
               <div className="mt-6 space-y-3">
-                <Link
-                  href="/contact-us"
+                <QuoteButton
+                  title="Get a Quote"
+                  productCategory="Cushion Covers"
                   className="flex w-full items-center justify-center rounded-full bg-amber-500 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
                 >
                   Get a Quote
-                </Link>
+                </QuoteButton>
                 <Link
                   href="/contact-us"
                   className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"

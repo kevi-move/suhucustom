@@ -1,4 +1,5 @@
 "use client";
+import { resolveImageSrc } from "@/lib/imageFallback";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -8,31 +9,31 @@ const features = [
     title: "Premium Yarn Selection",
     description:
       "Combed cotton, merino wool, bamboo fiber, and performance nylon blends for superior comfort and durability.",
-    image: "YOUR_SOCK_YARN_IMAGE_URL",
+    image: "/generated/services/socks/custom-socks-premium-yarn-selection-cotton-wool-bamboo-nylon.png",
   },
   {
     title: "Advanced Knitting Technology",
     description:
       "200-needle and 168-needle computerized knitting machines deliver intricate patterns and consistent quality.",
-    image: "YOUR_SOCK_KNITTING_IMAGE_URL",
+    image: "/generated/services/socks/custom-socks-computerized-knitting-machine-small-workshop.png",
   },
   {
     title: "Custom Pattern Design",
     description:
       "Full jacquard, intarsia, and digital sublimation capabilities for unlimited design creativity.",
-    image: "YOUR_SOCK_PATTERN_IMAGE_URL",
+    image: "/generated/services/socks/custom-socks-jacquard-pattern-design-sample-table.png",
   },
   {
     title: "Moisture Management",
     description:
       "Moisture-wicking fibers and ventilation zones keep feet dry and comfortable during any activity.",
-    image: "YOUR_SOCK_MOISTURE_IMAGE_URL",
+    image: "/generated/services/socks/custom-socks-moisture-wicking-performance-mesh-zones.png",
   },
   {
     title: "Reinforced Construction",
     description:
       "Double-stitched toe seams, reinforced heels, and arch support for extended wear life and comfort.",
-    image: "YOUR_SOCK_CONSTRUCTION_IMAGE_URL",
+    image: "/generated/services/socks/custom-socks-reinforced-heel-toe-arch-support-construction.png",
   },
 ];
 
@@ -103,7 +104,7 @@ export default function SockFeatures() {
             >
               <div className="relative h-52 overflow-hidden bg-slate-200">
                 <img
-                  src={f.image}
+                  src={resolveImageSrc(f.image)}
                   alt={f.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                 />

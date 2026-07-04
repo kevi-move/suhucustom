@@ -1,3 +1,4 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 
 const stats = [
@@ -55,7 +56,7 @@ export default function CushionCoverOverview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src="YOUR_CUSHION_OVERVIEW_IMAGE_URL"
+                src={resolveImageSrc("/generated/services/cushion-covers/suhucustom-small-cushion-cover-workshop-overview-oem-odm.png")}
                 alt="Suhu Custom cushion cover factory overview"
                 className="h-auto w-full object-cover"
               />

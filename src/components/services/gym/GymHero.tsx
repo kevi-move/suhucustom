@@ -1,3 +1,5 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
+import { QuoteButton } from "@/components/contact/QuoteButton";
 import Link from "next/link";
 
 export default function GymHero() {
@@ -5,11 +7,11 @@ export default function GymHero() {
     <div className="relative overflow-hidden bg-slate-900">
       <div className="absolute inset-0">
         <img
-          src="YOUR_GYM_HERO_IMAGE_URL"
+          src={resolveImageSrc("YOUR_GYM_HERO_IMAGE_URL")}
           alt="Custom gym and sportswear manufacturing"
-          className="h-full w-full object-cover opacity-40"
+          className="h-full w-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/45 via-slate-900/30 to-slate-900/45" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -39,12 +41,13 @@ export default function GymHero() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact-us"
+            <QuoteButton
+              title="Get a Free Quote"
+              productCategory="Gym & Sportswear"
               className="inline-flex items-center rounded-full bg-amber-500 px-8 py-3.5 text-sm font-semibold text-slate-900 shadow-lg shadow-amber-500/25 transition hover:bg-amber-400"
             >
               Get a Free Quote
-            </Link>
+            </QuoteButton>
             <Link
               href="/contact-us"
               className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"

@@ -1,6 +1,11 @@
 // 导航配置 - Suhu Custom 官网
 // 服务分类 (用于 Mega Menu)
 
+import {
+  isUnpublishedCustomizationSlug,
+  isUnpublishedPath,
+  isUnpublishedServiceSlug,
+} from "@/lib/unpublishedPaths";
 export type ServiceItem = {
   slug: string;
   nameEn: string;
@@ -68,7 +73,7 @@ export const mainNavItems = [
   { href: "/services", label: "Services", type: "mega" as const },
   { href: "/customization", label: "Customization", type: "dropdown" as const },
   { href: "/blog", label: "Blog", type: "dropdown" as const },
-  { href: "/company", label: "Company", type: "dropdown" as const },
+  { href: "/company", label: "Resource", type: "dropdown" as const },
   { href: "/contact-us", label: "Contact Us", type: "button" as const },
 ];
 
@@ -76,3 +81,47 @@ export const companyDropdownItems = [
   { href: "/about-us", label: "About Us" },
   { href: "/company/case-studies", label: "Case Studies" },
 ];
+
+/** Footer Services column — curated subset only. */
+export const footerServiceSlugs = [
+  "t-shirts",
+  "leggings",
+  "jeans-denim",
+  "hoodies-sweatshirts",
+  "activewear-athleisure",
+] as const;
+
+export function getPublishedServiceGroups(): ServiceGroup[] {
+  return serviceGroups
+    .map((group) => ({
+      ...group,
+      items: group.items.filter((item) => !isUnpublishedServiceSlug(item.slug)),
+    }))
+    .filter((group) => group.items.length > 0);
+}
+
+export function getPublishedCustomizationItems(): typeof customizationItems {
+  return customizationItems.filter((item) => !isUnpublishedCustomizationSlug(item.slug));
+}
+
+export function getPublishedCompanyDropdownItems(): typeof companyDropdownItems {
+  return companyDropdownItems.filter((item) => !isUnpublishedPath(item.href));
+}
+
+/** Header mega menu + mobile service links (published only). */
+export const publishedServiceGroups = getPublishedServiceGroups();
+
+/** Header customization dropdown (published only). */
+export const publishedCustomizationItems = getPublishedCustomizationItems();
+
+/** Header Resource dropdown, excluding About Us (top-level link). */
+export const publishedCompanyDropdownItems = getPublishedCompanyDropdownItems().filter(
+  (item) => item.href !== "/about-us"
+);
+
+export function getFooterServices(): ServiceItem[] {
+  const all = serviceGroups.flatMap((group) => group.items);
+  return footerServiceSlugs
+    .map((slug) => all.find((item) => item.slug === slug))
+    .filter((item): item is ServiceItem => item != null && !isUnpublishedServiceSlug(item.slug));
+}

@@ -1,45 +1,46 @@
+import { resolveImageSrc } from "@/lib/imageFallback";
 const steps = [
   {
     step: "01",
     title: "Design & Sampling",
     description:
       "We refine your artwork/tech pack and produce a pre-production sample for approval (3–5 days).",
-    image: "YOUR_PROCESS_DESIGN_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-design-sampling-tech-pack-fabric-swatches.png",
   },
   {
     step: "02",
     title: "Fabric Cutting",
     description:
       "Automated precision cutting ensures consistent sizing and minimal fabric waste.",
-    image: "YOUR_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-fabric-cutting-pattern-table-production.png",
   },
   {
     step: "03",
     title: "Sewing & Assembly",
     description:
       "Skilled seamstresses handle all stitching, collar attachment, and side seam finishing.",
-    image: "YOUR_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-sewing-assembly-industrial-production-line.png",
   },
   {
     step: "04",
     title: "Print / Embroidery",
     description:
       "Custom decoration applied per your design, with color matching and wash-testing.",
-    image: "YOUR_PROCESS_PRINT_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-print-embroidery-production-process.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Every piece is checked for stitching, print alignment, and fabric defects.",
-    image: "YOUR_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-quality-control-inspection-process.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Final packaging and consolidation for sea/air freight to your US/EU warehouse.",
-    image: "YOUR_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/t-shirts/custom-t-shirt-packaging-shipping-export-cartons.png",
   },
 ];
 
@@ -68,7 +69,7 @@ export default function TshirtProcess() {
               {/* Image area */}
               <div className="relative h-48 overflow-hidden bg-slate-700">
                 <img
-                  src={s.image}
+                  src={resolveImageSrc(s.image)}
                   alt={s.title}
                   className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
                 />
