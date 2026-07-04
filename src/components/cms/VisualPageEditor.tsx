@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { uploadImageFile } from "@/lib/uploadImage";
-import { extractCaseStudyImageSrc, isPlaceholderImageUrl } from "@/lib/caseStudyImage";
+import { extractCaseStudyImageSrc } from "@/lib/caseStudyImage";
 import {
+  applySavedVisualOverrides,
   captureSanitizedHtml,
   stripEditArtifactsFromDom,
   stripVisualEditArtifacts,
@@ -26,6 +27,71 @@ interface VisualPageEditorProps {
 const TEXT_SELECTOR =
   "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote";
 
+const HERO_ROOT_SELECTOR = ".relative.overflow-hidden";
+
+function findHeroBackgroundImg(heroRoot: Element): HTMLImageElement | null {
+  const bg = heroRoot.querySelector(":scope > .absolute.inset-0");
+  const img = bg?.querySelector(":scope > img");
+  return img instanceof HTMLImageElement ? img : null;
+}
+
+function extractHeroImageSrc(html: string): string | undefined {
+  const trimmed = html.trim();
+  if (!trimmed || typeof DOMParser === "undefined") return undefined;
+
+  const doc = new DOMParser().parseFromString(`<div id="__vedit_hero__">${trimmed}</div>`, "text/html");
+  const root = doc.getElementById("__vedit_hero__");
+  if (!root) return undefined;
+
+  const hero = root.querySelector(HERO_ROOT_SELECTOR);
+  if (!hero) return undefined;
+
+  return findHeroBackgroundImg(hero)?.getAttribute("src")?.trim() || undefined;
+}
+
+function restoreSavedHeroImage(root: HTMLElement, savedHtml: string) {
+  const savedSrc = extractHeroImageSrc(savedHtml);
+  if (!savedSrc) return;
+
+  const hero = root.querySelector(HERO_ROOT_SELECTOR);
+  const img = hero ? findHeroBackgroundImg(hero) : null;
+  if (img instanceof HTMLImageElement) {
+    img.src = savedSrc;
+  }
+}
+
+function configureHeroImageEditing(root: HTMLElement, enabled: boolean) {
+  root.querySelectorAll(HERO_ROOT_SELECTOR).forEach((hero) => {
+    const heroEl = hero as HTMLElement;
+    const bgImg = findHeroBackgroundImg(heroEl);
+    const content = heroEl.querySelector(":scope > .relative");
+    const contentEl = content as HTMLElement | null;
+    const bgLayer = heroEl.querySelector(":scope > .absolute.inset-0");
+
+    if (!bgImg || !contentEl) return;
+
+    if (enabled) {
+      contentEl.style.pointerEvents = "none";
+      contentEl.querySelectorAll(`${TEXT_SELECTOR}, button, a, nav`).forEach((node) => {
+        (node as HTMLElement).style.pointerEvents = "auto";
+      });
+      bgLayer?.querySelectorAll(":scope > .absolute.inset-0").forEach((overlay) => {
+        (overlay as HTMLElement).style.pointerEvents = "none";
+      });
+      bgImg.style.pointerEvents = "auto";
+    } else {
+      contentEl.style.pointerEvents = "";
+      contentEl.querySelectorAll(`${TEXT_SELECTOR}, button, a, nav`).forEach((node) => {
+        (node as HTMLElement).style.pointerEvents = "";
+      });
+      bgLayer?.querySelectorAll(":scope > .absolute.inset-0").forEach((overlay) => {
+        (overlay as HTMLElement).style.pointerEvents = "";
+      });
+      bgImg.style.pointerEvents = "";
+    }
+  });
+}
+
 function restoreSavedCaseStudyImage(root: HTMLElement, savedHtml: string) {
   const savedSrc = extractCaseStudyImageSrc(savedHtml);
   if (!savedSrc) return;
@@ -35,9 +101,15 @@ function restoreSavedCaseStudyImage(root: HTMLElement, savedHtml: string) {
     root.querySelector(".case-study-photo-img") ||
     root.querySelector('[class*="col-span-2"] img');
 
-  if (img instanceof HTMLImageElement && isPlaceholderImageUrl(img.getAttribute("src"))) {
+  if (img instanceof HTMLImageElement) {
     img.src = savedSrc;
   }
+}
+
+function restoreSavedImages(root: HTMLElement, savedHtml: string) {
+  restoreSavedHeroImage(root, savedHtml);
+  restoreSavedCaseStudyImage(root, savedHtml);
+  applySavedVisualOverrides(root, savedHtml);
 }
 
 function normalizeCaseStudyPhotos(root: HTMLElement) {
@@ -139,6 +211,8 @@ export function VisualPageEditor({
         el.style.outline = "none";
       }
     });
+
+    configureHeroImageEditing(root, enabled);
   }, []);
 
   useEffect(() => {
@@ -159,7 +233,9 @@ export function VisualPageEditor({
       if (rootRef.current) {
         migrateCaseStudyPlaceholders(rootRef.current);
         normalizeCaseStudyPhotos(rootRef.current);
-        if (renderedHtml) restoreSavedCaseStudyImage(rootRef.current, renderedHtml);
+        if (renderedHtml) {
+          restoreSavedImages(rootRef.current, renderedHtml);
+        }
         initialSnapshot.current = rootRef.current.innerHTML;
       }
       setEditableDomState(true);
@@ -168,15 +244,26 @@ export function VisualPageEditor({
     return () => window.cancelAnimationFrame(frame);
   }, [editable, renderedHtml, setEditableDomState]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (editable || !renderedHtml || !rootRef.current) return;
-    normalizeCaseStudyPhotos(rootRef.current);
-    restoreSavedCaseStudyImage(rootRef.current, renderedHtml);
+
+    const apply = () => restoreSavedImages(rootRef.current!, renderedHtml);
+    apply();
+    const frame = window.requestAnimationFrame(apply);
+    return () => window.cancelAnimationFrame(frame);
   }, [editable, renderedHtml]);
 
   const resolveEditableImage = (target: HTMLElement): HTMLImageElement | null => {
     if (target.tagName.toLowerCase() === "img") {
       return target as HTMLImageElement;
+    }
+
+    if (!target.closest(`${TEXT_SELECTOR}, button, a, nav`)) {
+      const hero = target.closest(HERO_ROOT_SELECTOR);
+      if (hero) {
+        const heroImg = findHeroBackgroundImg(hero);
+        if (heroImg) return heroImg;
+      }
     }
 
     const slot = target.closest("[data-vedit-image]") as HTMLElement | null;
@@ -301,7 +388,7 @@ export function VisualPageEditor({
               lineHeight: 1.5,
             }}
           >
-            点击文字直接修改；点击图片（或 Case Study 占位区）可上传替换
+            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传
           </p>
           <div
             style={{

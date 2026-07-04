@@ -50,3 +50,39 @@ export function stripEditArtifactsFromDom(root: HTMLElement) {
 export function captureSanitizedHtml(root: HTMLElement): string {
   return stripVisualEditArtifacts(root.innerHTML);
 }
+
+function isPersistedImageSrc(src: string | null | undefined): boolean {
+  const value = (src ?? "").trim();
+  if (!value) return false;
+  return /^https?:\/\//i.test(value);
+}
+
+/** Apply saved CMS image URLs onto the live React-rendered service page. */
+export function applySavedVisualOverrides(liveRoot: HTMLElement, savedHtml: string) {
+  const cleaned = stripVisualEditArtifacts(savedHtml);
+  if (!cleaned || typeof DOMParser === "undefined") return;
+
+  const doc = new DOMParser().parseFromString(
+    `<div id="__vedit_saved__">${cleaned}</div>`,
+    "text/html"
+  );
+  const savedRoot = doc.getElementById("__vedit_saved__");
+  if (!savedRoot) return;
+
+  const savedImgs = Array.from(savedRoot.querySelectorAll("img"));
+  const liveImgs = Array.from(liveRoot.querySelectorAll("img"));
+
+  savedImgs.forEach((savedImg, index) => {
+    const savedSrc = savedImg.getAttribute("src")?.trim();
+    if (!savedSrc || !isPersistedImageSrc(savedSrc)) return;
+
+    const alt = savedImg.getAttribute("alt")?.trim();
+    let liveImg =
+      (alt ? liveImgs.find((img) => img.getAttribute("alt")?.trim() === alt) : undefined) ??
+      liveImgs[index];
+
+    if (liveImg instanceof HTMLImageElement) {
+      liveImg.src = savedSrc;
+    }
+  });
+}
