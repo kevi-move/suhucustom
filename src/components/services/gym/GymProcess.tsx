@@ -4,7 +4,7 @@ const steps = [
     step: "01",
     title: "Design & Sampling",
     description:
-      "We refine your artwork/tech pack and produce a pre-production sample for approval (3â€? days), including fabric stretch and sweat-wicking performance testing.",
+      "We refine your artwork/tech pack and produce a pre-production sample for approval (3-7 days), including fabric stretch and sweat-wicking performance testing.",
     image: "/generated/services/gym-sportswear/custom-gym-sportswear-design-sampling-tech-pack-fabric-swatches.png",
   },
   {

@@ -69,7 +69,7 @@ export default function TshirtCaseStudy() {
               </div>
 
               <blockquote className="mt-6 border-l-2 border-amber-400 pl-4 text-sm italic text-slate-500">
-                &ldquo;Consistent quality and reliable delivery �?we re-ordered
+                &ldquo;Consistent quality and reliable delivery - we re-ordered
                 10,000+ pieces for our next collection.&rdquo;
               </blockquote>
 

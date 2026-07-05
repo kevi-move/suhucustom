@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const stats = [
   { value: "100 PCS", label: "MOQ (Small-Batch Friendly)" },
-  { value: "15â€?0 Days", label: "Lead Time (Sample + Production)" },
+  { value: "15-20 Days", label: "Lead Time (Sample + Production)" },
   { value: "OEKO-TEX", label: "Standard 100 & BSCI Certified" },
   { value: "4+ Fabrics", label: "Sweat-Wicking, Compression, Quick-Dry, Mesh" },
 ];
@@ -38,9 +38,8 @@ export default function GymOverview() {
                 fitness brands, gym chains, athletic teams, and DTC retailers.
                 From compression tops and gym shorts to training leggings and
                 workout jackets, our full-service OEM/ODM solution covers
-                design, sampling, mass production, and global
-                shippingâ€”tailored specifically for high-intensity gym and
-                training use.
+                design, sampling, mass production, and global shipping - tailored
+                specifically for high-intensity gym and training use.
               </p>
             </div>
 

@@ -10,7 +10,7 @@ const options: ServiceCustomizationOption[] = [
     category: "Fabric",
     image: "/generated/services/gym-sportswear/custom-gym-sportswear-fabric-options-compression-mesh-spandex.png",
     highlights: [
-      "Sweat-Wicking Polyester (160â€?90 GSM)",
+      "Sweat-Wicking Polyester (160-190 GSM)",
       "4-Way Stretch Compression Spandex",
       "Quick-Dry Mesh Blend",
       "Moisture-Wicking Poly-Cotton",
@@ -51,7 +51,7 @@ const options: ServiceCustomizationOption[] = [
     highlights: [
       "Pantone-matched solid colors",
       "Custom printed designs",
-      "Sizes XS â€?4XL",
+      "Sizes XS-4XL",
       "Plus size options available",
     ],
     note: "Color lab dipping included",
