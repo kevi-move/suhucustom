@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const stats = [
   { value: "100 PCS", label: "MOQ (Small-Batch Friendly)" },
-  { value: "15â€“20 Days", label: "Lead Time (Sample + Production)" },
+  { value: "15â€?0 Days", label: "Lead Time (Sample + Production)" },
   { value: "OEKO-TEX", label: "Standard 100 & BSCI Certified" },
   { value: "4+ Fabrics", label: "Sweat-Wicking, Compression, Quick-Dry, Mesh" },
 ];
@@ -58,7 +58,7 @@ export default function GymOverview() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl">
               <img
-                src={resolveImageSrc("YOUR_GYM_OVERVIEW_IMAGE_URL")}
+                src={resolveImageSrc("/generated/services/gym-sportswear/suhucustom-gym-sportswear-sample-room-overview-oem-odm.png")}
                 alt="Gym sportswear factory overview"
                 className="h-auto w-full object-cover"
               />

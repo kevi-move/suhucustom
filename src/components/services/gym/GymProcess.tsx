@@ -4,43 +4,43 @@ const steps = [
     step: "01",
     title: "Design & Sampling",
     description:
-      "We refine your artwork/tech pack and produce a pre-production sample for approval (3â€“5 days), including fabric stretch and sweat-wicking performance testing.",
-    image: "YOUR_GYM_PROCESS_DESIGN_IMAGE_URL",
+      "We refine your artwork/tech pack and produce a pre-production sample for approval (3â€? days), including fabric stretch and sweat-wicking performance testing.",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-design-sampling-tech-pack-fabric-swatches.png",
   },
   {
     step: "02",
     title: "Fabric Cutting",
     description:
       "Automated precision cutting ensures consistent sizing and minimal fabric waste, especially critical for compression and stretch gym fabrics.",
-    image: "YOUR_GYM_PROCESS_CUTTING_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-fabric-cutting-pattern-table-production.png",
   },
   {
     step: "03",
     title: "Sewing & Assembly",
     description:
       "Skilled seamstresses handle flatlock stitching (chafe-resistant), elastic waistband attachment, and mesh panel integration for optimal comfort.",
-    image: "YOUR_GYM_PROCESS_SEWING_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-sewing-assembly-flatlock-mesh-panel.png",
   },
   {
     step: "04",
     title: "Decoration Application",
     description:
       "Custom sublimation/print/embroidery applied per your design, with color matching and sweat-resistance testing.",
-    image: "YOUR_GYM_PROCESS_DECORATION_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-decoration-application-heat-press-printing.png",
   },
   {
     step: "05",
     title: "Quality Inspection",
     description:
       "Every piece is checked for stitching integrity, fabric stretch, decoration alignment, and performance defects (e.g., sweat-wicking ability).",
-    image: "YOUR_GYM_PROCESS_QC_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-final-quality-inspection-stretch-measurement.png",
   },
   {
     step: "06",
     title: "Packaging & Shipping",
     description:
       "Final packaging and consolidation for sea/air freight to your US/EU warehouse.",
-    image: "YOUR_GYM_PROCESS_SHIPPING_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-packaging-shipping-small-batch-cartons.png",
   },
 ];
 

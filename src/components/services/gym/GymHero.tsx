@@ -7,7 +7,7 @@ export default function GymHero() {
     <div className="relative overflow-hidden bg-slate-900">
       <div className="absolute inset-0">
         <img
-          src={resolveImageSrc("YOUR_GYM_HERO_IMAGE_URL")}
+          src={resolveImageSrc("/generated/services/gym-sportswear/custom-gym-sportswear-manufacturing-hero-small-sample-room.png")}
           alt="Custom gym and sportswear manufacturing"
           className="h-full w-full object-cover opacity-70"
         />
@@ -33,7 +33,7 @@ export default function GymHero() {
           </p>
           <h1 className="mx-auto mt-4 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Custom <span className="text-amber-400">Gym &amp; Sportswear</span>{" "}
-            Manufacturing â€“ OEM/ODM for Global Fitness Brands &amp; Gyms
+            Manufacturing â€?OEM/ODM for Global Fitness Brands &amp; Gyms
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
             High-Performance, Durable, and Sweat-Resistant Gym Wear with

@@ -8,9 +8,9 @@ const options: ServiceCustomizationOption[] = [
   {
     id: "fabric",
     category: "Fabric",
-    image: "YOUR_GYM_FABRIC_OPTION_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-fabric-options-compression-mesh-spandex.png",
     highlights: [
-      "Sweat-Wicking Polyester (160â€“190 GSM)",
+      "Sweat-Wicking Polyester (160â€?90 GSM)",
       "4-Way Stretch Compression Spandex",
       "Quick-Dry Mesh Blend",
       "Moisture-Wicking Poly-Cotton",
@@ -21,7 +21,7 @@ const options: ServiceCustomizationOption[] = [
   {
     id: "style",
     category: "Style & Cut",
-    image: "YOUR_GYM_STYLE_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-style-cut-options-shirts-shorts-leggings.png",
     highlights: [
       "Compression Shirts",
       'Gym Shorts (7"/9" inseam)',
@@ -34,7 +34,7 @@ const options: ServiceCustomizationOption[] = [
   {
     id: "decoration",
     category: "Decoration",
-    image: "YOUR_GYM_DECORATION_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-decoration-options-sublimation-heat-transfer.png",
     highlights: [
       "Sublimation Printing (full-color patterns)",
       "Heat Transfer Vinyl",
@@ -47,11 +47,11 @@ const options: ServiceCustomizationOption[] = [
   {
     id: "color",
     category: "Colors & Sizing",
-    image: "YOUR_GYM_COLORS_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-colors-sizing-options-muted-colorways.png",
     highlights: [
       "Pantone-matched solid colors",
       "Custom printed designs",
-      "Sizes XS â€“ 4XL",
+      "Sizes XS â€?4XL",
       "Plus size options available",
     ],
     note: "Color lab dipping included",
@@ -60,7 +60,7 @@ const options: ServiceCustomizationOption[] = [
   {
     id: "packaging",
     category: "Packaging",
-    image: "YOUR_GYM_PACKAGING_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-packaging-options-polybag-hangtag-mailer.png",
     highlights: [
       "Polybag with custom hang tags",
       "Size/performance labels included",

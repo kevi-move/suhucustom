@@ -9,31 +9,31 @@ const features = [
     title: "High-Performance Fabric Sourcing",
     description:
       "We source premium sweat-wicking, compression, and quick-dry fabrics that stand up to high-intensity workouts, with excellent breathability and long-term durability.",
-    image: "YOUR_GYM_FABRIC_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-performance-fabric-sourcing-mesh-swatches.png",
   },
   {
     title: "Gym-Specific Construction",
     description:
       "Reinforced flatlock stitching (prevents chafing), compression fit for muscle support, and mesh paneling for enhanced ventilationâ€”critical for gym and training wear.",
-    image: "YOUR_GYM_CONSTRUCTION_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-flatlock-stitching-mesh-construction.png",
   },
   {
     title: "Custom Branding Solutions",
     description:
       "Full support for sublimation printing (full-color workout designs), heat transfer, embroidery, and custom woven labelsâ€”perfect for gym brand identity.",
-    image: "YOUR_GYM_BRANDING_IMAGE_URL",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-branding-heat-transfer-embroidery-labels.png",
   },
   {
     title: "Strict Quality Control",
     description:
-      "5-step inspection: fabric (stretch/durability test) â†’ cutting â†’ sewing â†’ decoration â†’ final packaging to ensure zero defects and consistent performance.",
-    image: "YOUR_GYM_QC_IMAGE_URL",
+      "5-step inspection: fabric (stretch/durability test) â†?cutting â†?sewing â†?decoration â†?final packaging to ensure zero defects and consistent performance.",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-quality-control-stretch-measurement.png",
   },
   {
     title: "Flexible Customization",
     description:
-      "Fully customizable fits (compression/regular/relaxed), styles (gym tops/shorts/leggings/jackets), sizes (XSâ€“4XL), and sweat-resistant custom designs.",
-    image: "YOUR_GYM_CUSTOMIZATION_IMAGE_URL",
+      "Fully customizable fits (compression/regular/relaxed), styles (gym tops/shorts/leggings/jackets), sizes (XSâ€?XL), and sweat-resistant custom designs.",
+    image: "/generated/services/gym-sportswear/custom-gym-sportswear-flexible-customization-styles-colors-sizes.png",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function GymFeatures() {
               Key Features &amp; Craftsmanship
             </h2>
             <p className="mt-3 text-base text-slate-600">
-              Built for performance â€” every stitch, fabric, and detail is
+              Built for performance â€?every stitch, fabric, and detail is
               engineered for the gym.
             </p>
           </div>

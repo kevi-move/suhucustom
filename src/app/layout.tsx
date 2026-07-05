@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   alternates: {
     languages: buildHreflangAlternates("/"),
   },
+  verification: {
+    google: "GWs3ZpEK1vKHSMhz4f1UfC8gsbyv0U2LGwIDOm2AN_0",
+  },
 };
 
 export default async function RootLayout({
