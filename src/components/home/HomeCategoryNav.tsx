@@ -1,9 +1,8 @@
 "use client";
 
-import { resolveImageSrc } from "@/lib/imageFallback";
 import Link from "next/link";
 import { useState } from "react";
-import { EditableText } from "@/components/cms";
+import { EditableImage, EditableText } from "@/components/cms";
 import { useCMS } from "@/contexts/CMSContext";
 import { serviceGroups } from "@/lib/navigation";
 import { categoryImages } from "@/lib/generated/categoryImages";
@@ -28,7 +27,7 @@ const DEFAULT_TAGLINES: Record<string, string> = {
 };
 
 export default function HomeCategoryNav() {
-  const { getDisplayValue } = useCMS();
+  const { getDisplayValue, isEditMode } = useCMS();
   const taglines = getDisplayValue<Record<string, string>>("categories.taglines", DEFAULT_TAGLINES);
   const defaultTagline = getDisplayValue<string>(
     "categories.taglines.default",
@@ -39,7 +38,6 @@ export default function HomeCategoryNav() {
     group.items.map((item) => ({
       slug: item.slug,
       title: item.nameEn,
-      image: categoryImages[item.slug] ?? `/generated/home/category-${item.slug}.webp`,
       href: `/services/${item.slug}`,
       tagline: taglines[item.slug] ?? defaultTagline,
     }))
@@ -69,49 +67,67 @@ export default function HomeCategoryNav() {
         </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {currentItems.map((item) => (
-            <Link
-              key={item.slug}
-              href={item.href}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl"
-            >
-              <div className="relative h-32 overflow-hidden sm:h-36">
-                <img
-                  src={resolveImageSrc(item.image)}
-                  alt={item.title}
-                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-80 group-hover:opacity-90" />
-              </div>
-              <div className="flex flex-1 flex-col gap-2 p-5">
-                <div className="inline-flex items-center gap-2">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-50 text-xs font-semibold text-amber-600 ring-1 ring-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-500">
-                    {item.title.charAt(0)}
-                  </span>
-                  <h3 className="text-sm font-semibold text-slate-900 group-hover:text-amber-600">
-                    {item.title}
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-500">
-                  <EditableText
-                    path={`categories.taglines.${item.slug}`}
-                    value={DEFAULT_TAGLINES[item.slug] ?? defaultTagline}
+          {currentItems.map((item) => {
+            const defaultImage =
+              categoryImages[item.slug] ?? `/generated/home/category-${item.slug}.webp`;
+            const cardClassName =
+              "group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl";
+
+            const cardBody = (
+              <>
+                <div className="relative h-32 overflow-hidden sm:h-36">
+                  <EditableImage
+                    path={`categories.images.${item.slug}`}
+                    src={defaultImage}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                   />
-                </p>
-                <span className="mt-3 inline-flex items-center text-xs font-medium text-amber-600 group-hover:text-amber-700">
-                  <EditableText path="categories.viewDetails" value="View service details" />
-                  <svg
-                    className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
-            </Link>
-          ))}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-80 group-hover:opacity-90" />
+                </div>
+                <div className="flex flex-1 flex-col gap-2 p-5">
+                  <div className="inline-flex items-center gap-2">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-50 text-xs font-semibold text-amber-600 ring-1 ring-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-500">
+                      {item.title.charAt(0)}
+                    </span>
+                    <h3 className="text-sm font-semibold text-slate-900 group-hover:text-amber-600">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="text-xs text-slate-500">
+                    <EditableText
+                      path={`categories.taglines.${item.slug}`}
+                      value={DEFAULT_TAGLINES[item.slug] ?? defaultTagline}
+                    />
+                  </p>
+                  <span className="mt-3 inline-flex items-center text-xs font-medium text-amber-600 group-hover:text-amber-700">
+                    <EditableText path="categories.viewDetails" value="View service details" />
+                    <svg
+                      className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </>
+            );
+
+            if (isEditMode) {
+              return (
+                <div key={item.slug} className={cardClassName}>
+                  {cardBody}
+                </div>
+              );
+            }
+
+            return (
+              <Link key={item.slug} href={item.href} className={cardClassName}>
+                {cardBody}
+              </Link>
+            );
+          })}
         </div>
 
         {pageCount > 1 && (

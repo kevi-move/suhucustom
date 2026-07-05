@@ -57,6 +57,29 @@ function isPersistedImageSrc(src: string | null | undefined): boolean {
   return /^https?:\/\//i.test(value);
 }
 
+function findLiveImageForSaved(
+  liveRoot: HTMLElement,
+  liveImgs: HTMLImageElement[],
+  savedImg: HTMLImageElement,
+  index: number
+): HTMLImageElement | undefined {
+  const optionId = savedImg.getAttribute("data-vedit-customization-id")?.trim();
+  if (optionId) {
+    const byOption = liveRoot.querySelector(
+      `img[data-vedit-customization-id="${optionId}"]`
+    );
+    if (byOption instanceof HTMLImageElement) return byOption;
+  }
+
+  const alt = savedImg.getAttribute("alt")?.trim();
+  if (alt) {
+    const byAlt = liveImgs.find((img) => img.getAttribute("alt")?.trim() === alt);
+    if (byAlt) return byAlt;
+  }
+
+  return liveImgs[index];
+}
+
 /** Apply saved CMS image URLs onto the live React-rendered service page. */
 export function applySavedVisualOverrides(liveRoot: HTMLElement, savedHtml: string) {
   const cleaned = stripVisualEditArtifacts(savedHtml);
@@ -76,10 +99,7 @@ export function applySavedVisualOverrides(liveRoot: HTMLElement, savedHtml: stri
     const savedSrc = savedImg.getAttribute("src")?.trim();
     if (!savedSrc || !isPersistedImageSrc(savedSrc)) return;
 
-    const alt = savedImg.getAttribute("alt")?.trim();
-    let liveImg =
-      (alt ? liveImgs.find((img) => img.getAttribute("alt")?.trim() === alt) : undefined) ??
-      liveImgs[index];
+    const liveImg = findLiveImageForSaved(liveRoot, liveImgs, savedImg, index);
 
     if (liveImg instanceof HTMLImageElement) {
       liveImg.src = savedSrc;
