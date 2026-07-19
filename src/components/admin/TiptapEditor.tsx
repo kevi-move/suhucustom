@@ -6,6 +6,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
+import { BlogCtaNode } from "./tiptap/BlogCtaNode";
 // Preserve tables as raw HTML blocks so TipTap doesn't mangle the structure
 const RawTableNode = Node.create({
   name: "rawTable",
@@ -151,6 +152,7 @@ export function TiptapEditor({ content, onChange, placeholder = "Write your cont
       DetailsNode,
       DetailsSummaryNode,
       DetailsContentNode,
+      BlogCtaNode,
     ],
     content,
     immediatelyRender: false,
@@ -189,6 +191,15 @@ export function TiptapEditor({ content, onChange, placeholder = "Write your cont
     if (url && editor) {
       editor.chain().focus().setLink({ href: url }).run();
     }
+  }, [editor]);
+
+  const insertCta = useCallback(() => {
+    if (!editor) return;
+    editor
+      .chain()
+      .focus()
+      .insertContent({ type: "blogCta", attrs: { variant: "quote" } })
+      .run();
   }, [editor]);
 
   const handleHtmlChange = (html: string) => {
@@ -343,6 +354,9 @@ export function TiptapEditor({ content, onChange, placeholder = "Write your cont
         </ToolbarButton>
         <ToolbarButton onClick={addImage} title="Upload Image">
           {imageUploading ? <Loader2 size={18} style={{ animation: "spin 1s linear infinite" }} /> : <ImageIcon size={18} />}
+        </ToolbarButton>
+        <ToolbarButton onClick={insertCta} title="Insert CTA Button">
+          <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.04em" }}>CTA</span>
         </ToolbarButton>
         <input
           ref={imageInputRef}
@@ -544,6 +558,36 @@ export function TiptapEditor({ content, onChange, placeholder = "Write your cont
               color: #999;
               font-size: 14px;
               line-height: 1.6;
+            }
+            .tiptap-editor-content .blog-inline-cta-editor {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 6px;
+              margin: 16px 0;
+              padding: 14px;
+              border: 1px dashed #D09947;
+              border-radius: 12px;
+              background: rgba(208, 153, 71, 0.08);
+            }
+            .tiptap-editor-content .blog-inline-cta-editor-button {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 9999px;
+              padding: 10px 20px;
+              font-size: 13px;
+              font-weight: 700;
+              color: #fff;
+              background: linear-gradient(90deg, #c4862e, #D09947, #e8b04a);
+              box-shadow: 0 4px 14px rgba(208, 153, 71, 0.35);
+            }
+            .tiptap-editor-content .blog-inline-cta-editor-label {
+              font-size: 11px;
+              font-weight: 600;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              color: #D09947;
             }
             @keyframes spin {
               from { transform: rotate(0deg); }

@@ -5,12 +5,23 @@ import { useRouter } from "next/navigation";
 import { TiptapEditor } from "./TiptapEditor";
 import { ImageUpload } from "./ImageUpload";
 import { BlogPost, BlogPostInput, Category, Author } from "@/types/blog";
-import { createPost, updatePost, generateSlug } from "@/lib/blog";
+import { generateSlug } from "@/lib/blog";
+import { createPostAdmin, updatePostAdmin } from "@/lib/blogAdminApi";
+import {
+  EMPTY_BLOG_EXTRAS,
+  extractBlogExtrasFromContent,
+  faqsToText,
+  injectBlogExtrasIntoContent,
+  keyPointsToText,
+  textToFaqs,
+  textToKeyPoints,
+} from "@/lib/blogExtras";
 import { getFrontendBlogPostUrl } from "@/lib/frontendPreview";
 import { getAllCategories } from "@/lib/categories";
 import { getAllAuthors } from "@/lib/authors";
-import { useAuth } from "@/contexts/AuthContext";
-import { ArrowLeft, Save, Eye } from "lucide-react";
+import { BlogPostPreviewModal } from "@/components/admin/BlogPostPreviewModal";
+import type { BlogPostPreviewData } from "@/components/blog/BlogPostPagePreview";
+import { ArrowLeft, Save, Eye, Monitor } from "lucide-react";
 import Link from "next/link";
 
 interface BlogPostFormProps {
@@ -19,9 +30,18 @@ interface BlogPostFormProps {
 }
 
 export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
+  const initialParsed = post
+    ? extractBlogExtrasFromContent(post.content)
+    : { extras: EMPTY_BLOG_EXTRAS, content: "" };
+
   const [title, setTitle] = useState(post?.title || "");
   const [slug, setSlug] = useState(post?.slug || "");
-  const [content, setContent] = useState(post?.content || "");
+  const [content, setContent] = useState(initialParsed.content || "");
+  const [aiSummary, setAiSummary] = useState(initialParsed.extras.aiSummary);
+  const [keyPointsText, setKeyPointsText] = useState(
+    keyPointsToText(initialParsed.extras.keyPoints)
+  );
+  const [faqsText, setFaqsText] = useState(faqsToText(initialParsed.extras.faqs));
   const [excerpt, setExcerpt] = useState(post?.excerpt || "");
   const [featuredImage, setFeaturedImage] = useState(post?.featuredImage || "");
   const [status, setStatus] = useState<"draft" | "published">(post?.status || "draft");
@@ -33,9 +53,23 @@ export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
   const [metaDescription, setMetaDescription] = useState(post?.metaDescription || "");
   const [saving, setSaving] = useState(false);
   const [autoSlug, setAutoSlug] = useState(!isEditing);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
-  const { user } = useAuth();
   const router = useRouter();
+
+  const previewData: BlogPostPreviewData = {
+    title,
+    excerpt,
+    featuredImage,
+    contentHtml: content,
+    aiSummary,
+    keyPoints: textToKeyPoints(keyPointsText),
+    faqs: textToFaqs(faqsText),
+    categoryName: categories.find((item) => item.id === categoryId)?.name,
+    authorName: authors.find((item) => item.id === authorRef)?.name,
+    publishedAt: post?.publishedAt ?? null,
+    createdAt: post?.createdAt ?? new Date(),
+  };
 
   useEffect(() => {
     getAllCategories().then(setCategories);
@@ -51,15 +85,17 @@ export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!user) return;
-
     setSaving(true);
 
     try {
       const input: BlogPostInput = {
         title,
         slug,
-        content,
+        content: injectBlogExtrasIntoContent(content, {
+          aiSummary,
+          keyPoints: textToKeyPoints(keyPointsText),
+          faqs: textToFaqs(faqsText),
+        }),
         excerpt,
         featuredImage,
         status,
@@ -70,9 +106,9 @@ export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
       };
 
       if (isEditing && post) {
-        await updatePost(post.id, input);
+        await updatePostAdmin(post.id, input);
       } else {
-        await createPost(input, user.id, user.email || "");
+        await createPostAdmin(input);
       }
 
       router.push("/admin/blog");
@@ -137,6 +173,49 @@ export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
         </div>
 
         <div style={{ display: "flex", gap: "12px" }}>
+          <button
+            type="button"
+            onClick={() => setPreviewOpen(true)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "10px 20px",
+              background: "#2a2a2a",
+              color: "#C5C6C9",
+              border: "1px solid #444",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontSize: "14px",
+              fontWeight: 500,
+            }}
+          >
+            <Monitor size={18} />
+            页面预览
+          </button>
+          {isEditing && post && (
+            <Link
+              href={`/admin/blog/${post.id}/preview`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 20px",
+                background: "#2a2a2a",
+                color: "#C5C6C9",
+                border: "1px solid #444",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontSize: "14px",
+                fontWeight: 500,
+              }}
+            >
+              <Eye size={18} />
+              新窗口预览
+            </Link>
+          )}
           {isEditing &&
             post?.status === "published" &&
             getFrontendBlogPostUrl(post.slug) && (
@@ -184,6 +263,13 @@ export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
           </button>
         </div>
       </div>
+
+      <BlogPostPreviewModal
+        open={previewOpen}
+        onClose={() => setPreviewOpen(false)}
+        data={previewData}
+        status={status}
+      />
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 350px", gap: "32px" }}>
         {/* Main content */}
@@ -250,6 +336,56 @@ export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
                 resize: "vertical",
               }}
             />
+          </div>
+
+          {/* AI Summary */}
+          <div>
+            <label style={labelStyle}>AI Summary (Overview)</label>
+            <textarea
+              value={aiSummary}
+              onChange={(e) => setAiSummary(e.target.value)}
+              placeholder="Short AI overview shown at the top of the article"
+              rows={4}
+              style={{
+                ...inputStyle,
+                resize: "vertical",
+              }}
+            />
+          </div>
+
+          {/* Key Points */}
+          <div>
+            <label style={labelStyle}>Key Points (one per line)</label>
+            <textarea
+              value={keyPointsText}
+              onChange={(e) => setKeyPointsText(e.target.value)}
+              placeholder={"Point one\nPoint two\nPoint three"}
+              rows={5}
+              style={{
+                ...inputStyle,
+                resize: "vertical",
+              }}
+            />
+          </div>
+
+          {/* FAQ */}
+          <div>
+            <label style={labelStyle}>FAQ (Q/A blocks)</label>
+            <textarea
+              value={faqsText}
+              onChange={(e) => setFaqsText(e.target.value)}
+              placeholder={"Q: Your first question?\nA: Answer text here.\n\nQ: Second question?\nA: Second answer."}
+              rows={10}
+              style={{
+                ...inputStyle,
+                resize: "vertical",
+                fontFamily: "monospace",
+                fontSize: "13px",
+              }}
+            />
+            <p style={{ color: "#666", fontSize: "12px", marginTop: "8px" }}>
+              FAQ renders as a collapsible section with FAQPage schema on the live article page.
+            </p>
           </div>
 
           {/* Content */}

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { BlogPostForm } from "@/components/admin/BlogPostForm";
 import { BlogPost } from "@/types/blog";
-import { getPostById } from "@/lib/blog";
+import { fetchPostByIdAdmin } from "@/lib/blogAdminApi";
 
 interface EditBlogPostPageProps {
   params: Promise<{ id: string }>;
@@ -20,7 +20,7 @@ export default function EditBlogPostPage({ params }: EditBlogPostPageProps) {
   useEffect(() => {
     const loadPost = async () => {
       try {
-        const data = await getPostById(id);
+        const data = await fetchPostByIdAdmin(id);
         if (!data) {
           router.push("/admin/blog");
           return;

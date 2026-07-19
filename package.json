@@ -13,7 +13,8 @@
     "images:generate": "node scripts/image-pipeline/generate.mjs",
     "images:apply": "node scripts/image-pipeline/apply.mjs",
     "images:openai": "node scripts/openai-generate-images.mjs",
-    "i18n:setup": "node scripts/run-i18n-setup.mjs"
+    "i18n:setup": "node scripts/run-i18n-setup.mjs",
+    "blog:import": "node scripts/import-blog-draft.mjs"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.5",

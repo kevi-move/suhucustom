@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { QuoteButton } from "@/components/contact/QuoteButton";
+import BlogQuoteCTAButton from "./BlogQuoteCTAButton";
 
 export default function BlogPostCTA() {
   return (
@@ -18,12 +16,7 @@ export default function BlogPostCTA() {
           from our Humen, Dongguan team.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <QuoteButton
-            title="Start Your Project"
-            className="inline-flex rounded-full bg-amber-500 px-8 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-amber-500/25 transition hover:bg-amber-400"
-          >
-            Start Your Project
-          </QuoteButton>
+          <BlogQuoteCTAButton />
           <Link
             href="/services"
             className="inline-flex rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:border-amber-300 hover:text-amber-200"

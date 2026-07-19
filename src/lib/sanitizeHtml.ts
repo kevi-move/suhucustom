@@ -27,6 +27,9 @@ const ALLOWED_TAGS = [
   "pre",
   "code",
   "span",
+  "div",
+  "details",
+  "summary",
 ];
 
 const ALLOWED_ATTR = [
@@ -39,6 +42,8 @@ const ALLOWED_ATTR = [
   "class",
   "colspan",
   "rowspan",
+  "id",
+  "data-blog-cta",
 ];
 
 /** Sanitize Tiptap HTML for safe public rendering (works on server & client). */

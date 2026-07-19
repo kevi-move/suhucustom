@@ -6,9 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { BlogPost } from "@/types/blog";
-import { getAllPosts, deletePost } from "@/lib/blog";
+import { fetchAllPostsAdmin, deletePostAdmin } from "@/lib/blogAdminApi";
 import { getFrontendBlogPostUrl } from "@/lib/frontendPreview";
-import { Plus, Edit, Trash2, Eye, FileText } from "lucide-react";
+import { Plus, Edit, Trash2, Eye, FileText, Monitor } from "lucide-react";
 
 export default function AdminBlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -21,7 +21,7 @@ export default function AdminBlogPage() {
 
   const loadPosts = async () => {
     try {
-      const data = await getAllPosts();
+      const data = await fetchAllPostsAdmin();
       setPosts(data);
     } catch (error) {
       console.error("Error loading posts:", error);
@@ -38,7 +38,7 @@ export default function AdminBlogPage() {
     setDeleting(id);
 
     try {
-      await deletePost(id);
+      await deletePostAdmin(id);
       setPosts(posts.filter((p) => p.id !== id));
     } catch (error) {
       console.error("Error deleting post:", error);
@@ -269,6 +269,25 @@ export default function AdminBlogPage() {
                   </td>
                   <td style={{ padding: "16px 20px" }}>
                     <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px" }}>
+                      <Link
+                        href={`/admin/blog/${post.id}/preview`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: "36px",
+                          height: "36px",
+                          background: "#2a2a2a",
+                          borderRadius: "8px",
+                          color: "#888",
+                          textDecoration: "none",
+                        }}
+                        title="页面预览"
+                      >
+                        <Monitor size={16} />
+                      </Link>
                       {post.status === "published" && getFrontendBlogPostUrl(post.slug) && (
                         <Link
                           href={getFrontendBlogPostUrl(post.slug)!}
