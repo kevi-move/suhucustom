@@ -2,15 +2,13 @@
 
 import BlogQuoteCTAButton from "./BlogQuoteCTAButton";
 import { splitBlogHtmlByInlineCta } from "@/lib/blogInlineCta";
-import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
 
 export default function BlogPostBody({ html }: { html: string }) {
-  const safe = sanitizeBlogHtml(html);
-  if (!safe) {
+  if (!html?.trim()) {
     return <p className="text-slate-500">No content available.</p>;
   }
 
-  const segments = splitBlogHtmlByInlineCta(safe);
+  const segments = splitBlogHtmlByInlineCta(html);
 
   return (
     <div className="blog-prose">

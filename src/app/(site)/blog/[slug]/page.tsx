@@ -10,6 +10,7 @@ import {
 } from "@/lib/blog";
 import { getPostImageUrl } from "@/lib/blogUtils";
 import { extractBlogExtrasFromContent } from "@/lib/blogExtras";
+import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
 
 export const revalidate = 60;
 
@@ -60,6 +61,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const authorName = post.author?.name || "SuhuCustom Team";
   const { extras, content: articleContent } = extractBlogExtrasFromContent(post.content);
+  const safeArticleContent = sanitizeBlogHtml(articleContent);
 
   const sameCategory = post.categoryId
     ? allPosts.filter((p) => p.categoryId === post.categoryId)
@@ -72,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
           title: post.title,
           excerpt: post.excerpt,
           featuredImage: post.featuredImage,
-          contentHtml: articleContent,
+          contentHtml: safeArticleContent,
           aiSummary: extras.aiSummary,
           keyPoints: extras.keyPoints,
           faqs: extras.faqs,

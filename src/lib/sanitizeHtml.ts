@@ -1,3 +1,5 @@
+import "server-only";
+
 import DOMPurify from "isomorphic-dompurify";
 
 const ALLOWED_TAGS = [
