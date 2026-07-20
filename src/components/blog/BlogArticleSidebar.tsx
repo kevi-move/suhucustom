@@ -4,30 +4,35 @@ import BlogTableOfContents from "./BlogTableOfContents";
 import BlogAiSummary from "./BlogAiSummary";
 import type { TocHeading } from "@/lib/blogToc";
 
-interface BlogArticleSidebarProps {
+interface BlogArticleRailsProps {
   headings: TocHeading[];
   aiSummary: string;
   keyPoints: string[];
 }
 
-export default function BlogArticleSidebar({
-  headings,
-  aiSummary,
-  keyPoints,
-}: BlogArticleSidebarProps) {
-  const hasSidebar = headings.length > 0 || aiSummary.trim() || keyPoints.length > 0;
-
-  if (!hasSidebar) return null;
+export function BlogArticleTocRail({ headings }: { headings: TocHeading[] }) {
+  if (headings.length === 0) return null;
 
   return (
-    <aside className="blog-article-sidebar hidden lg:block lg:w-64 xl:w-72 lg:shrink-0 lg:self-start">
-      <div className="blog-article-sidebar-inner space-y-4">
-        <BlogAiSummary
-          aiSummary={aiSummary}
-          keyPoints={keyPoints}
-          variant="sidebar"
-        />
+    <aside className="blog-article-rail blog-article-rail-left hidden lg:block lg:shrink-0">
+      <div className="blog-article-rail-inner">
         <BlogTableOfContents headings={headings} variant="sidebar" />
+      </div>
+    </aside>
+  );
+}
+
+export function BlogArticleSummaryRail({
+  aiSummary,
+  keyPoints,
+}: Pick<BlogArticleRailsProps, "aiSummary" | "keyPoints">) {
+  const hasSummary = Boolean(aiSummary.trim()) || keyPoints.length > 0;
+  if (!hasSummary) return null;
+
+  return (
+    <aside className="blog-article-rail blog-article-rail-right hidden lg:block lg:shrink-0">
+      <div className="blog-article-rail-inner">
+        <BlogAiSummary aiSummary={aiSummary} keyPoints={keyPoints} variant="sidebar" />
       </div>
     </aside>
   );

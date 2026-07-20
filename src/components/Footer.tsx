@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   SITE_COMPANY_ADDRESS,
@@ -22,11 +23,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <Link
-              href={localizePath("/")}
-              className="text-2xl font-bold tracking-tight text-white"
-            >
-              Suhu<span className="text-amber-400">Custom</span>
+            <Link href={localizePath("/")} className="inline-block">
+              <Image
+                src="/brand/suhucustom-logo-footer.png"
+                alt="Suhu Custom"
+                width={615}
+                height={406}
+                className="h-20 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
               {t(

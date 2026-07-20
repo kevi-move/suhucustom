@@ -6,7 +6,7 @@ import BlogArticleHeader from "./BlogArticleHeader";
 import BlogAiSummary from "./BlogAiSummary";
 import BlogFaqSection from "./BlogFaqSection";
 import BlogArticleLayout from "./BlogArticleLayout";
-import BlogArticleSidebar from "./BlogArticleSidebar";
+import { BlogArticleTocRail, BlogArticleSummaryRail } from "./BlogArticleSidebar";
 import BlogTableOfContents from "./BlogTableOfContents";
 import {
   estimateReadingMinutes,
@@ -68,11 +68,13 @@ export default function BlogPostArticleView({
           showBackToBlog={showBackToBlog}
         />
 
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
           <BlogArticleLayout
-            sidebar={
-              <BlogArticleSidebar
-                headings={prepared.headings}
+            hasLeftRail={prepared.headings.length > 0}
+            hasRightRail={Boolean(data.aiSummary.trim()) || data.keyPoints.length > 0}
+            leftRail={<BlogArticleTocRail headings={prepared.headings} />}
+            rightRail={
+              <BlogArticleSummaryRail
                 aiSummary={data.aiSummary}
                 keyPoints={data.keyPoints}
               />

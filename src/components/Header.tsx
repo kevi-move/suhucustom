@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { publishedServiceGroups, publishedCustomizationItems, publishedCompanyDropdownItems } from "@/lib/navigation";
@@ -92,11 +93,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:gap-4 lg:px-8">
-        <Link
-          href={localizePath("/")}
-          className="shrink-0 text-xl font-bold tracking-tight text-slate-900"
-        >
-          Suhu<span className="text-amber-600">Custom</span>
+        <Link href={localizePath("/")} className="shrink-0">
+          <Image
+            src="/brand/suhucustom-logo-header.png"
+            alt="Suhu Custom"
+            width={896}
+            height={278}
+            className="h-12 w-auto"
+            priority
+          />
         </Link>
 
         <div className="relative z-20 hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex">

@@ -41,7 +41,7 @@ export default function BlogArticleHeader({
         className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D09947]/30 to-transparent"
       />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         {backLink ??
           (showBackToBlog ? (
             <Link
