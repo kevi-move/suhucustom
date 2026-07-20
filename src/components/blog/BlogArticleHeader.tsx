@@ -53,18 +53,20 @@ export default function BlogArticleHeader({
             </Link>
           ) : null)}
 
-        {categoryName ? (
-          <span className="mt-6 inline-flex rounded-full border border-amber-200/80 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#9a6b1a] shadow-sm backdrop-blur-sm">
-            {categoryName}
-          </span>
-        ) : null}
-
-        <h1 className="mt-4 max-w-4xl text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem]">
+        <h1 className="mt-6 max-w-4xl text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem]">
           {title}
         </h1>
 
         <div className="mt-6 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
+            {categoryName ? (
+              <>
+                <span className="inline-flex rounded-full border border-amber-200/80 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#9a6b1a] shadow-sm backdrop-blur-sm">
+                  {categoryName}
+                </span>
+                <span className="h-1 w-1 rounded-full bg-slate-300" />
+              </>
+            ) : null}
             <span className="inline-flex items-center gap-2">
               <User className="h-4 w-4 text-[#D09947]" aria-hidden />
               {authorName}
