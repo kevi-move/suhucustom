@@ -83,7 +83,7 @@ export async function PATCH(
     return NextResponse.json({ error: "Supabase admin client unavailable" }, { status: 503 });
   }
 
-  const updateData = {
+  const updateData: Record<string, unknown> = {
     ...inputToUpdateRow(parsed.data),
     updated_at: new Date().toISOString(),
   };
