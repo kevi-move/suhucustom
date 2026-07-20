@@ -17,8 +17,8 @@ import {
   textToKeyPoints,
 } from "@/lib/blogExtras";
 import { getFrontendBlogPostUrl } from "@/lib/frontendPreview";
-import { getAllCategories } from "@/lib/categories";
-import { getAllAuthors } from "@/lib/authors";
+import { fetchAllCategoriesAdmin } from "@/lib/categoryAdminApi";
+import { fetchAllAuthorsAdmin } from "@/lib/authorAdminApi";
 import { BlogPostPreviewModal } from "@/components/admin/BlogPostPreviewModal";
 import type { BlogPostPreviewData } from "@/components/blog/BlogPostPagePreview";
 import { ArrowLeft, Save, Eye, Monitor } from "lucide-react";
@@ -72,8 +72,8 @@ export function BlogPostForm({ post, isEditing = false }: BlogPostFormProps) {
   };
 
   useEffect(() => {
-    getAllCategories().then(setCategories);
-    getAllAuthors().then(setAuthors);
+    fetchAllCategoriesAdmin().then(setCategories);
+    fetchAllAuthorsAdmin().then(setAuthors);
   }, []);
 
   useEffect(() => {

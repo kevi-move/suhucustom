@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Author } from "@/types/blog";
-import { getAllAuthors, deleteAuthor } from "@/lib/authors";
+import { fetchAllAuthorsAdmin, deleteAuthorAdmin } from "@/lib/authorAdminApi";
 import { Plus, Edit, Trash2, UserCircle } from "lucide-react";
 import Link from "next/link";
 
@@ -21,7 +21,7 @@ export default function AdminAuthorsPage() {
 
   const loadAuthors = async () => {
     try {
-      const data = await getAllAuthors();
+      const data = await fetchAllAuthorsAdmin();
       setAuthors(data);
     } catch (error) {
       console.error("Error loading authors:", error);
@@ -41,7 +41,7 @@ export default function AdminAuthorsPage() {
 
     setDeleting(id);
     try {
-      await deleteAuthor(id);
+      await deleteAuthorAdmin(id);
       setAuthors(authors.filter((a) => a.id !== id));
     } catch (error) {
       console.error("Error deleting author:", error);

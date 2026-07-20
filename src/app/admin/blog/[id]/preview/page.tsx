@@ -8,8 +8,8 @@ import BlogPostPagePreview, {
   type BlogPostPreviewData,
 } from "@/components/blog/BlogPostPagePreview";
 import { fetchPostByIdAdmin } from "@/lib/blogAdminApi";
-import { getAllCategories } from "@/lib/categories";
-import { getAllAuthors } from "@/lib/authors";
+import { fetchAllCategoriesAdmin } from "@/lib/categoryAdminApi";
+import { fetchAllAuthorsAdmin } from "@/lib/authorAdminApi";
 import { extractBlogExtrasFromContent } from "@/lib/blogExtras";
 import type { BlogPost } from "@/types/blog";
 
@@ -51,8 +51,8 @@ export default function AdminBlogPreviewPage({ params }: AdminBlogPreviewPagePro
       try {
         const [loadedPost, categories, authors] = await Promise.all([
           fetchPostByIdAdmin(id),
-          getAllCategories(),
-          getAllAuthors(),
+          fetchAllCategoriesAdmin(),
+          fetchAllAuthorsAdmin(),
         ]);
 
         if (!loadedPost) {

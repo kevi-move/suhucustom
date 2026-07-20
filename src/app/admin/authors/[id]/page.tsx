@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { AuthorForm } from "@/components/admin/AuthorForm";
 import { Author } from "@/types/blog";
-import { getAuthorById } from "@/lib/authors";
+import { fetchAuthorByIdAdmin } from "@/lib/authorAdminApi";
 
 interface EditAuthorPageProps {
   params: Promise<{ id: string }>;
@@ -20,7 +20,7 @@ export default function EditAuthorPage({ params }: EditAuthorPageProps) {
   useEffect(() => {
     const loadAuthor = async () => {
       try {
-        const data = await getAuthorById(id);
+        const data = await fetchAuthorByIdAdmin(id);
         if (!data) {
           router.push("/admin/authors");
           return;

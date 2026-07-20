@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Category } from "@/types/blog";
 import {
-  getAllCategories,
-  createCategory,
-  updateCategory,
-  deleteCategory,
-} from "@/lib/categories";
+  fetchAllCategoriesAdmin,
+  createCategoryAdmin,
+  updateCategoryAdmin,
+  deleteCategoryAdmin,
+} from "@/lib/categoryAdminApi";
 import { generateSlug } from "@/lib/blog";
 import { Plus, Edit, Trash2, X, Check, Tag } from "lucide-react";
 
@@ -37,7 +37,7 @@ export default function AdminCategoriesPage() {
 
   const loadCategories = async () => {
     try {
-      const data = await getAllCategories();
+      const data = await fetchAllCategoriesAdmin();
       setCategories(data);
     } catch (error) {
       console.error("Error loading categories:", error);
@@ -70,15 +70,16 @@ export default function AdminCategoriesPage() {
     setSaving(true);
     try {
       if (editingId) {
-        await updateCategory(editingId, { name: name.trim(), slug: slug.trim() });
+        await updateCategoryAdmin(editingId, { name: name.trim(), slug: slug.trim() });
       } else {
-        await createCategory({ name: name.trim(), slug: slug.trim() });
+        await createCategoryAdmin({ name: name.trim(), slug: slug.trim() });
       }
       await loadCategories();
       resetForm();
     } catch (error) {
       console.error("Error saving category:", error);
-      alert("Failed to save category. Please try again.");
+      const msg = error instanceof Error ? error.message : "Please try again.";
+      alert(`Failed to save category: ${msg}`);
       setSaving(false);
     }
   };
@@ -94,7 +95,7 @@ export default function AdminCategoriesPage() {
 
     setDeleting(id);
     try {
-      await deleteCategory(id);
+      await deleteCategoryAdmin(id);
       setCategories(categories.filter((c) => c.id !== id));
     } catch (error) {
       console.error("Error deleting category:", error);

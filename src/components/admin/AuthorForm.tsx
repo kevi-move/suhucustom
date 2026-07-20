@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { TiptapEditor } from "./TiptapEditor";
 import { ImageUpload } from "./ImageUpload";
 import { Author, AuthorInput } from "@/types/blog";
-import { createAuthor, updateAuthor } from "@/lib/authors";
+import { createAuthorAdmin, updateAuthorAdmin } from "@/lib/authorAdminApi";
 import { generateSlug } from "@/lib/blog";
 import { ArrowLeft, Save } from "lucide-react";
 import Link from "next/link";
@@ -53,9 +53,9 @@ export function AuthorForm({ author, isEditing = false }: AuthorFormProps) {
       };
 
       if (isEditing && author) {
-        await updateAuthor(author.id, input);
+        await updateAuthorAdmin(author.id, input);
       } else {
-        await createAuthor(input);
+        await createAuthorAdmin(input);
       }
 
       router.push("/admin/authors");
