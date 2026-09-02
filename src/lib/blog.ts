@@ -2,6 +2,12 @@ import { supabase, isSupabaseConfigured } from "./supabase";
 import { getAllAuthors } from "./authors";
 import { getAllCategories } from "./categories";
 import { BlogPost, BlogPostInput, BlogPostPublic } from "@/types/blog";
+import { getRequestLocale } from "@/lib/i18n/server";
+import type { Locale } from "@/lib/i18n/locales";
+import {
+  applyBlogPostTranslation,
+  applyBlogPostsTranslation,
+} from "@/lib/translations/blogSync";
 
 const TABLE_NAME = "blog_posts";
 
@@ -136,16 +142,25 @@ async function enrichPostsForPublic(posts: BlogPost[]): Promise<BlogPostPublic[]
   }));
 }
 
-export async function getPublishedPostsForPublic(): Promise<BlogPostPublic[]> {
+export async function getPublishedPostsForPublic(
+  locale?: Locale
+): Promise<BlogPostPublic[]> {
+  const activeLocale = locale ?? (await getRequestLocale());
   const posts = await getPublishedPosts();
-  return enrichPostsForPublic(posts);
+  const enriched = await enrichPostsForPublic(posts);
+  return applyBlogPostsTranslation(enriched, activeLocale);
 }
 
-export async function getPublishedPostForPublic(slug: string): Promise<BlogPostPublic | null> {
+export async function getPublishedPostForPublic(
+  slug: string,
+  locale?: Locale
+): Promise<BlogPostPublic | null> {
+  const activeLocale = locale ?? (await getRequestLocale());
   const post = await getPublishedPostBySlug(slug);
   if (!post) return null;
   const [enriched] = await enrichPostsForPublic([post]);
-  return enriched ?? null;
+  if (!enriched) return null;
+  return applyBlogPostTranslation(enriched, activeLocale);
 }
 
 export async function createPost(

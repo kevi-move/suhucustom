@@ -1,21 +1,74 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { EditableImage, EditableText } from "@/components/cms";
 
+const SLIDES = [
+  {
+    path: "factoryIntro.image",
+    src: "/generated/home/factory-intro.png",
+    alt: "Suhu Custom garment factory floor",
+  },
+  {
+    path: "factoryIntro.image2",
+    src: "/generated/about-us/suhucustom-small-garment-production-process-quality-inspection.png",
+    alt: "Garment production and quality inspection",
+  },
+  {
+    path: "factoryIntro.image3",
+    src: "/generated/about-us/suhucustom-two-sisters-garment-factory-story-dongguan.png",
+    alt: "Suhu Custom factory team in Dongguan",
+  },
+] as const;
+
+const AUTO_MS = 4500;
+
 export default function HomeFactoryIntro() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % SLIDES.length);
+    }, AUTO_MS);
+    return () => window.clearInterval(id);
+  }, [paused]);
+
+  const go = (next: number) => {
+    setIndex((next + SLIDES.length) % SLIDES.length);
+  };
+
   return (
     <div className="bg-slate-50 py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-200 shadow-sm sm:aspect-[3/2]">
-          <EditableImage
-            path="factoryIntro.image"
-            src="/generated/home/factory-intro.png"
-            alt="Suhu Custom garment factory floor"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-amber-900/10 via-transparent to-slate-900/10" />
-          <div className="absolute bottom-4 left-4 rounded-2xl bg-white/90 px-4 py-3 text-xs text-slate-800 shadow-lg sm:text-sm">
+        <div
+          className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-200 shadow-sm sm:aspect-[3/2]"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {SLIDES.map((slide, i) => (
+            <div
+              key={slide.path}
+              className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                i === index ? "opacity-100" : "pointer-events-none opacity-0"
+              }`}
+              aria-hidden={i !== index}
+            >
+              <EditableImage
+                path={slide.path}
+                src={slide.src}
+                alt={slide.alt}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ))}
+
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-amber-900/10 via-transparent to-slate-900/10" />
+
+          <div className="absolute bottom-4 left-4 z-10 max-w-[85%] rounded-2xl bg-white/90 px-4 py-3 text-xs text-slate-800 shadow-lg sm:text-sm">
             <p className="font-semibold">
               <EditableText
                 path="factoryIntro.overlayTitle"
@@ -28,6 +81,38 @@ export default function HomeFactoryIntro() {
                 value="In‑house sampling, cutting, sewing & QC for stable quality."
               />
             </p>
+          </div>
+
+          <button
+            type="button"
+            aria-label="Previous factory photo"
+            onClick={() => go(index - 1)}
+            className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-slate-800 shadow-sm transition hover:bg-white"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next factory photo"
+            onClick={() => go(index + 1)}
+            className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-slate-800 shadow-sm transition hover:bg-white"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
+          <div className="absolute bottom-4 right-4 z-10 flex gap-1.5">
+            {SLIDES.map((slide, i) => (
+              <button
+                key={slide.path}
+                type="button"
+                aria-label={`Show factory photo ${i + 1}`}
+                aria-current={i === index}
+                onClick={() => setIndex(i)}
+                className={`h-2 rounded-full transition ${
+                  i === index ? "w-5 bg-amber-500" : "w-2 bg-white/80 hover:bg-white"
+                }`}
+              />
+            ))}
           </div>
         </div>
 

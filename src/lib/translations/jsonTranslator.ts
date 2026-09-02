@@ -6,7 +6,7 @@ const SKIP_VALUE_PATTERN =
 function shouldTranslateString(key: string, value: string): boolean {
   const trimmed = value.trim();
   if (!trimmed) return false;
-  if (trimmed.length > 5000) return false;
+  if (trimmed.length > 50_000) return false;
   if (SKIP_KEY_PATTERN.test(key)) return false;
   if (SKIP_VALUE_PATTERN.test(trimmed)) return false;
   if (/\.(webp|png|jpe?g|gif|svg|avif|pdf)(\?|$)/i.test(trimmed)) return false;

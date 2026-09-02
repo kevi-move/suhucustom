@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { after } from "next/server";
 import { z } from "zod";
 import { resolveAdminEmail } from "@/lib/requestAdmin";
 import { createAdminSupabaseClient, isSupabaseAdminConfigured } from "@/lib/supabase/adminServer";
 import { inputToInsertRow, postToJson, rowToPost } from "@/lib/blogRow";
+import { isTranslationConfigured } from "@/lib/deepl/client";
+import { syncBlogPostTranslation } from "@/lib/translations/blogSync";
 
 const blogPostInputSchema = z.object({
   title: z.string().min(1),
@@ -29,6 +32,17 @@ function missingServiceRole() {
     },
     { status: 503 }
   );
+}
+
+function scheduleBlogTranslation(post: ReturnType<typeof rowToPost>) {
+  if (!isTranslationConfigured()) return;
+  after(async () => {
+    try {
+      await syncBlogPostTranslation(post);
+    } catch (error) {
+      console.error("Blog translation sync failed:", error);
+    }
+  });
 }
 
 export async function GET(request: NextRequest) {
@@ -78,7 +92,7 @@ export async function POST(request: NextRequest) {
   const { data, error } = await supabase
     .from("blog_posts")
     .insert(insertData)
-    .select("id")
+    .select("*")
     .single();
 
   if (error) {
@@ -86,5 +100,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Failed to create post" }, { status: 500 });
   }
 
-  return NextResponse.json({ id: data.id });
+  const post = rowToPost(data);
+  scheduleBlogTranslation(post);
+
+  return NextResponse.json({ id: post.id });
 }

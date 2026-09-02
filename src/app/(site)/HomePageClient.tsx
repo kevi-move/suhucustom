@@ -3,8 +3,8 @@
 import HomeHero from "@/components/home/HomeHero";
 import HomeCategoryNav from "@/components/home/HomeCategoryNav";
 import HomeFactoryIntro from "@/components/home/HomeFactoryIntro";
+import HomeHowWeWork from "@/components/home/HomeHowWeWork";
 import HomeTrustSection from "@/components/home/HomeTrustSection";
-import HomeCaseStudies from "@/components/home/HomeCaseStudies";
 import HomeCTASection from "@/components/home/HomeCTASection";
 import { CMSProvider } from "@/contexts/CMSContext";
 import { PageEditToolbar } from "@/components/cms/PageEditToolbar";
@@ -40,10 +40,10 @@ export default function HomePageClient({
           <HomeFactoryIntro />
         </section>
         <section>
-          <HomeTrustSection />
+          <HomeHowWeWork />
         </section>
         <section>
-          <HomeCaseStudies />
+          <HomeTrustSection />
         </section>
         <section>
           <HomeCTASection />

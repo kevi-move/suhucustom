@@ -3,8 +3,8 @@ import { after } from "next/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { upsertPageContent, getPageContent } from "@/lib/pageContent";
 import { resolveAdminEmail } from "@/lib/requestAdmin";
+import { isTranslationConfigured } from "@/lib/deepl/client";
 import { syncPageContentTranslation } from "@/lib/translations/sync";
-import { isDeepLConfigured } from "@/lib/deepl/client";
 
 function validateContent(content: unknown): { valid: boolean; error?: string } {
   if (!content || typeof content !== "object") {
@@ -78,7 +78,7 @@ export async function PUT(request: NextRequest) {
     revalidateTag(`page-content:${pageSlug}`, "default");
     revalidatePath(pageSlug);
 
-    if (isDeepLConfigured()) {
+    if (isTranslationConfigured()) {
       after(async () => {
         try {
           await syncPageContentTranslation(pageSlug, content, result.version ?? 1);

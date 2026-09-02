@@ -5,7 +5,7 @@ import { DEFAULT_LOCALE } from "@/lib/i18n/locales";
 
 const TABLE = "content_translations";
 
-export type TranslationSourceType = "page" | "seo" | "ui";
+export type TranslationSourceType = "page" | "seo" | "ui" | "blog";
 
 function getClient() {
   return createAdminSupabaseClient() ?? supabase;

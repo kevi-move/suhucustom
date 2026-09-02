@@ -6,6 +6,55 @@ function stripBold(text) {
   return text.replace(/\*\*(.+?)\*\*/g, "$1").trim();
 }
 
+/** Remove markdown tables, headings, and other non-prose blocks from summary text. */
+function cleanSummaryText(text) {
+  if (!text) return "";
+
+  const lines = text.split(/\r?\n/);
+  const prose = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    if (/^#{1,6}\s/.test(trimmed)) continue;
+    if (/^\|/.test(trimmed)) continue;
+    if (/^[-|:\s]+$/.test(trimmed)) continue;
+    if (/^[-*]\s+\[[ xX]\]/.test(trimmed)) continue;
+    prose.push(stripBold(trimmed.replace(/\[(.+?)\]\(.+?\)/g, "$1")));
+  }
+
+  return prose.join(" ").replace(/\s{2,}/g, " ").trim();
+}
+
+const APPENDIX_HEADING =
+  /^#{2,3}\s+(howto json-ld|faqpage json-ld|structured data \(json-ld\))\s*$/i;
+
+/** Remove SEO appendix blocks, task-list checkboxes, and horizontal rules. */
+export function stripImportArtifacts(markdown) {
+  const lines = markdown.split(/\r?\n/);
+  let cutAt = lines.length;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (APPENDIX_HEADING.test(lines[i].trim())) {
+      cutAt = i;
+      if (i > 0 && lines[i - 1].trim() === "---") {
+        cutAt = i - 1;
+      }
+      break;
+    }
+  }
+
+  let body = lines.slice(0, cutAt).join("\n");
+
+  body = body.replace(/<details>[\s\S]*?<\/details>/gi, "");
+  body = body.replace(/\n```json[\s\S]*?```\s*$/gi, "");
+  body = body.replace(/^(\s*[-*])\s+\[[ xX]\]\s+/gm, "$1 ");
+  body = body.replace(/^---\s*$/gm, "");
+  body = body.replace(/\n{3,}/g, "\n\n").trim();
+
+  return body;
+}
+
 function parseBulletList(lines, startIndex) {
   const items = [];
   let i = startIndex;
@@ -27,17 +76,33 @@ function parseBulletList(lines, startIndex) {
 
 function parseFaqsFromSection(text) {
   const faqs = [];
-  const blocks = text.split(/\n(?=\*\*)/);
+  const trimmed = text.trim();
 
+  if (/^###\s+/m.test(trimmed)) {
+    const blocks = trimmed.split(/\n(?=###\s+)/);
+    for (const block of blocks) {
+      const match = block.match(/^###\s+(.+?)\s*\n([\s\S]*)$/);
+      if (!match) continue;
+
+      const question = stripBold(match[1].replace(/^\d+\.\s*/, ""));
+      const answer = stripBold(match[2].trim());
+      if (question && answer) {
+        faqs.push({ question, answer });
+      }
+    }
+    if (faqs.length > 0) return faqs;
+  }
+
+  const blocks = trimmed.split(/\n(?=\*\*)/);
   for (const block of blocks) {
-    const trimmed = block.trim();
-    if (!trimmed) continue;
+    const blockTrimmed = block.trim();
+    if (!blockTrimmed) continue;
 
-    const match = trimmed.match(/^\*\*(.+?)\*\*\s*\n([\s\S]*)$/);
+    const match = blockTrimmed.match(/^\*\*(.+?)\*\*\s*\n([\s\S]*)$/);
     if (!match) continue;
 
-    const question = match[1].trim();
-    const answer = match[2].trim().replace(/\*\*(.+?)\*\*/g, "$1");
+    const question = stripBold(match[1].replace(/^\d+\.\s*/, ""));
+    const answer = stripBold(match[2].trim());
 
     if (question && answer) {
       faqs.push({ question, answer });
@@ -81,15 +146,14 @@ function findSection(body, headingNames) {
     }
   }
 
-  const sectionLines = lines.slice(start + 1, end);
-  const sectionText = sectionLines.join("\n").trim();
+  const sectionText = lines.slice(start + 1, end).join("\n").trim();
   const remaining = [...lines.slice(0, start), ...lines.slice(end)].join("\n").trim();
 
   return { sectionText, remainingBody: remaining };
 }
 
 export function extractBlogExtras(bodyMarkdown, metadata = {}) {
-  let body = bodyMarkdown;
+  let body = stripImportArtifacts(bodyMarkdown);
   let aiSummary = metadata["ai summary"] || "";
   let keyPoints = [];
 
@@ -101,7 +165,11 @@ export function extractBlogExtras(bodyMarkdown, metadata = {}) {
     }
   }
 
-  const keyPointsSection = findSection(body, ["key points"]);
+  const keyPointsSection = findSection(body, [
+    "key points",
+    "key takeaways",
+    "key takeaways for buyers",
+  ]);
   if (keyPointsSection) {
     const lines = keyPointsSection.sectionText.split(/\r?\n/);
     keyPoints = parseBulletList(lines, 0).items;
@@ -120,6 +188,36 @@ export function extractBlogExtras(bodyMarkdown, metadata = {}) {
     body = faqSection.remainingBody;
   }
 
+  body = stripImportArtifacts(body);
+
+  if (!aiSummary) {
+    const introParts = [];
+    const firstParagraph = body
+      .split(/\n{2,}/)
+      .map((block) => block.trim())
+      .find(
+        (block) =>
+          block &&
+          !block.startsWith("#") &&
+          !block.startsWith("|") &&
+          !block.startsWith("![") &&
+          !block.startsWith("- [")
+      );
+
+    if (firstParagraph) {
+      introParts.push(
+        firstParagraph
+          .replace(/\*\*(.+?)\*\*/g, "$1")
+          .replace(/\[(.+?)\]\(.+?\)/g, "$1")
+          .trim()
+      );
+    }
+
+    if (introParts.length > 0) {
+      aiSummary = cleanSummaryText(introParts.join("\n\n"));
+    }
+  }
+
   if (!aiSummary) {
     const introBlocks = body
       .split(/\n{2,}/)
@@ -134,13 +232,12 @@ export function extractBlogExtras(bodyMarkdown, metadata = {}) {
       );
 
     if (introBlocks.length > 0) {
-      aiSummary = introBlocks
-        .slice(0, 2)
-        .join(" ")
-        .replace(/\*\*(.+?)\*\*/g, "$1")
-        .replace(/\[(.+?)\]\(.+?\)/g, "$1")
-        .trim();
+      aiSummary = cleanSummaryText(introBlocks.slice(0, 1).join(" "));
     }
+  }
+
+  if (aiSummary.length > 320) {
+    aiSummary = `${aiSummary.slice(0, 317).replace(/\s+\S*$/, "")}…`;
   }
 
   if (keyPoints.length === 0) {

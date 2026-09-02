@@ -11,7 +11,9 @@ import { fileURLToPath } from "node:url";
 import { createClient } from "@supabase/supabase-js";
 import { marked } from "marked";
 import { extractBlogExtras } from "./lib/parse-blog-markdown.mjs";
+import { parseArticleHtml } from "./lib/parse-article-html.mjs";
 import { injectBlogExtrasIntoContent } from "./lib/blog-extras.mjs";
+import { applyBlogExtrasOverride } from "./lib/blog-extras-overrides.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -40,17 +42,44 @@ function stripBackticks(value) {
   return value.replace(/^`(.+)`$/, "$1").trim();
 }
 
+function parseOptionalYamlFrontMatter(raw) {
+  if (!raw.startsWith("---")) {
+    return { metadata: {}, content: raw };
+  }
+
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
+  if (!match) {
+    return { metadata: {}, content: raw };
+  }
+
+  const metadata = {};
+  for (const line of match[1].split("\n")) {
+    const parsed = line.match(/^([a-zA-Z0-9_ -]+):\s*(.+)$/);
+    if (!parsed) continue;
+    const key = parsed[1].trim().toLowerCase().replace(/_/g, " ");
+    metadata[key] = stripBackticks(parsed[2].trim().replace(/^["']|["']$/g, ""));
+  }
+
+  return { metadata, content: raw.slice(match[0].length) };
+}
+
 function parseArticleMarkdown(raw) {
-  const lines = raw.replace(/^\uFEFF/, "").split(/\r?\n/);
+  const normalized = raw.replace(/^\uFEFF/, "");
+  const { metadata: yamlMetadata, content } = parseOptionalYamlFrontMatter(normalized);
+  const hasYamlFrontMatter = Object.keys(yamlMetadata).length > 0;
+  const lines = content.split(/\r?\n/);
   let title = "";
   const metadata = {};
   let separatorIndex = -1;
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    if (line.trim() === "---") {
-      separatorIndex = i;
-      break;
+    if (!hasYamlFrontMatter && line.trim() === "---") {
+      const hasMarkdownMeta = Object.keys(metadata).length > 0;
+      if (hasMarkdownMeta || (title && i <= 25)) {
+        separatorIndex = i;
+        break;
+      }
     }
     if (!title && line.startsWith("# ")) {
       title = line.slice(2).trim();
@@ -60,23 +89,58 @@ function parseArticleMarkdown(raw) {
     if (meta) metadata[meta.key] = stripBackticks(meta.value);
   }
 
-  const body =
+  const bodyStart =
     separatorIndex >= 0
       ? lines.slice(separatorIndex + 1).join("\n").trim()
       : lines.join("\n").trim();
 
+  const inlineMeta = {};
+  const bodyLines = bodyStart.split(/\r?\n/);
+  let bodyStartIndex = 0;
+  for (let i = 0; i < bodyLines.length; i++) {
+    const line = bodyLines[i].trim();
+    if (!line) continue;
+    if (line === "---") {
+      bodyStartIndex = i + 1;
+      continue;
+    }
+    const meta = parseMetadataLine(line);
+    if (!meta) {
+      if (Object.keys(inlineMeta).length > 0) {
+        bodyStartIndex = i;
+        break;
+      }
+      bodyStartIndex = i;
+      break;
+    }
+    inlineMeta[meta.key] = stripBackticks(meta.value);
+    bodyStartIndex = i + 1;
+  }
+
+  const mergedMetadata = { ...yamlMetadata, ...metadata, ...inlineMeta };
+  let body = bodyLines.slice(bodyStartIndex).join("\n").trim();
+
+  if (title) {
+    const titleHeading = `# ${title}`;
+    if (body.startsWith(titleHeading)) {
+      body = body.slice(titleHeading.length).replace(/^\s+/, "");
+    }
+  }
+
   const slug =
-    metadata["url slug"] ||
-    metadata["suggested slug"] ||
+    mergedMetadata["url slug"] ||
+    mergedMetadata["suggested slug"] ||
     title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)/g, "");
 
-  const metaTitle = metadata["seo title"] || title;
-  const metaDescription = metadata["meta description"] || "";
+  const metaTitle = mergedMetadata["seo title"] || title;
+  const metaDescription = mergedMetadata["meta description"] || "";
   const featuredImage =
-    metadata["featured image"] || metadata["suggested featured image filename"] || "";
+    mergedMetadata["featured image"] ||
+    mergedMetadata["suggested featured image filename"] ||
+    "";
 
   const excerpt =
     metaDescription ||
@@ -97,7 +161,7 @@ function parseArticleMarkdown(raw) {
     featuredImage,
     excerpt,
     bodyMarkdown: body,
-    metadata,
+    metadata: mergedMetadata,
   };
 }
 
@@ -111,14 +175,34 @@ function markdownToHtml(markdown) {
 
 async function importArticle(admin, filePath, authorEmail) {
   const raw = fs.readFileSync(filePath, "utf8");
-  const parsed = parseArticleMarkdown(raw);
-  const extracted = extractBlogExtras(parsed.bodyMarkdown, parsed.metadata || {});
-  const bodyHtml = markdownToHtml(extracted.bodyMarkdown);
-  const content = injectBlogExtrasIntoContent(bodyHtml, {
+  const ext = path.extname(filePath).toLowerCase();
+
+  let parsed;
+  let extracted;
+  let bodyHtml;
+
+  if (ext === ".html") {
+    parsed = parseArticleHtml(raw, filePath);
+    extracted = {
+      bodyMarkdown: "",
+      aiSummary: parsed.aiSummary,
+      keyPoints: parsed.keyPoints,
+      faqs: parsed.faqs,
+    };
+    bodyHtml = parsed.bodyHtml;
+  } else {
+    parsed = parseArticleMarkdown(raw);
+    extracted = extractBlogExtras(parsed.bodyMarkdown, parsed.metadata || {});
+    bodyHtml = markdownToHtml(extracted.bodyMarkdown);
+  }
+
+  const extras = applyBlogExtrasOverride(parsed.slug, {
     aiSummary: extracted.aiSummary,
     keyPoints: extracted.keyPoints,
     faqs: extracted.faqs,
   });
+
+  const content = injectBlogExtrasIntoContent(bodyHtml, extras);
 
   const { data: existing, error: existingError } = await admin
     .from("blog_posts")
@@ -162,9 +246,9 @@ async function importArticle(admin, filePath, authorEmail) {
       post: data,
       parsed: {
         ...parsed,
-        aiSummary: extracted.aiSummary,
-        keyPointsCount: extracted.keyPoints.length,
-        faqsCount: extracted.faqs.length,
+        aiSummary: extras.aiSummary,
+        keyPointsCount: extras.keyPoints.length,
+        faqsCount: extras.faqs.length,
       },
     };
   }
@@ -181,9 +265,9 @@ async function importArticle(admin, filePath, authorEmail) {
     post: data,
     parsed: {
       ...parsed,
-      aiSummary: extracted.aiSummary,
-      keyPointsCount: extracted.keyPoints.length,
-      faqsCount: extracted.faqs.length,
+      aiSummary: extras.aiSummary,
+      keyPointsCount: extras.keyPoints.length,
+      faqsCount: extras.faqs.length,
     },
   };
 }
@@ -203,7 +287,7 @@ function resolveInputPaths(args) {
     }
     return fs
       .readdirSync(dir)
-      .filter((name) => name.endsWith(".md"))
+      .filter((name) => /\.(md|html)$/i.test(name))
       .map((name) => path.join(dir, name));
   }
 
@@ -226,7 +310,7 @@ async function main() {
 
   const files = resolveInputPaths(process.argv.slice(2));
   if (files.length === 0) {
-    console.error("No .md files found to import.");
+    console.error("No .md or .html files found to import.");
     process.exit(1);
   }
 

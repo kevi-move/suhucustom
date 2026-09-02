@@ -5,6 +5,8 @@ import { EN_UI_STRINGS, collectUiStringCatalog } from "@/lib/i18n/uiCatalog";
 import { ALL_SEO_DEFAULTS } from "@/lib/seoDefaults";
 import { getCachedTranslation, upsertTranslation } from "@/lib/translations/store";
 import { translateJsonStrings } from "@/lib/translations/jsonTranslator";
+import { syncBlogPostTranslation } from "@/lib/translations/blogSync";
+import type { BlogPost } from "@/types/blog";
 
 const UI_SOURCE_ID = "site";
 
@@ -78,10 +80,35 @@ export async function getTranslatedSeo(
   };
 }
 
+export async function syncPublishedBlogTranslations(
+  posts: Array<
+    Pick<
+      BlogPost,
+      "id" | "title" | "excerpt" | "content" | "metaTitle" | "metaDescription" | "updatedAt" | "status" | "slug"
+    >
+  >
+): Promise<string[]> {
+  const synced: string[] = [];
+  for (const post of posts) {
+    if (post.status !== "published") continue;
+    await syncBlogPostTranslation(post);
+    synced.push(post.slug);
+  }
+  return synced;
+}
+
 export async function bootstrapAllTranslations(
   pageSlugs: string[],
-  loadPageContent: (slug: string) => Promise<{ content: Record<string, unknown>; version: number }>
-): Promise<{ ui: boolean; seo: boolean; pages: string[] }> {
+  loadPageContent: (slug: string) => Promise<{ content: Record<string, unknown>; version: number }>,
+  loadPublishedPosts?: () => Promise<
+    Array<
+      Pick<
+        BlogPost,
+        "id" | "title" | "excerpt" | "content" | "metaTitle" | "metaDescription" | "updatedAt" | "status" | "slug"
+      >
+    >
+  >
+): Promise<{ ui: boolean; seo: boolean; pages: string[]; blogs: string[] }> {
   await syncUiTranslations();
   await syncSeoTranslations();
 
@@ -94,5 +121,9 @@ export async function bootstrapAllTranslations(
     }
   }
 
-  return { ui: true, seo: true, pages: syncedPages };
+  const syncedBlogs = loadPublishedPosts
+    ? await syncPublishedBlogTranslations(await loadPublishedPosts())
+    : [];
+
+  return { ui: true, seo: true, pages: syncedPages, blogs: syncedBlogs };
 }

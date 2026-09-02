@@ -21,6 +21,9 @@ export const PAGE_CONTENT_DEFAULTS: Record<EditablePageSlug, Record<string, unkn
     },
     factoryIntro: {
       image: "/generated/home/factory-intro.png",
+      image2:
+        "/generated/about-us/suhucustom-small-garment-production-process-quality-inspection.png",
+      image3: "/generated/about-us/suhucustom-two-sisters-garment-factory-story-dongguan.png",
       overlayTitle: "Your Reliable Apparel Manufacturing Partner",
       overlaySubtitle: "In‑house sampling, cutting, sewing & QC for stable quality.",
       eyebrow: "About Our Factory",
@@ -39,6 +42,24 @@ export const PAGE_CONTENT_DEFAULTS: Record<EditablePageSlug, Record<string, unkn
       stat4Value: "OEM / ODM support",
       stat4Detail: "Tech pack development, fabric sourcing & branding.",
       ctaText: "Learn More About Our Factory",
+    },
+    howWeWork: {
+      eyebrow: "Partnership Flow",
+      title: "How to Work With Us",
+      subtitle: "A straightforward process from your first requirements to finished products.",
+      step1Title: "Share Your Requirements",
+      step1Body:
+        "Send us your tech pack, reference images, product specifications or initial idea. We’ll review what you need and clarify the key details for production.",
+      step2Title: "Review, Quote & Sample",
+      step2Body:
+        "We review your requirements, prepare a project quotation and develop a sample based on the confirmed specifications.",
+      step3Title: "Approve Your Product",
+      step3Body:
+        "Review the sample, provide feedback and confirm the final specifications before production begins.",
+      step4Title: "Bulk Production & Delivery",
+      step4Body:
+        "Once approved, your product moves into bulk production. Finished goods are checked according to the project requirements before delivery.",
+      ctaText: "Start Your Instant Quote",
     },
     categories: {
       title: "Core Product Categories",

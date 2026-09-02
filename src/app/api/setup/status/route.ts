@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isSupabaseConfigured } from "@/lib/supabase";
 import { isSupabaseAdminConfigured } from "@/lib/supabase/adminServer";
-import { isDeepLConfigured } from "@/lib/deepl/client";
+import { isDeepLConfigured, isTranslationConfigured, getActiveTranslationProvider } from "@/lib/deepl/client";
+import { isGeminiConfigured } from "@/lib/translate/gemini";
 import { resolveAdminEmail } from "@/lib/requestAdmin";
 import { SITE_EMAIL } from "@/lib/siteContact";
 
@@ -31,6 +32,9 @@ export async function GET(request: NextRequest) {
     siteContactEmail: SITE_EMAIL,
     resendTestMode,
     deepl: isDeepLConfigured(),
+    gemini: isGeminiConfigured(),
+    translationProvider: getActiveTranslationProvider(),
+    translationConfigured: isTranslationConfigured(),
     ...(isProduction ? {} : { supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL || null }),
   });
 }

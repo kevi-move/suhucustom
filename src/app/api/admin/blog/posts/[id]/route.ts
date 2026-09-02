@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import { after } from "next/server";
 import { z } from "zod";
 import { resolveAdminEmail } from "@/lib/requestAdmin";
 import { createAdminSupabaseClient, isSupabaseAdminConfigured } from "@/lib/supabase/adminServer";
 import { inputToUpdateRow, postToJson, rowToPost } from "@/lib/blogRow";
+import { isTranslationConfigured } from "@/lib/deepl/client";
+import {
+  deleteBlogPostTranslations,
+  syncBlogPostTranslation,
+} from "@/lib/translations/blogSync";
 
 const blogPostPatchSchema = z
   .object({
@@ -33,6 +39,17 @@ function missingServiceRole() {
     },
     { status: 503 }
   );
+}
+
+function scheduleBlogTranslation(post: ReturnType<typeof rowToPost>) {
+  if (!isTranslationConfigured()) return;
+  after(async () => {
+    try {
+      await syncBlogPostTranslation(post);
+    } catch (error) {
+      console.error("Blog translation sync failed:", error);
+    }
+  });
 }
 
 export async function GET(
@@ -100,12 +117,19 @@ export async function PATCH(
     }
   }
 
-  const { error } = await supabase.from("blog_posts").update(updateData).eq("id", id);
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .update(updateData)
+    .eq("id", id)
+    .select("*")
+    .single();
 
   if (error) {
     console.error("Admin blog update error:", error);
     return NextResponse.json({ error: "Failed to update post" }, { status: 500 });
   }
+
+  scheduleBlogTranslation(rowToPost(data));
 
   return NextResponse.json({ ok: true });
 }
@@ -129,6 +153,16 @@ export async function DELETE(
   if (error) {
     console.error("Admin blog delete error:", error);
     return NextResponse.json({ error: "Failed to delete post" }, { status: 500 });
+  }
+
+  if (isTranslationConfigured()) {
+    after(async () => {
+      try {
+        await deleteBlogPostTranslations(id);
+      } catch (err) {
+        console.error("Blog translation delete failed:", err);
+      }
+    });
   }
 
   return NextResponse.json({ ok: true });

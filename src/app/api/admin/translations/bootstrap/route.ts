@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resolveAdminEmail } from "@/lib/requestAdmin";
-import { isDeepLConfigured } from "@/lib/deepl/client";
+import { isTranslationConfigured } from "@/lib/deepl/client";
 import { bootstrapAllTranslations } from "@/lib/translations/sync";
 import { getPageContent } from "@/lib/pageContent";
 import { CMS_PAGE_SLUGS } from "@/lib/pageContentDefaults";
+import { getPublishedPosts } from "@/lib/blog";
 
 export async function POST(request: NextRequest) {
   const userEmail = await resolveAdminEmail(request);
@@ -11,22 +12,29 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  if (!isDeepLConfigured()) {
+  if (!isTranslationConfigured()) {
     return NextResponse.json(
-      { error: "DEEPL_API_KEY is not configured in .env.local" },
+      {
+        error:
+          "No translation provider configured. Set free GEMINI_API_KEY (https://aistudio.google.com/app/apikey) or DEEPL_API_KEY.",
+      },
       { status: 400 }
     );
   }
 
   try {
-    const result = await bootstrapAllTranslations(CMS_PAGE_SLUGS, async (slug) => {
-      const { content, version } = await getPageContent(slug, "en");
-      return { content, version };
-    });
+    const result = await bootstrapAllTranslations(
+      CMS_PAGE_SLUGS,
+      async (slug) => {
+        const { content, version } = await getPageContent(slug, "en");
+        return { content, version };
+      },
+      async () => getPublishedPosts()
+    );
 
     return NextResponse.json({
       ok: true,
-      message: "Translations bootstrapped for UI, SEO, and CMS pages.",
+      message: "Translations bootstrapped for UI, SEO, CMS pages, and blog posts.",
       ...result,
     });
   } catch (error) {
