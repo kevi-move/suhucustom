@@ -9,7 +9,7 @@ import {
   updateCategoryAdmin,
   deleteCategoryAdmin,
 } from "@/lib/categoryAdminApi";
-import { generateSlug } from "@/lib/blog";
+import { generateSlug } from "@/lib/generateSlug";
 import { Plus, Edit, Trash2, X, Check, Tag } from "lucide-react";
 
 export default function AdminCategoriesPage() {

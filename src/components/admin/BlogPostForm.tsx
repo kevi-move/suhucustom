@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { TiptapEditor } from "./TiptapEditor";
 import { ImageUpload } from "./ImageUpload";
 import { BlogPost, BlogPostInput, Category, Author } from "@/types/blog";
-import { generateSlug } from "@/lib/blog";
+import { generateSlug } from "@/lib/generateSlug";
 import { createPostAdmin, updatePostAdmin } from "@/lib/blogAdminApi";
 import {
   EMPTY_BLOG_EXTRAS,

@@ -6,7 +6,7 @@ import { TiptapEditor } from "./TiptapEditor";
 import { ImageUpload } from "./ImageUpload";
 import { Author, AuthorInput } from "@/types/blog";
 import { createAuthorAdmin, updateAuthorAdmin } from "@/lib/authorAdminApi";
-import { generateSlug } from "@/lib/blog";
+import { generateSlug } from "@/lib/generateSlug";
 import { ArrowLeft, Save } from "lucide-react";
 import Link from "next/link";
 
