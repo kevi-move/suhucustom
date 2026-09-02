@@ -71,34 +71,30 @@ export default function HomeCategoryNav() {
             const defaultImage =
               categoryImages[item.slug] ?? `/generated/home/category-${item.slug}.webp`;
             const cardClassName =
-              "group relative block aspect-[4/3] overflow-hidden rounded-xl transition hover:-translate-y-0.5 hover:shadow-lg sm:aspect-[5/4]";
+              "group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl";
 
             const cardBody = (
               <>
-                <div className="absolute inset-0">
+                <div className="relative h-36 overflow-hidden sm:h-40">
                   <EditableImage
                     path={`categories.images.${item.slug}`}
                     src={defaultImage}
                     alt={item.title}
                     className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-70" />
                 </div>
-                {/* Full-card dark scrim: clear at top, deep at bottom — matches reference */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent"
-                  aria-hidden
-                />
-                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                  <h3 className="text-base font-bold text-white sm:text-lg">
+                <div className="flex flex-1 flex-col gap-2 p-5">
+                  <h3 className="text-sm font-semibold text-slate-900 group-hover:text-amber-600">
                     {item.title}
                   </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-white/90 sm:text-sm">
+                  <p className="line-clamp-2 text-xs leading-relaxed text-slate-500">
                     <EditableText
                       path={`categories.taglines.${item.slug}`}
                       value={DEFAULT_TAGLINES[item.slug] ?? defaultTagline}
                     />
                   </p>
-                  <span className="mt-3 inline-flex items-center text-xs font-medium text-amber-300">
+                  <span className="mt-auto inline-flex items-center pt-2 text-xs font-medium text-amber-600 group-hover:text-amber-700">
                     <EditableText path="categories.viewDetails" value="View service details" />
                     <svg
                       className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5"
