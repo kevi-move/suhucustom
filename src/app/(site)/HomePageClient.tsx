@@ -5,6 +5,7 @@ import HomeCategoryNav from "@/components/home/HomeCategoryNav";
 import HomeFactoryIntro from "@/components/home/HomeFactoryIntro";
 import HomeHowWeWork from "@/components/home/HomeHowWeWork";
 import HomeTrustSection from "@/components/home/HomeTrustSection";
+import AboutFAQ from "@/components/about/AboutFAQ";
 import HomeCTASection from "@/components/home/HomeCTASection";
 import { CMSProvider } from "@/contexts/CMSContext";
 import { PageEditToolbar } from "@/components/cms/PageEditToolbar";
@@ -44,6 +45,9 @@ export default function HomePageClient({
         </section>
         <section>
           <HomeTrustSection />
+        </section>
+        <section>
+          <AboutFAQ />
         </section>
         <section>
           <HomeCTASection />

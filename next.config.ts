@@ -9,6 +9,7 @@ try {
 }
 
 const nextConfig: NextConfig = {
+  trailingSlash: true,
   turbopack: {
     root: __dirname,
   },

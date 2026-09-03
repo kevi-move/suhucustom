@@ -10,8 +10,10 @@ function getFrontendSiteBase(): string {
 /** Absolute or same-origin path to a public page (for admin preview links). */
 export function getFrontendPageUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
+  const withSlash =
+    normalized === "/" ? "/" : normalized.endsWith("/") ? normalized : `${normalized}/`;
   const base = getFrontendSiteBase();
-  return base ? `${base}${normalized}` : normalized;
+  return base ? `${base}${withSlash}` : withSlash;
 }
 
 export function getFrontendBlogPostUrl(slug: string): string {

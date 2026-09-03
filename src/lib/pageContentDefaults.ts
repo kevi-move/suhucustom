@@ -1,4 +1,4 @@
-import { ABOUT_US_DEFAULTS } from "@/lib/aboutUsDefaults";
+import { ABOUT_US_DEFAULTS, FAQ_DEFAULTS } from "@/lib/aboutUsDefaults";
 import { deepMerge } from "@/lib/deepMerge";
 
 export type EditablePageSlug = "/" | "/services" | "/about-us" | "/contact-us" | "/blog";
@@ -14,9 +14,9 @@ export const PAGE_CONTENT_DEFAULTS: Record<EditablePageSlug, Record<string, unkn
       subtitle:
         "From design development to bulk production, Suhu Custom helps you turn ideas into high-quality collections – with flexible MOQ, stable lead time and factory-direct pricing.",
       primaryCtaText: "Get an Instant Quote",
-      primaryCtaHref: "/contact-us",
+      primaryCtaHref: "/contact-us/",
       secondaryCtaText: "View Manufacturing Services",
-      secondaryCtaHref: "/services/t-shirts",
+      secondaryCtaHref: "/services/t-shirts/",
       heroImage: "/generated/home/hero.png",
     },
     factoryIntro: {
@@ -202,11 +202,12 @@ export const PAGE_CONTENT_DEFAULTS: Record<EditablePageSlug, Record<string, unkn
       subtitle:
         "Share your tech packs, reference samples or ideas — our team will respond with a clear production solution.",
       primaryCtaText: "Get a Factory Quote",
-      primaryCtaHref: "/contact-us",
+      primaryCtaHref: "/contact-us/",
       secondaryCtaText: "View More Case Studies",
-      secondaryCtaHref: "/company/case-studies",
+      secondaryCtaHref: "/company/case-studies/",
       backgroundImage: "/generated/home/cta-background.png",
     },
+    faqs: { ...FAQ_DEFAULTS },
   },
   "/services": {
     hero: {

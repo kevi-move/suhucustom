@@ -13,14 +13,20 @@ import { isUnpublishedPath } from "@/lib/unpublishedPaths";
 
 const isBypassEnabled = process.env.NEXT_PUBLIC_ADMIN_BYPASS === "true";
 
+function normalizePathname(pathname: string): string {
+  if (!pathname || pathname === "/") return "/";
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
 function isLocaleExcludedPath(pathname: string): boolean {
+  const path = normalizePathname(pathname);
   return (
-    pathname.startsWith("/admin") ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/auth") ||
-    pathname.startsWith("/_next") ||
-    pathname === "/sitemap.xml" ||
-    pathname === "/robots.txt" ||
+    path.startsWith("/admin") ||
+    path.startsWith("/api") ||
+    path.startsWith("/auth") ||
+    path.startsWith("/_next") ||
+    path === "/sitemap.xml" ||
+    path === "/robots.txt" ||
     /\.[a-zA-Z0-9]+$/.test(pathname)
   );
 }
@@ -90,24 +96,24 @@ export async function middleware(request: NextRequest) {
   });
 
   if (isBypassEnabled) {
-    if (request.nextUrl.pathname === "/admin/login") {
+    if (normalizePathname(request.nextUrl.pathname) === "/admin/login") {
       return withSecurityHeaders(
-        NextResponse.redirect(new URL("/admin/blog", request.url))
+        NextResponse.redirect(new URL("/admin/blog/", request.url))
       );
     }
     return withSecurityHeaders(localeResponse);
   }
 
   if (isAdminLocalGateEnabled()) {
-    const { pathname } = request.nextUrl;
-    const isGateApi = pathname.startsWith("/api/admin-local-gate/");
+    const pathname = normalizePathname(request.nextUrl.pathname);
+    const isGateApi = pathname.startsWith("/api/admin-local-gate");
     const isAdminLogin = pathname === "/admin/login";
 
     if (pathname.startsWith("/admin") && !isAdminLogin) {
       const ok = await verifyAdminLocalGateFromRequest(request);
       if (!ok) {
-        const loginUrl = new URL("/admin/login", request.url);
-        loginUrl.searchParams.set("redirect", pathname);
+        const loginUrl = new URL("/admin/login/", request.url);
+        loginUrl.searchParams.set("redirect", request.nextUrl.pathname);
         return withSecurityHeaders(NextResponse.redirect(loginUrl));
       }
       return withSecurityHeaders(localeResponse);
@@ -149,19 +155,19 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { pathname } = request.nextUrl;
+  const pathname = normalizePathname(request.nextUrl.pathname);
 
   if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
     if (!user?.email) {
-      const loginUrl = new URL("/admin/login", request.url);
-      loginUrl.searchParams.set("redirect", pathname);
+      const loginUrl = new URL("/admin/login/", request.url);
+      loginUrl.searchParams.set("redirect", request.nextUrl.pathname);
       return withSecurityHeaders(NextResponse.redirect(loginUrl));
     }
 
     const admin = await isUserAdmin(user.email, supabase);
     if (!admin) {
-      const loginUrl = new URL("/admin/login", request.url);
-      loginUrl.searchParams.set("redirect", pathname);
+      const loginUrl = new URL("/admin/login/", request.url);
+      loginUrl.searchParams.set("redirect", request.nextUrl.pathname);
       loginUrl.searchParams.set("error", "forbidden");
       return withSecurityHeaders(NextResponse.redirect(loginUrl));
     }

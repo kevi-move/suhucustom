@@ -154,6 +154,7 @@ export default function AdminContentPage() {
   const renderHomeForm = (form: PageContentForm, index: number) => {
     const hero = (form.content.hero || {}) as Record<string, string>;
     const cta = (form.content.cta || {}) as Record<string, string>;
+    const faqs = (form.content.faqs || {}) as Record<string, string>;
     return (
       <>
         <h3 style={{ color: "#fff", fontSize: "16px", marginBottom: "10px" }}>
@@ -208,6 +209,37 @@ export default function AdminContentPage() {
           onChange={(v) => updateContentField(index, "hero.secondaryCtaHref", v)}
           style={inputStyle}
         />
+
+        <h3 style={{ color: "#fff", fontSize: "16px", margin: "24px 0 10px" }}>FAQ</h3>
+        <Field
+          label={"\u533a\u5757\u5c0f\u6807\u9898 (Eyebrow)"}
+          value={faqs.eyebrow || ""}
+          onChange={(v) => updateContentField(index, "faqs.eyebrow", v)}
+          style={inputStyle}
+        />
+        <Field
+          label={"FAQ \u6807\u9898"}
+          value={faqs.title || ""}
+          onChange={(v) => updateContentField(index, "faqs.title", v)}
+          style={inputStyle}
+        />
+        {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+          <div key={n} style={{ marginTop: 12 }}>
+            <Field
+              label={`Q${n}`}
+              value={faqs[`q${n}`] || ""}
+              onChange={(v) => updateContentField(index, `faqs.q${n}`, v)}
+              style={inputStyle}
+            />
+            <Field
+              label={`A${n}`}
+              value={faqs[`a${n}`] || ""}
+              onChange={(v) => updateContentField(index, `faqs.a${n}`, v)}
+              style={inputStyle}
+              textarea
+            />
+          </div>
+        ))}
 
         <h3 style={{ color: "#fff", fontSize: "16px", margin: "24px 0 10px" }}>
           {"\u9996\u9875\u5e95\u90e8"} CTA
@@ -506,6 +538,44 @@ export default function AdminContentPage() {
           onChange={(v) => updateContentField(index, "team.image", v)}
           style={inputStyle}
         />
+
+        <h3 style={{ color: "#fff", fontSize: "16px", margin: "24px 0 10px" }}>FAQ</h3>
+        {(() => {
+          const faqs = (form.content.faqs || {}) as Record<string, string>;
+          return (
+            <>
+              <Field
+                label={"\u533a\u5757\u5c0f\u6807\u9898 (Eyebrow)"}
+                value={faqs.eyebrow || ""}
+                onChange={(v) => updateContentField(index, "faqs.eyebrow", v)}
+                style={inputStyle}
+              />
+              <Field
+                label={"FAQ \u6807\u9898"}
+                value={faqs.title || ""}
+                onChange={(v) => updateContentField(index, "faqs.title", v)}
+                style={inputStyle}
+              />
+              {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                <div key={n} style={{ marginTop: 12 }}>
+                  <Field
+                    label={`Q${n}`}
+                    value={faqs[`q${n}`] || ""}
+                    onChange={(v) => updateContentField(index, `faqs.q${n}`, v)}
+                    style={inputStyle}
+                  />
+                  <Field
+                    label={`A${n}`}
+                    value={faqs[`a${n}`] || ""}
+                    onChange={(v) => updateContentField(index, `faqs.a${n}`, v)}
+                    style={inputStyle}
+                    textarea
+                  />
+                </div>
+              ))}
+            </>
+          );
+        })()}
 
         <h3 style={{ color: "#fff", fontSize: "16px", margin: "24px 0 10px" }}>
           {"\u5e95\u90e8"} CTA

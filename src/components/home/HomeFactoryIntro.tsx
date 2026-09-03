@@ -189,7 +189,7 @@ export default function HomeFactoryIntro() {
 
           <div className="mt-6">
             <Link
-              href="/about-us"
+              href="/about-us/"
               className="inline-flex items-center rounded-full bg-amber-500 px-6 py-2.5 text-sm font-medium text-slate-900 shadow-sm transition hover:bg-amber-400"
             >
               <EditableText path="factoryIntro.ctaText" value="Learn More About Our Factory" />

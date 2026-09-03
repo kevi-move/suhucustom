@@ -23,9 +23,17 @@ export function stripLocalePrefix(pathname: string): { locale: Locale; pathname:
 
 export function localizePath(path: string, locale: Locale): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  if (locale === DEFAULT_LOCALE) return normalized;
-  if (normalized === "/") return `/${locale}`;
-  return `/${locale}${normalized}`;
+  let result: string;
+  if (locale === DEFAULT_LOCALE) {
+    result = normalized;
+  } else if (normalized === "/") {
+    result = `/${locale}`;
+  } else {
+    result = `/${locale}${normalized}`;
+  }
+
+  if (result === "/") return "/";
+  return result.endsWith("/") ? result : `${result}/`;
 }
 
 export function getSiteBaseUrl(): string {

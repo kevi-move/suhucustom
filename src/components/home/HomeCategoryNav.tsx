@@ -38,7 +38,7 @@ export default function HomeCategoryNav() {
     group.items.map((item) => ({
       slug: item.slug,
       title: item.nameEn,
-      href: `/services/${item.slug}`,
+      href: `/services/${item.slug}/`,
       tagline: taglines[item.slug] ?? defaultTagline,
     }))
   );

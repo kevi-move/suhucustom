@@ -114,7 +114,7 @@ export function buildStaticSearchIndex(): SearchIndexEntry[] {
     "page-about",
     "About Us",
     "Two sisters from Humen, Dongguan - custom apparel manufacturing with flexible MOQ and hands-on support.",
-    "/about-us",
+    "/about-us/",
     "page",
     aboutText
   );
@@ -125,7 +125,7 @@ export function buildStaticSearchIndex(): SearchIndexEntry[] {
         `service-${item.slug}`,
         item.nameEn,
         `Custom ${item.nameEn.toLowerCase()} manufacturing - ${group.titleEn}. ${item.nameZh}`,
-        `/services/${item.slug}`,
+        `/services/${item.slug}/`,
         "service",
         `${item.slug} ${group.titleEn} ${group.titleZh} garment apparel`
       );
@@ -137,14 +137,14 @@ export function buildStaticSearchIndex(): SearchIndexEntry[] {
       `custom-${item.slug}`,
       item.nameEn,
       `Apparel ${item.nameEn.toLowerCase()} services for your collection. ${item.nameZh}`,
-      `/customization/${item.slug}`,
+      `/customization/${item.slug}/`,
       "customization",
       `${item.slug} customization decoration`
     );
   }
 
   for (const item of companyDropdownItems) {
-    if (item.href === "/about-us") continue;
+    if (item.href.replace(/\/+$/, "") === "/about-us") continue;
     add(
       `page-${item.href.replace(/\//g, "-")}`,
       item.label,

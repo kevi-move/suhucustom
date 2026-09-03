@@ -70,16 +70,16 @@ export const customizationItems = [
 
 export const mainNavItems = [
   { href: "/", label: "Home", type: "link" as const },
-  { href: "/services", label: "Services", type: "mega" as const },
-  { href: "/customization", label: "Customization", type: "dropdown" as const },
-  { href: "/blog", label: "Blog", type: "dropdown" as const },
-  { href: "/company", label: "Resource", type: "dropdown" as const },
-  { href: "/contact-us", label: "Contact Us", type: "button" as const },
+  { href: "/services/", label: "Services", type: "mega" as const },
+  { href: "/customization/", label: "Customization", type: "dropdown" as const },
+  { href: "/blog/", label: "Blog", type: "dropdown" as const },
+  { href: "/company/", label: "Resource", type: "dropdown" as const },
+  { href: "/contact-us/", label: "Contact Us", type: "button" as const },
 ];
 
 export const companyDropdownItems = [
-  { href: "/about-us", label: "About Us" },
-  { href: "/company/case-studies", label: "Case Studies" },
+  { href: "/about-us/", label: "About Us" },
+  { href: "/company/case-studies/", label: "Case Studies" },
 ];
 
 /** Footer Services column — curated subset only. */
@@ -116,7 +116,7 @@ export const publishedCustomizationItems = getPublishedCustomizationItems();
 
 /** Header Resource dropdown, excluding About Us (top-level link). */
 export const publishedCompanyDropdownItems = getPublishedCompanyDropdownItems().filter(
-  (item) => item.href !== "/about-us"
+  (item) => item.href.replace(/\/+$/, "") !== "/about-us"
 );
 
 export function getFooterServices(): ServiceItem[] {
