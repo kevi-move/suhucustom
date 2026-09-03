@@ -76,7 +76,11 @@ export async function PUT(request: NextRequest) {
     }
 
     revalidateTag(`page-content:${pageSlug}`, "default");
-    revalidatePath(pageSlug);
+    const pathNoSlash = pageSlug.replace(/\/+$/, "") || "/";
+    revalidatePath(pathNoSlash);
+    if (pathNoSlash !== "/") {
+      revalidatePath(`${pathNoSlash}/`);
+    }
 
     if (isTranslationConfigured()) {
       after(async () => {

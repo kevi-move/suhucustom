@@ -10,6 +10,9 @@ try {
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
+  // Keep page URLs with trailing slash, but do not 308-redirect /api/* —
+  // PUT/POST bodies are dropped on redirect and CMS saves break.
+  skipTrailingSlashRedirect: true,
   turbopack: {
     root: __dirname,
   },

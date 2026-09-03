@@ -31,6 +31,13 @@ function isLocaleExcludedPath(pathname: string): boolean {
   );
 }
 
+/** Public site pages should keep a trailing slash; APIs must not be redirected. */
+function needsTrailingSlashRedirect(pathname: string): boolean {
+  if (!pathname || pathname === "/" || pathname.endsWith("/")) return false;
+  if (isLocaleExcludedPath(pathname)) return false;
+  return true;
+}
+
 function withSecurityHeaders(response: NextResponse) {
   response.headers.set("X-Frame-Options", "SAMEORIGIN");
   response.headers.set("X-Content-Type-Options", "nosniff");
@@ -79,6 +86,12 @@ function applyLocaleRouting(request: NextRequest): {
 
 export async function middleware(request: NextRequest) {
   const { pathname: rawPathname } = request.nextUrl;
+
+  if (needsTrailingSlashRedirect(rawPathname)) {
+    const url = new URL(request.url);
+    url.pathname = `${normalizePathname(rawPathname)}/`;
+    return withSecurityHeaders(NextResponse.redirect(url, 308));
+  }
 
   if (!isLocaleExcludedPath(rawPathname)) {
     const { locale, pathname: internalPath } = stripLocalePrefix(rawPathname);
