@@ -13,10 +13,11 @@ import ServiceFallbackActions from "@/components/services/ServiceFallbackActions
 
 import TshirtHero from "@/components/services/tshirts/TshirtHero";
 import TshirtOverview from "@/components/services/tshirts/TshirtOverview";
+import TshirtStyles from "@/components/services/tshirts/TshirtStyles";
 import TshirtFeatures from "@/components/services/tshirts/TshirtFeatures";
 import TshirtCustomization from "@/components/services/tshirts/TshirtCustomization";
 import TshirtProcess from "@/components/services/tshirts/TshirtProcess";
-import TshirtCaseStudy from "@/components/services/tshirts/TshirtCaseStudy";
+import TshirtFAQ from "@/components/services/tshirts/TshirtFAQ";
 import TshirtCTA from "@/components/services/tshirts/TshirtCTA";
 
 import HoodieHero from "@/components/services/hoodies/HoodieHero";
@@ -144,11 +145,12 @@ export default async function ServicePage({ params }: Props) {
     return withServiceCms(slug, (
       <div className="bg-white">
         <TshirtHero />
+        <TshirtStyles />
+        <TshirtCustomization />
         <TshirtOverview />
         <TshirtFeatures />
-        <TshirtCustomization />
         <TshirtProcess />
-        <TshirtCaseStudy />
+        <TshirtFAQ />
         <TshirtCTA />
       </div>
     ));
