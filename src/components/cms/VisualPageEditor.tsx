@@ -319,9 +319,10 @@ export function VisualPageEditor({
     try {
       setEditableDomState(false);
       const html = captureSanitizedHtml(root);
-      const res = await fetch("/api/cms/content", {
+      const res = await fetch("/api/cms/content/", {
         method: "PUT",
         credentials: "same-origin",
+        redirect: "error",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           pageSlug,
@@ -331,9 +332,13 @@ export function VisualPageEditor({
           },
         }),
       });
-      const data = (await res.json()) as { error?: string };
-      if (!res.ok) throw new Error(data?.error || "保存失败");
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        throw new Error(data?.error || `保存失败 (${res.status})`);
+      }
       initialSnapshot.current = html;
+      // Keep edited text on the live DOM, then refresh so server cache updates.
+      applySavedVisualOverrides(root, html);
       router.refresh();
       alert("已保存");
     } catch (error) {
@@ -434,7 +439,7 @@ export function VisualPageEditor({
             <button
               type="button"
               onClick={async () => {
-                await fetch("/api/cms/mode", {
+                await fetch("/api/cms/mode/", {
                   method: "PUT",
                   credentials: "same-origin",
                   headers: { "Content-Type": "application/json" },

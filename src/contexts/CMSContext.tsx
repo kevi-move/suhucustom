@@ -81,9 +81,10 @@ export function CMSProvider({
   const saveAll = useCallback(async () => {
     setSaving(true);
     try {
-      const res = await fetch("/api/cms/content", {
+      const res = await fetch("/api/cms/content/", {
         method: "PUT",
         credentials: "same-origin",
+        redirect: "error",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           pageSlug,
@@ -92,7 +93,7 @@ export function CMSProvider({
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
-        throw new Error(data?.error || "保存失败");
+        throw new Error(data?.error || `保存失败 (${res.status})`);
       }
       const saved = structuredClone(pendingContent);
       setLiveContent(saved);
