@@ -21,11 +21,13 @@ import TshirtFAQ from "@/components/services/tshirts/TshirtFAQ";
 import TshirtCTA from "@/components/services/tshirts/TshirtCTA";
 
 import HoodieHero from "@/components/services/hoodies/HoodieHero";
+import HoodieStyles from "@/components/services/hoodies/HoodieStyles";
 import HoodieOverview from "@/components/services/hoodies/HoodieOverview";
 import HoodieFeatures from "@/components/services/hoodies/HoodieFeatures";
 import HoodieCustomization from "@/components/services/hoodies/HoodieCustomization";
 import HoodieProcess from "@/components/services/hoodies/HoodieProcess";
 import HoodieCaseStudy from "@/components/services/hoodies/HoodieCaseStudy";
+import HoodieFAQ from "@/components/services/hoodies/HoodieFAQ";
 import HoodieCTA from "@/components/services/hoodies/HoodieCTA";
 
 import JeansHero from "@/components/services/jeans/JeansHero";
@@ -160,11 +162,13 @@ export default async function ServicePage({ params }: Props) {
     return withServiceCms(slug, (
       <div className="bg-white">
         <HoodieHero />
+        <HoodieStyles />
         <HoodieOverview />
         <HoodieFeatures />
         <HoodieCustomization />
         <HoodieProcess />
         <HoodieCaseStudy />
+        <HoodieFAQ />
         <HoodieCTA />
       </div>
     ));

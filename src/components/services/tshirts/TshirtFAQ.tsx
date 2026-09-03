@@ -102,7 +102,7 @@ function FaqItem({
 }
 
 export default function TshirtFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const leftFaqs = FAQS.slice(0, 5);
   const rightFaqs = FAQS.slice(5, 10);
 
