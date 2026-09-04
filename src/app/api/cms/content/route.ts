@@ -12,8 +12,9 @@ function validateContent(content: unknown): { valid: boolean; error?: string } {
   }
 
   const json = JSON.stringify(content);
-  if (json.length > 1_000_000) {
-    return { valid: false, error: "Content too large (max 1MB)" };
+  // Full service-page HTML snapshots exceed 1MB after section redesigns.
+  if (json.length > 5_000_000) {
+    return { valid: false, error: "Content too large (max 5MB)" };
   }
 
   function checkDepth(obj: unknown, depth: number): boolean {

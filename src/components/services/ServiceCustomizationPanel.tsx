@@ -40,7 +40,7 @@ export default function ServiceCustomizationPanel({
   }, [options]);
 
   return (
-    <div className="bg-white py-20 lg:py-28">
+    <div className="bg-white py-20 lg:py-28" data-vedit-customization-root="true">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Customization Options</h2>
 
@@ -51,6 +51,8 @@ export default function ServiceCustomizationPanel({
                 <button
                   key={opt.id}
                   type="button"
+                  data-vedit-customization-tab={opt.id}
+                  aria-pressed={idx === activeIdx}
                   onClick={() => setActiveIdx(idx)}
                   className={`flex w-full items-center rounded-lg px-4 py-3 text-left text-sm font-medium transition ${
                     idx === activeIdx

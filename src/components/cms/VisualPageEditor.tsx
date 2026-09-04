@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { useContactModal } from "@/contexts/ContactModalContext";
 import { uploadImageFile } from "@/lib/uploadImage";
 import { extractCaseStudyImageSrc } from "@/lib/caseStudyImage";
 import {
@@ -11,6 +12,7 @@ import {
   stripEditArtifactsFromDom,
   stripVisualEditArtifacts,
 } from "@/lib/visualPageHtml";
+import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
 import {
   CASE_STUDY_IMAGE_FRAME_CLASS,
   CASE_STUDY_IMAGE_IMG_CLASS,
@@ -20,7 +22,10 @@ import {
 interface VisualPageEditorProps {
   pageSlug: string;
   modeEnabled: boolean;
+  /** Trusted full-page HTML (visual-v2). When set, this is the live page. */
   initialHtml?: string;
+  /** Legacy / any autoHtml used only to restore uploaded image URLs onto React children. */
+  imageHtml?: string;
   children: React.ReactNode;
 }
 
@@ -147,13 +152,90 @@ function migrateCaseStudyPlaceholders(root: HTMLElement) {
   });
 }
 
+function activateCustomizationTab(section: HTMLElement, optionId: string) {
+  section.querySelectorAll("[data-vedit-customization-tab]").forEach((node) => {
+    const btn = node as HTMLElement;
+    const active = btn.getAttribute("data-vedit-customization-tab") === optionId;
+    btn.setAttribute("aria-pressed", active ? "true" : "false");
+    btn.className = active
+      ? "flex w-full items-center rounded-lg px-4 py-3 text-left text-sm font-medium transition border-l-[3px] border-amber-500 bg-amber-50 text-slate-900"
+      : "flex w-full items-center rounded-lg px-4 py-3 text-left text-sm font-medium transition border-l-[3px] border-transparent text-slate-500 hover:bg-slate-50 hover:text-slate-700";
+  });
+
+  section.querySelectorAll("[data-vedit-customization-id]").forEach((node) => {
+    const img = node as HTMLImageElement;
+    const active = img.getAttribute("data-vedit-customization-id") === optionId;
+    img.className = active
+      ? "h-auto min-h-[320px] w-full object-cover relative block"
+      : "h-auto min-h-[320px] w-full object-cover pointer-events-none absolute inset-0 opacity-0";
+    img.setAttribute("aria-hidden", active ? "false" : "true");
+  });
+}
+
+function hydrateSavedPageInteractions(
+  root: HTMLElement,
+  openModal: (input?: {
+    productCategory?: string;
+    sourcePage?: string;
+    title?: string;
+  }) => void,
+  pathname: string
+) {
+  root.querySelectorAll('[data-vedit-quote="true"]').forEach((node) => {
+    const btn = node as HTMLElement;
+    if (btn.dataset.veditBound === "1") return;
+    btn.dataset.veditBound = "1";
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal({
+        productCategory: btn.getAttribute("data-vedit-quote-category") || undefined,
+        title: btn.getAttribute("data-vedit-quote-title") || undefined,
+        sourcePage: pathname || "/",
+      });
+    });
+  });
+
+  root.querySelectorAll('[data-vedit-customization-root="true"]').forEach((node) => {
+    const section = node as HTMLElement;
+    section.querySelectorAll("[data-vedit-customization-tab]").forEach((tabNode) => {
+      const tab = tabNode as HTMLElement;
+      if (tab.dataset.veditBound === "1") return;
+      tab.dataset.veditBound = "1";
+      tab.addEventListener("click", () => {
+        const id = tab.getAttribute("data-vedit-customization-tab");
+        if (id) activateCustomizationTab(section, id);
+      });
+    });
+  });
+
+  root.querySelectorAll('[aria-label="Scroll left"], [aria-label="Scroll right"]').forEach((node) => {
+    const btn = node as HTMLElement;
+    if (btn.dataset.veditBound === "1") return;
+    btn.dataset.veditBound = "1";
+    const direction = btn.getAttribute("aria-label") === "Scroll left" ? -1 : 1;
+    btn.addEventListener("click", () => {
+      const scroller = btn.closest("div")?.parentElement?.querySelector(
+        ".overflow-x-auto"
+      ) as HTMLElement | null;
+      const fallback = root.querySelector(".overflow-x-auto") as HTMLElement | null;
+      const target = scroller || fallback;
+      if (!target) return;
+      const cardWidth = target.firstElementChild?.clientWidth ?? 300;
+      target.scrollBy({ left: direction * (cardWidth + 24), behavior: "smooth" });
+    });
+  });
+}
+
 export function VisualPageEditor({
   pageSlug,
   modeEnabled,
   initialHtml,
+  imageHtml,
   children,
 }: VisualPageEditorProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const { openModal } = useContactModal();
   const { isAdmin, loading } = useAuth();
   const editable = !loading && isAdmin && modeEnabled;
   const rootRef = useRef<HTMLDivElement>(null);
@@ -161,13 +243,26 @@ export function VisualPageEditor({
   const [selectedImg, setSelectedImg] = useState<HTMLImageElement | null>(null);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const initialSnapshot = useRef<string>(initialHtml || "");
 
-  const renderedHtml = stripVisualEditArtifacts((initialHtml || "").trim());
+  const serverPageHtml = stripVisualEditArtifacts((initialHtml || "").trim());
+  const serverImageHtml = stripVisualEditArtifacts((imageHtml || "").trim());
+  const [snapshotHtml, setSnapshotHtml] = useState(serverPageHtml);
+  const useHtmlSource = Boolean(snapshotHtml);
+  const cleanedSnapshot = useHtmlSource ? stripVisualEditArtifacts(snapshotHtml) : "";
+  const initialSnapshot = useRef<string>(serverPageHtml);
 
   useEffect(() => {
-    initialSnapshot.current = renderedHtml;
-  }, [renderedHtml]);
+    if (!serverPageHtml) return;
+    setSnapshotHtml(serverPageHtml);
+    initialSnapshot.current = serverPageHtml;
+  }, [serverPageHtml]);
+
+  const hydrateRoot = useCallback(
+    (root: HTMLElement) => {
+      hydrateSavedPageInteractions(root, openModal, pathname || "/");
+    },
+    [openModal, pathname]
+  );
 
   const setEditableDomState = useCallback((enabled: boolean) => {
     const root = rootRef.current;
@@ -215,43 +310,47 @@ export function VisualPageEditor({
     configureHeroImageEditing(root, enabled);
   }, []);
 
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    if (useHtmlSource) {
+      hydrateRoot(root);
+    }
+
+    if (editable) {
+      migrateCaseStudyPlaceholders(root);
+      normalizeCaseStudyPhotos(root);
+      if (!useHtmlSource && serverImageHtml) {
+        restoreSavedImages(root, serverImageHtml);
+      }
+      setEditableDomState(true);
+      initialSnapshot.current = captureSanitizedHtml(root);
+    } else {
+      setEditableDomState(false);
+      stripEditArtifactsFromDom(root);
+      if (useHtmlSource) {
+        hydrateRoot(root);
+      } else if (serverImageHtml) {
+        restoreSavedImages(root, serverImageHtml);
+      }
+    }
+  }, [
+    cleanedSnapshot,
+    useHtmlSource,
+    serverImageHtml,
+    editable,
+    hydrateRoot,
+    setEditableDomState,
+  ]);
+
   useEffect(() => {
     if (editable) return;
     const frame = window.requestAnimationFrame(() => {
       if (rootRef.current) stripEditArtifactsFromDom(rootRef.current);
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [editable, renderedHtml]);
-
-  useEffect(() => {
-    if (!editable) {
-      setEditableDomState(false);
-      return;
-    }
-
-    const frame = window.requestAnimationFrame(() => {
-      if (rootRef.current) {
-        migrateCaseStudyPlaceholders(rootRef.current);
-        normalizeCaseStudyPhotos(rootRef.current);
-        if (renderedHtml) {
-          restoreSavedImages(rootRef.current, renderedHtml);
-        }
-        initialSnapshot.current = rootRef.current.innerHTML;
-      }
-      setEditableDomState(true);
-    });
-
-    return () => window.cancelAnimationFrame(frame);
-  }, [editable, renderedHtml, setEditableDomState]);
-
-  useLayoutEffect(() => {
-    if (editable || !renderedHtml || !rootRef.current) return;
-
-    const apply = () => restoreSavedImages(rootRef.current!, renderedHtml);
-    apply();
-    const frame = window.requestAnimationFrame(apply);
-    return () => window.cancelAnimationFrame(frame);
-  }, [editable, renderedHtml]);
+  }, [editable, cleanedSnapshot]);
 
   const resolveEditableImage = (target: HTMLElement): HTMLImageElement | null => {
     if (target.tagName.toLowerCase() === "img") {
@@ -319,21 +418,45 @@ export function VisualPageEditor({
     try {
       setEditableDomState(false);
       const html = captureSanitizedHtml(root);
-      const res = await fetch("/api/cms/content", {
+
+      let existing: Record<string, unknown> = {};
+      try {
+        const existingRes = await fetch(
+          `/api/cms/content/?pageSlug=${encodeURIComponent(pageSlug)}`,
+          { credentials: "same-origin", cache: "no-store" }
+        );
+        if (existingRes.ok) {
+          const existingData = (await existingRes.json()) as {
+            content?: Record<string, unknown>;
+          };
+          if (existingData.content && typeof existingData.content === "object") {
+            existing = existingData.content;
+          }
+        }
+      } catch {
+        // best-effort merge
+      }
+
+      const res = await fetch("/api/cms/content/", {
         method: "PUT",
         credentials: "same-origin",
+        redirect: "error",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           pageSlug,
           content: {
+            ...existing,
             autoHtml: html,
-            mode: "visual-v1",
+            mode: SERVICE_VISUAL_MODE,
           },
         }),
       });
-      const data = (await res.json()) as { error?: string };
-      if (!res.ok) throw new Error(data?.error || "保存失败");
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        throw new Error(data?.error || `保存失败 (${res.status})`);
+      }
       initialSnapshot.current = html;
+      setSnapshotHtml(html);
       router.refresh();
       alert("已保存");
     } catch (error) {
@@ -345,20 +468,18 @@ export function VisualPageEditor({
   };
 
   const reset = () => {
-    if (editable) {
-      window.location.reload();
-      return;
-    }
-    const root = rootRef.current;
-    if (!root) return;
-    root.innerHTML = initialSnapshot.current;
-    setEditableDomState(false);
+    window.location.reload();
   };
 
   return (
     <>
-      <div ref={rootRef} onClick={handleRootClick}>
-        {children}
+      <div
+        ref={rootRef}
+        onClick={handleRootClick}
+        suppressHydrationWarning
+        {...(useHtmlSource ? { dangerouslySetInnerHTML: { __html: cleanedSnapshot } } : {})}
+      >
+        {!useHtmlSource ? children : null}
       </div>
 
       {editable && (
@@ -388,7 +509,7 @@ export function VisualPageEditor({
               lineHeight: 1.5,
             }}
           >
-            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传
+            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传。修改后请点「保存」。
           </p>
           <div
             style={{
@@ -434,7 +555,7 @@ export function VisualPageEditor({
             <button
               type="button"
               onClick={async () => {
-                await fetch("/api/cms/mode", {
+                await fetch("/api/cms/mode/", {
                   method: "PUT",
                   credentials: "same-origin",
                   headers: { "Content-Type": "application/json" },
