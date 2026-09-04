@@ -170,6 +170,15 @@ function activateCustomizationTab(section: HTMLElement, optionId: string) {
       : "h-auto min-h-[320px] w-full object-cover pointer-events-none absolute inset-0 opacity-0";
     img.setAttribute("aria-hidden", active ? "false" : "true");
   });
+
+  section.querySelectorAll("[data-vedit-customization-detail]").forEach((node) => {
+    const panel = node as HTMLElement;
+    const active = panel.getAttribute("data-vedit-customization-detail") === optionId;
+    panel.className = active
+      ? "rounded-2xl border border-slate-200 bg-white p-6 shadow-sm relative"
+      : "rounded-2xl border border-slate-200 bg-white p-6 shadow-sm pointer-events-none absolute inset-0 opacity-0";
+    panel.setAttribute("aria-hidden", active ? "false" : "true");
+  });
 }
 
 function hydrateSavedPageInteractions(
@@ -208,20 +217,50 @@ function hydrateSavedPageInteractions(
     });
   });
 
+  root.querySelectorAll("[data-vedit-features-root='true']").forEach((sectionNode) => {
+    const section = sectionNode as HTMLElement;
+    const scroller = section.querySelector(
+      "[data-vedit-features-scroller='true']"
+    ) as HTMLElement | null;
+    if (!scroller) return;
+
+    section.querySelectorAll("[data-vedit-features-scroll]").forEach((node) => {
+      const btn = node as HTMLElement;
+      if (btn.dataset.veditBound === "1") return;
+      btn.dataset.veditBound = "1";
+      const direction = btn.getAttribute("data-vedit-features-scroll") === "left" ? -1 : 1;
+      btn.addEventListener("click", () => {
+        const cardWidth = scroller.firstElementChild?.clientWidth ?? 300;
+        scroller.scrollBy({ left: direction * (cardWidth + 24), behavior: "smooth" });
+      });
+    });
+  });
+
+  // Fallback for Features carousels saved before data-vedit-features-* attrs existed.
   root.querySelectorAll('[aria-label="Scroll left"], [aria-label="Scroll right"]').forEach((node) => {
     const btn = node as HTMLElement;
     if (btn.dataset.veditBound === "1") return;
     btn.dataset.veditBound = "1";
     const direction = btn.getAttribute("aria-label") === "Scroll left" ? -1 : 1;
     btn.addEventListener("click", () => {
-      const scroller = btn.closest("div")?.parentElement?.querySelector(
-        ".overflow-x-auto"
-      ) as HTMLElement | null;
-      const fallback = root.querySelector(".overflow-x-auto") as HTMLElement | null;
-      const target = scroller || fallback;
-      if (!target) return;
-      const cardWidth = target.firstElementChild?.clientWidth ?? 300;
-      target.scrollBy({ left: direction * (cardWidth + 24), behavior: "smooth" });
+      let section: HTMLElement | null =
+        btn.closest("[data-vedit-features-root='true']") as HTMLElement | null;
+      if (!section) {
+        let cursor: HTMLElement | null = btn.parentElement;
+        while (cursor && cursor !== root) {
+          if (cursor.querySelector(":scope .overflow-x-auto, :scope [data-vedit-features-scroller]")) {
+            section = cursor;
+            break;
+          }
+          cursor = cursor.parentElement;
+        }
+      }
+      const scroller =
+        (section?.querySelector("[data-vedit-features-scroller='true']") as HTMLElement | null) ||
+        (section?.querySelector(".overflow-x-auto") as HTMLElement | null);
+      if (!scroller) return;
+      const cardWidth = scroller.firstElementChild?.clientWidth ?? 300;
+      scroller.scrollBy({ left: direction * (cardWidth + 24), behavior: "smooth" });
     });
   });
 }

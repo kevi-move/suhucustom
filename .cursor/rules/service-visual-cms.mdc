@@ -1,0 +1,63 @@
+---
+description: Service-page visual CMS (前台可视化编辑) — architecture rules to stop patch loops
+globs: src/components/cms/VisualPageEditor.tsx,src/components/services/**/*.tsx,src/lib/visualPageHtml.ts,src/lib/serviceVisualMode.ts
+alwaysApply: false
+---
+
+# Service Visual CMS Norms
+
+## Problem we keep rediscovering
+
+Service pages use `VisualPageEditor`: edit DOM → save `autoHtml` → reload.
+
+**Never** treat React children + leaf-index text remap as the restore path for copy.
+That scrambled Features / Process / FAQ and looked like “save failed”.
+
+## Source of truth
+
+| Content | Mode | Behavior |
+|---------|------|----------|
+| Full page text + images | `mode === "visual-v2"` + `autoHtml` | Render snapshot via `dangerouslySetInnerHTML` (HTML is the page) |
+| Legacy uploads only | older `autoHtml` without v2 | Keep React children; restore **images only** |
+| No CMS row | — | React component defaults |
+
+- Save must write `mode: "visual-v2"`.
+- Do **not** invent `visual-v3` unless also documenting a migration that ignores older modes.
+- Do **not** reintroduce leaf-index / order-based text remapping.
+
+## Interactive sections MUST be hydratable
+
+When HTML is the source of truth, React `onClick` / state are gone. Any interactive block needs stable `data-vedit-*` hooks and a hydrate path in `VisualPageEditor`.
+
+Required today:
+
+- Quote: `data-vedit-quote`, `data-vedit-quote-category`, `data-vedit-quote-title`
+- Customization: `data-vedit-customization-root|tab|id|detail` — **mount every tab’s image + detail panel** (hide inactive with CSS), never only the active panel
+- Features carousel: `data-vedit-features-root|scroller|scroll`
+
+If you add a new interactive control on a service page, add attrs + hydrate in the **same PR**. No “save works, click later” patches.
+
+## Save / sanitize rules
+
+- Capture through `captureSanitizedHtml` / `stripVisualEditArtifacts` only.
+- Strip `contenteditable` and edit outlines before persist.
+- Repair light-surface contrast (no `text-white` / inline white color on `bg-white` / `bg-slate-50`).
+- Merge with existing CMS JSON on PUT; do not wipe unrelated keys.
+- Payload limit must allow full-page HTML (currently 5MB).
+
+## Change discipline (no 拆东墙补西墙)
+
+Before changing visual CMS:
+
+1. State which invariant you are preserving (text persist / images / tabs / scroll / contrast).
+2. Touch the minimum files; do not redesign unrelated service sections in the same change.
+3. Manually verify on `/services/t-shirts/` after deploy:
+   - Edit copy → Save → Exit → Reload → copy remains and is readable
+   - Customization tabs switch image + copy
+   - Features arrows scroll cards
+   - Quote button opens modal
+4. If a fix needs “ignore old snapshots”, document the mode flag — do not silently drop user uploads.
+
+## Out of scope for VisualPageEditor
+
+About / Home path-based `EditableText` CMS is a different system. Do not mix the two models on one page without an explicit design.

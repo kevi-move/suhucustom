@@ -52,7 +52,7 @@ export default function TshirtFeatures() {
   };
 
   return (
-    <div className="bg-slate-50 py-20 lg:py-28">
+    <div className="bg-slate-50 py-20 lg:py-28" data-vedit-features-root="true">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header row */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -76,6 +76,8 @@ export default function TshirtFeatures() {
 
             {/* Arrow buttons */}
             <button
+              type="button"
+              data-vedit-features-scroll="left"
               onClick={() => scroll("left")}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition hover:border-amber-400 hover:text-amber-600"
               aria-label="Scroll left"
@@ -85,6 +87,8 @@ export default function TshirtFeatures() {
               </svg>
             </button>
             <button
+              type="button"
+              data-vedit-features-scroll="right"
               onClick={() => scroll("right")}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition hover:border-amber-400 hover:text-amber-600"
               aria-label="Scroll right"
@@ -99,6 +103,7 @@ export default function TshirtFeatures() {
         {/* Scrollable card row */}
         <div
           ref={scrollRef}
+          data-vedit-features-scroller="true"
           className="mt-12 flex gap-6 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {features.map((f) => (
