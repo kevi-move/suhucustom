@@ -12,9 +12,8 @@ function validateContent(content: unknown): { valid: boolean; error?: string } {
   }
 
   const json = JSON.stringify(content);
-  // Visual service-page HTML snapshots are larger than structured CMS JSON.
-  if (json.length > 5_000_000) {
-    return { valid: false, error: "Content too large (max 5MB)" };
+  if (json.length > 1_000_000) {
+    return { valid: false, error: "Content too large (max 1MB)" };
   }
 
   function checkDepth(obj: unknown, depth: number): boolean {

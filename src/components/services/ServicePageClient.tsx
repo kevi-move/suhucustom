@@ -1,7 +1,6 @@
 "use client";
 
 import { VisualPageEditor } from "@/components/cms/VisualPageEditor";
-import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
 
 export default function ServicePageClient({
   pageSlug,
@@ -15,11 +14,7 @@ export default function ServicePageClient({
   children: React.ReactNode;
 }) {
   const autoHtml =
-    initialContent.mode === SERVICE_VISUAL_MODE &&
-    typeof initialContent.autoHtml === "string" &&
-    initialContent.autoHtml.trim()
-      ? initialContent.autoHtml
-      : undefined;
+    typeof initialContent.autoHtml === "string" ? initialContent.autoHtml : undefined;
 
   return (
     <VisualPageEditor pageSlug={pageSlug} modeEnabled={modeEnabled} initialHtml={autoHtml}>

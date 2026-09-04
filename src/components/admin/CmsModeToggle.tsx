@@ -9,7 +9,7 @@ export function CmsModeToggle() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    void fetch("/api/cms/mode/", { credentials: "same-origin" })
+    void fetch("/api/cms/mode", { credentials: "same-origin" })
       .then((r) => r.json())
       .then((d) => setEnabled(Boolean(d?.enabled)))
       .catch(() => setEnabled(false));
@@ -18,7 +18,7 @@ export function CmsModeToggle() {
   const toggle = async () => {
     setSaving(true);
     try {
-      const res = await fetch("/api/cms/mode/", {
+      const res = await fetch("/api/cms/mode", {
         method: "PUT",
         credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
@@ -28,7 +28,7 @@ export function CmsModeToggle() {
       if (res.ok) {
         setEnabled(Boolean(data?.enabled));
         if (data?.enabled) {
-          window.open(getFrontendPageUrl("/services/t-shirts/"), "_blank", "noopener,noreferrer");
+          window.open(getFrontendPageUrl("/services/t-shirts"), "_blank", "noopener,noreferrer");
         }
       }
     } finally {

@@ -48,7 +48,7 @@ export default function AdminContentPage() {
     try {
       const entries = await Promise.all(
         pageSlugs.map(async (slug) => {
-          const res = await fetch(`/api/cms/content/?pageSlug=${encodeURIComponent(slug)}`);
+          const res = await fetch(`/api/cms/content?pageSlug=${encodeURIComponent(slug)}`);
           const data = await res.json();
           const dbContent = (data?.content || {}) as Record<string, unknown>;
           const merged = {
@@ -100,7 +100,7 @@ export default function AdminContentPage() {
     setForms((prev) => prev.map((f, i) => (i === index ? { ...f, isSaving: true } : f)));
 
     try {
-      const res = await fetch("/api/cms/content/", {
+      const res = await fetch("/api/cms/content", {
         method: "PUT",
         credentials: "same-origin",
         headers: { "Content-Type": "application/json" },

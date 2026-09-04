@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
 const FAQS = [
   {
     question: "How much does a custom T-shirt cost?",
@@ -51,32 +56,53 @@ const FAQS = [
   },
 ] as const;
 
-function FaqItem({ question, answer }: { question: string; answer: string }) {
+function FaqItem({
+  faq,
+  index,
+  isOpen,
+  onToggle,
+}: {
+  faq: (typeof FAQS)[number];
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
   return (
-    <details className="group border-b border-slate-200 last:border-b-0">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
-        <span className="text-base font-semibold text-slate-900">{question}</span>
-        <svg
-          className="h-5 w-5 shrink-0 text-amber-500 transition-transform duration-200 group-open:rotate-180"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
+    <div className="border-b border-slate-200 last:border-b-0">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white sm:px-6 sm:py-5"
+        aria-expanded={isOpen}
+      >
+        <span className="text-base font-semibold text-slate-900">{faq.question}</span>
+        <ChevronDown
+          className={`h-5 w-5 shrink-0 text-amber-500 transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
           aria-hidden
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </summary>
-      <div className="space-y-3 px-5 pb-5 text-sm leading-relaxed text-slate-600 sm:px-6 sm:pb-6 sm:text-base">
-        {answer.split("\n\n").map((paragraph) => (
-          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-        ))}
+        />
+      </button>
+
+      <div
+        className={`grid transition-[grid-template-rows] duration-200 ease-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="space-y-3 px-5 pb-5 text-sm leading-relaxed text-slate-600 sm:px-6 sm:pb-6 sm:text-base">
+            {faq.answer.split("\n\n").map((paragraph) => (
+              <p key={`${index}-${paragraph.slice(0, 48)}`}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
       </div>
-    </details>
+    </div>
   );
 }
 
 export default function TshirtFAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const leftFaqs = FAQS.slice(0, 5);
   const rightFaqs = FAQS.slice(5, 10);
 
@@ -91,14 +117,32 @@ export default function TshirtFAQ() {
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-            {leftFaqs.map((faq) => (
-              <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
+            {leftFaqs.map((faq, index) => (
+              <FaqItem
+                key={faq.question}
+                faq={faq}
+                index={index}
+                isOpen={openIndex === index}
+                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+              />
             ))}
           </div>
+
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-            {rightFaqs.map((faq) => (
-              <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
-            ))}
+            {rightFaqs.map((faq, index) => {
+              const globalIndex = index + 5;
+              return (
+                <FaqItem
+                  key={faq.question}
+                  faq={faq}
+                  index={globalIndex}
+                  isOpen={openIndex === globalIndex}
+                  onToggle={() =>
+                    setOpenIndex(openIndex === globalIndex ? null : globalIndex)
+                  }
+                />
+              );
+            })}
           </div>
         </div>
       </div>

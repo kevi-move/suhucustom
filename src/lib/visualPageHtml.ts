@@ -1,5 +1,5 @@
 const TEXT_SELECTOR =
-  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote,a,summary";
+  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote,a";
 
 function stripEditArtifactsFromElement(root: ParentNode) {
   root.querySelectorAll(TEXT_SELECTOR).forEach((node) => {
@@ -80,9 +80,7 @@ function findLiveImageForSaved(
   return liveImgs[index];
 }
 
-/** Apply saved CMS image URLs onto the live React-rendered service page.
- * Text is never remapped by leaf index — that scrambled copy across sections.
- */
+/** Apply saved CMS image URLs onto the live React-rendered service page. */
 export function applySavedVisualOverrides(liveRoot: HTMLElement, savedHtml: string) {
   const cleaned = stripVisualEditArtifacts(savedHtml);
   if (!cleaned || typeof DOMParser === "undefined") return;

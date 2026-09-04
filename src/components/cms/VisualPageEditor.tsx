@@ -1,19 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { useContactModal } from "@/contexts/ContactModalContext";
 import { uploadImageFile } from "@/lib/uploadImage";
 import { extractCaseStudyImageSrc } from "@/lib/caseStudyImage";
-import { hydrateServicePageInteractions } from "@/lib/servicePageHydrate";
 import {
   applySavedVisualOverrides,
   captureSanitizedHtml,
   stripEditArtifactsFromDom,
   stripVisualEditArtifacts,
 } from "@/lib/visualPageHtml";
-import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
 import {
   CASE_STUDY_IMAGE_FRAME_CLASS,
   CASE_STUDY_IMAGE_IMG_CLASS,
@@ -28,7 +25,7 @@ interface VisualPageEditorProps {
 }
 
 const TEXT_SELECTOR =
-  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote,summary";
+  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote";
 
 const HERO_ROOT_SELECTOR = ".relative.overflow-hidden";
 
@@ -157,8 +154,6 @@ export function VisualPageEditor({
   children,
 }: VisualPageEditorProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const { openModal } = useContactModal();
   const { isAdmin, loading } = useAuth();
   const editable = !loading && isAdmin && modeEnabled;
   const rootRef = useRef<HTMLDivElement>(null);
@@ -166,29 +161,13 @@ export function VisualPageEditor({
   const [selectedImg, setSelectedImg] = useState<HTMLImageElement | null>(null);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const initialSnapshot = useRef<string>(initialHtml || "");
 
-  const serverHtml = stripVisualEditArtifacts((initialHtml || "").trim());
-  const [snapshotHtml, setSnapshotHtml] = useState(serverHtml);
-  const useHtmlSource = Boolean(snapshotHtml);
-  const cleanedSnapshot = useHtmlSource ? stripVisualEditArtifacts(snapshotHtml) : "";
-  const initialSnapshot = useRef<string>(serverHtml);
+  const renderedHtml = stripVisualEditArtifacts((initialHtml || "").trim());
 
   useEffect(() => {
-    // Prefer server snapshot when present; never clear a local save with an empty refresh.
-    if (!serverHtml) return;
-    setSnapshotHtml(serverHtml);
-    initialSnapshot.current = serverHtml;
-  }, [serverHtml]);
-
-  const hydrateRoot = useCallback(
-    (root: HTMLElement) => {
-      hydrateServicePageInteractions(root, {
-        openQuoteModal: openModal,
-        pathname: pathname || "/",
-      });
-    },
-    [openModal, pathname]
-  );
+    initialSnapshot.current = renderedHtml;
+  }, [renderedHtml]);
 
   const setEditableDomState = useCallback((enabled: boolean) => {
     const root = rootRef.current;
@@ -236,43 +215,43 @@ export function VisualPageEditor({
     configureHeroImageEditing(root, enabled);
   }, []);
 
-  // Saved HTML is rendered via dangerouslySetInnerHTML (source of truth).
-  // Hydrate interactions / edit chrome after React commits that markup.
-  useLayoutEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    if (useHtmlSource) {
-      hydrateRoot(root);
-    }
-
-    if (editable) {
-      migrateCaseStudyPlaceholders(root);
-      normalizeCaseStudyPhotos(root);
-      // Only remap onto React children when we are NOT using HTML-as-source.
-      if (!useHtmlSource && serverHtml) {
-        restoreSavedImages(root, serverHtml);
-      }
-      setEditableDomState(true);
-      initialSnapshot.current = captureSanitizedHtml(root);
-    } else {
-      setEditableDomState(false);
-      stripEditArtifactsFromDom(root);
-      if (useHtmlSource) {
-        hydrateRoot(root);
-      } else if (serverHtml) {
-        restoreSavedImages(root, serverHtml);
-      }
-    }
-  }, [cleanedSnapshot, useHtmlSource, serverHtml, editable, hydrateRoot, setEditableDomState]);
-
   useEffect(() => {
     if (editable) return;
     const frame = window.requestAnimationFrame(() => {
       if (rootRef.current) stripEditArtifactsFromDom(rootRef.current);
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [editable, cleanedSnapshot]);
+  }, [editable, renderedHtml]);
+
+  useEffect(() => {
+    if (!editable) {
+      setEditableDomState(false);
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      if (rootRef.current) {
+        migrateCaseStudyPlaceholders(rootRef.current);
+        normalizeCaseStudyPhotos(rootRef.current);
+        if (renderedHtml) {
+          restoreSavedImages(rootRef.current, renderedHtml);
+        }
+        initialSnapshot.current = rootRef.current.innerHTML;
+      }
+      setEditableDomState(true);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [editable, renderedHtml, setEditableDomState]);
+
+  useLayoutEffect(() => {
+    if (editable || !renderedHtml || !rootRef.current) return;
+
+    const apply = () => restoreSavedImages(rootRef.current!, renderedHtml);
+    apply();
+    const frame = window.requestAnimationFrame(apply);
+    return () => window.cancelAnimationFrame(frame);
+  }, [editable, renderedHtml]);
 
   const resolveEditableImage = (target: HTMLElement): HTMLImageElement | null => {
     if (target.tagName.toLowerCase() === "img") {
@@ -340,46 +319,21 @@ export function VisualPageEditor({
     try {
       setEditableDomState(false);
       const html = captureSanitizedHtml(root);
-
-      let existing: Record<string, unknown> = {};
-      try {
-        const existingRes = await fetch(
-          `/api/cms/content/?pageSlug=${encodeURIComponent(pageSlug)}`,
-          { credentials: "same-origin", cache: "no-store" }
-        );
-        if (existingRes.ok) {
-          const existingData = (await existingRes.json()) as {
-            content?: Record<string, unknown>;
-          };
-          if (existingData.content && typeof existingData.content === "object") {
-            existing = existingData.content;
-          }
-        }
-      } catch {
-        // Merge is best-effort; still save autoHtml below.
-      }
-
-      const res = await fetch("/api/cms/content/", {
+      const res = await fetch("/api/cms/content", {
         method: "PUT",
         credentials: "same-origin",
-        redirect: "error",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           pageSlug,
           content: {
-            ...existing,
             autoHtml: html,
-            mode: SERVICE_VISUAL_MODE,
+            mode: "visual-v1",
           },
         }),
       });
-      const data = (await res.json().catch(() => ({}))) as { error?: string };
-      if (!res.ok) {
-        throw new Error(data?.error || `保存失败 (${res.status})`);
-      }
+      const data = (await res.json()) as { error?: string };
+      if (!res.ok) throw new Error(data?.error || "保存失败");
       initialSnapshot.current = html;
-      // Switch to HTML-as-source immediately so exit/reload keeps the edited copy.
-      setSnapshotHtml(html);
       router.refresh();
       alert("已保存");
     } catch (error) {
@@ -390,74 +344,21 @@ export function VisualPageEditor({
     }
   };
 
-  const restoreDefaults = async () => {
-    if (
-      !window.confirm(
-        "恢复此服务页的默认文案？已保存的前台修改会被清除（图片若已上传到图床不会删文件）。"
-      )
-    ) {
-      return;
-    }
-    setSaving(true);
-    try {
-      let existing: Record<string, unknown> = {};
-      try {
-        const existingRes = await fetch(
-          `/api/cms/content/?pageSlug=${encodeURIComponent(pageSlug)}`,
-          { credentials: "same-origin", cache: "no-store" }
-        );
-        if (existingRes.ok) {
-          const existingData = (await existingRes.json()) as {
-            content?: Record<string, unknown>;
-          };
-          if (existingData.content && typeof existingData.content === "object") {
-            existing = { ...existingData.content };
-          }
-        }
-      } catch {
-        // best-effort
-      }
-      delete existing.autoHtml;
-      delete existing.mode;
-
-      const res = await fetch("/api/cms/content/", {
-        method: "PUT",
-        credentials: "same-origin",
-        redirect: "error",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pageSlug, content: existing }),
-      });
-      const data = (await res.json().catch(() => ({}))) as { error?: string };
-      if (!res.ok) {
-        throw new Error(data?.error || `恢复失败 (${res.status})`);
-      }
-      setSnapshotHtml("");
-      initialSnapshot.current = "";
-      window.location.reload();
-    } catch (error) {
-      alert(error instanceof Error ? error.message : "恢复失败");
-      setSaving(false);
-    }
-  };
-
   const reset = () => {
     if (editable) {
       window.location.reload();
       return;
     }
-    setSnapshotHtml(initialSnapshot.current);
+    const root = rootRef.current;
+    if (!root) return;
+    root.innerHTML = initialSnapshot.current;
     setEditableDomState(false);
   };
 
   return (
     <>
-      <div
-        ref={rootRef}
-        onClick={handleRootClick}
-        suppressHydrationWarning
-        {...(useHtmlSource ? { dangerouslySetInnerHTML: { __html: cleanedSnapshot } } : {})}
-      >
-        {!useHtmlSource ? children : null}
+      <div ref={rootRef} onClick={handleRootClick}>
+        {children}
       </div>
 
       {editable && (
@@ -487,7 +388,7 @@ export function VisualPageEditor({
               lineHeight: 1.5,
             }}
           >
-            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传。修改后请点「保存」。
+            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传
           </p>
           <div
             style={{
@@ -532,24 +433,8 @@ export function VisualPageEditor({
             </button>
             <button
               type="button"
-              onClick={() => void restoreDefaults()}
-              disabled={saving}
-              style={{
-                background: "#2a2a2a",
-                color: "#f0c0c0",
-                border: "1px solid #755",
-                borderRadius: 8,
-                padding: "8px 12px",
-                fontSize: 13,
-                cursor: saving ? "wait" : "pointer",
-              }}
-            >
-              恢复默认
-            </button>
-            <button
-              type="button"
               onClick={async () => {
-                await fetch("/api/cms/mode/", {
+                await fetch("/api/cms/mode", {
                   method: "PUT",
                   credentials: "same-origin",
                   headers: { "Content-Type": "application/json" },

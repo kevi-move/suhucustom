@@ -25,9 +25,6 @@ export function QuoteButton({
   return (
     <button
       type="button"
-      data-vedit-quote="true"
-      data-vedit-quote-title={title || undefined}
-      data-vedit-quote-category={productCategory || undefined}
       className={clsx(className)}
       onClick={() =>
         openModal({
