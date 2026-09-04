@@ -80,43 +80,9 @@ function findLiveImageForSaved(
   return liveImgs[index];
 }
 
-/** Leaf text nodes (no nested editable text tags) — stable enough to rematch after React refresh. */
-function getLeafTextElements(root: ParentNode): HTMLElement[] {
-  return Array.from(root.querySelectorAll(TEXT_SELECTOR)).filter((node) => {
-    const el = node as HTMLElement;
-    if (el.closest("[data-no-vedit='true']")) return false;
-    if (el.closest("script, style, noscript")) return false;
-    return !el.querySelector(TEXT_SELECTOR);
-  }) as HTMLElement[];
-}
-
-function applySavedTextOverrides(liveRoot: HTMLElement, savedRoot: HTMLElement) {
-  const savedLeaves = getLeafTextElements(savedRoot);
-  const liveLeaves = getLeafTextElements(liveRoot);
-  if (savedLeaves.length === 0 || liveLeaves.length === 0) return;
-
-  // Structure changed too much (page redesign) — skip text remap to avoid scrambled copy.
-  const ratio =
-    Math.min(savedLeaves.length, liveLeaves.length) /
-    Math.max(savedLeaves.length, liveLeaves.length);
-  if (ratio < 0.75) return;
-
-  const count = Math.min(savedLeaves.length, liveLeaves.length);
-  for (let i = 0; i < count; i++) {
-    const saved = savedLeaves[i];
-    const live = liveLeaves[i];
-    if (saved.tagName !== live.tagName) continue;
-
-    const savedHtml = saved.innerHTML;
-    const savedText = saved.textContent?.trim() ?? "";
-    if (!savedText) continue;
-    if (live.innerHTML === savedHtml) continue;
-
-    live.innerHTML = savedHtml;
-  }
-}
-
-/** Apply saved CMS image URLs and text edits onto the live React-rendered service page. */
+/** Apply saved CMS image URLs onto the live React-rendered service page.
+ * Text is never remapped by leaf index — that scrambled copy across sections.
+ */
 export function applySavedVisualOverrides(liveRoot: HTMLElement, savedHtml: string) {
   const cleaned = stripVisualEditArtifacts(savedHtml);
   if (!cleaned || typeof DOMParser === "undefined") return;
@@ -141,6 +107,4 @@ export function applySavedVisualOverrides(liveRoot: HTMLElement, savedHtml: stri
       liveImg.src = savedSrc;
     }
   });
-
-  applySavedTextOverrides(liveRoot, savedRoot);
 }

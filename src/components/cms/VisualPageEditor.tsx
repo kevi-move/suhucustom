@@ -13,6 +13,7 @@ import {
   stripEditArtifactsFromDom,
   stripVisualEditArtifacts,
 } from "@/lib/visualPageHtml";
+import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
 import {
   CASE_STUDY_IMAGE_FRAME_CLASS,
   CASE_STUDY_IMAGE_IMG_CLASS,
@@ -368,7 +369,7 @@ export function VisualPageEditor({
           content: {
             ...existing,
             autoHtml: html,
-            mode: "visual-v1",
+            mode: SERVICE_VISUAL_MODE,
           },
         }),
       });
@@ -386,6 +387,56 @@ export function VisualPageEditor({
     } finally {
       setSaving(false);
       if (editable) setEditableDomState(true);
+    }
+  };
+
+  const restoreDefaults = async () => {
+    if (
+      !window.confirm(
+        "恢复此服务页的默认文案？已保存的前台修改会被清除（图片若已上传到图床不会删文件）。"
+      )
+    ) {
+      return;
+    }
+    setSaving(true);
+    try {
+      let existing: Record<string, unknown> = {};
+      try {
+        const existingRes = await fetch(
+          `/api/cms/content/?pageSlug=${encodeURIComponent(pageSlug)}`,
+          { credentials: "same-origin", cache: "no-store" }
+        );
+        if (existingRes.ok) {
+          const existingData = (await existingRes.json()) as {
+            content?: Record<string, unknown>;
+          };
+          if (existingData.content && typeof existingData.content === "object") {
+            existing = { ...existingData.content };
+          }
+        }
+      } catch {
+        // best-effort
+      }
+      delete existing.autoHtml;
+      delete existing.mode;
+
+      const res = await fetch("/api/cms/content/", {
+        method: "PUT",
+        credentials: "same-origin",
+        redirect: "error",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pageSlug, content: existing }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        throw new Error(data?.error || `恢复失败 (${res.status})`);
+      }
+      setSnapshotHtml("");
+      initialSnapshot.current = "";
+      window.location.reload();
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "恢复失败");
+      setSaving(false);
     }
   };
 
@@ -478,6 +529,22 @@ export function VisualPageEditor({
               }}
             >
               撤销
+            </button>
+            <button
+              type="button"
+              onClick={() => void restoreDefaults()}
+              disabled={saving}
+              style={{
+                background: "#2a2a2a",
+                color: "#f0c0c0",
+                border: "1px solid #755",
+                borderRadius: 8,
+                padding: "8px 12px",
+                fontSize: 13,
+                cursor: saving ? "wait" : "pointer",
+              }}
+            >
+              恢复默认
             </button>
             <button
               type="button"
