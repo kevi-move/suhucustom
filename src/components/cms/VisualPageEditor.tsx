@@ -1,10 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { useContactModal } from "@/contexts/ContactModalContext";
 import { uploadImageFile } from "@/lib/uploadImage";
 import { extractCaseStudyImageSrc } from "@/lib/caseStudyImage";
+import { hydrateServicePageInteractions } from "@/lib/servicePageHydrate";
 import {
   applySavedVisualOverrides,
   captureSanitizedHtml,
@@ -25,7 +27,7 @@ interface VisualPageEditorProps {
 }
 
 const TEXT_SELECTOR =
-  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote";
+  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote,summary";
 
 const HERO_ROOT_SELECTOR = ".relative.overflow-hidden";
 
@@ -154,6 +156,8 @@ export function VisualPageEditor({
   children,
 }: VisualPageEditorProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const { openModal } = useContactModal();
   const { isAdmin, loading } = useAuth();
   const editable = !loading && isAdmin && modeEnabled;
   const rootRef = useRef<HTMLDivElement>(null);
@@ -161,13 +165,29 @@ export function VisualPageEditor({
   const [selectedImg, setSelectedImg] = useState<HTMLImageElement | null>(null);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const initialSnapshot = useRef<string>(initialHtml || "");
 
-  const renderedHtml = stripVisualEditArtifacts((initialHtml || "").trim());
+  const serverHtml = stripVisualEditArtifacts((initialHtml || "").trim());
+  const [snapshotHtml, setSnapshotHtml] = useState(serverHtml);
+  const useHtmlSource = Boolean(snapshotHtml);
+  const cleanedSnapshot = useHtmlSource ? stripVisualEditArtifacts(snapshotHtml) : "";
+  const initialSnapshot = useRef<string>(serverHtml);
 
   useEffect(() => {
-    initialSnapshot.current = renderedHtml;
-  }, [renderedHtml]);
+    // Prefer server snapshot when present; never clear a local save with an empty refresh.
+    if (!serverHtml) return;
+    setSnapshotHtml(serverHtml);
+    initialSnapshot.current = serverHtml;
+  }, [serverHtml]);
+
+  const hydrateRoot = useCallback(
+    (root: HTMLElement) => {
+      hydrateServicePageInteractions(root, {
+        openQuoteModal: openModal,
+        pathname: pathname || "/",
+      });
+    },
+    [openModal, pathname]
+  );
 
   const setEditableDomState = useCallback((enabled: boolean) => {
     const root = rootRef.current;
@@ -215,43 +235,43 @@ export function VisualPageEditor({
     configureHeroImageEditing(root, enabled);
   }, []);
 
+  // Saved HTML is rendered via dangerouslySetInnerHTML (source of truth).
+  // Hydrate interactions / edit chrome after React commits that markup.
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    if (useHtmlSource) {
+      hydrateRoot(root);
+    }
+
+    if (editable) {
+      migrateCaseStudyPlaceholders(root);
+      normalizeCaseStudyPhotos(root);
+      // Only remap onto React children when we are NOT using HTML-as-source.
+      if (!useHtmlSource && serverHtml) {
+        restoreSavedImages(root, serverHtml);
+      }
+      setEditableDomState(true);
+      initialSnapshot.current = captureSanitizedHtml(root);
+    } else {
+      setEditableDomState(false);
+      stripEditArtifactsFromDom(root);
+      if (useHtmlSource) {
+        hydrateRoot(root);
+      } else if (serverHtml) {
+        restoreSavedImages(root, serverHtml);
+      }
+    }
+  }, [cleanedSnapshot, useHtmlSource, serverHtml, editable, hydrateRoot, setEditableDomState]);
+
   useEffect(() => {
     if (editable) return;
     const frame = window.requestAnimationFrame(() => {
       if (rootRef.current) stripEditArtifactsFromDom(rootRef.current);
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [editable, renderedHtml]);
-
-  useEffect(() => {
-    if (!editable) {
-      setEditableDomState(false);
-      return;
-    }
-
-    const frame = window.requestAnimationFrame(() => {
-      if (rootRef.current) {
-        migrateCaseStudyPlaceholders(rootRef.current);
-        normalizeCaseStudyPhotos(rootRef.current);
-        if (renderedHtml) {
-          restoreSavedImages(rootRef.current, renderedHtml);
-        }
-        initialSnapshot.current = rootRef.current.innerHTML;
-      }
-      setEditableDomState(true);
-    });
-
-    return () => window.cancelAnimationFrame(frame);
-  }, [editable, renderedHtml, setEditableDomState]);
-
-  useLayoutEffect(() => {
-    if (editable || !renderedHtml || !rootRef.current) return;
-
-    const apply = () => restoreSavedImages(rootRef.current!, renderedHtml);
-    apply();
-    const frame = window.requestAnimationFrame(apply);
-    return () => window.cancelAnimationFrame(frame);
-  }, [editable, renderedHtml]);
+  }, [editable, cleanedSnapshot]);
 
   const resolveEditableImage = (target: HTMLElement): HTMLImageElement | null => {
     if (target.tagName.toLowerCase() === "img") {
@@ -319,6 +339,25 @@ export function VisualPageEditor({
     try {
       setEditableDomState(false);
       const html = captureSanitizedHtml(root);
+
+      let existing: Record<string, unknown> = {};
+      try {
+        const existingRes = await fetch(
+          `/api/cms/content/?pageSlug=${encodeURIComponent(pageSlug)}`,
+          { credentials: "same-origin", cache: "no-store" }
+        );
+        if (existingRes.ok) {
+          const existingData = (await existingRes.json()) as {
+            content?: Record<string, unknown>;
+          };
+          if (existingData.content && typeof existingData.content === "object") {
+            existing = existingData.content;
+          }
+        }
+      } catch {
+        // Merge is best-effort; still save autoHtml below.
+      }
+
       const res = await fetch("/api/cms/content/", {
         method: "PUT",
         credentials: "same-origin",
@@ -327,6 +366,7 @@ export function VisualPageEditor({
         body: JSON.stringify({
           pageSlug,
           content: {
+            ...existing,
             autoHtml: html,
             mode: "visual-v1",
           },
@@ -337,8 +377,8 @@ export function VisualPageEditor({
         throw new Error(data?.error || `保存失败 (${res.status})`);
       }
       initialSnapshot.current = html;
-      // Keep edited text on the live DOM, then refresh so server cache updates.
-      applySavedVisualOverrides(root, html);
+      // Switch to HTML-as-source immediately so exit/reload keeps the edited copy.
+      setSnapshotHtml(html);
       router.refresh();
       alert("已保存");
     } catch (error) {
@@ -354,16 +394,19 @@ export function VisualPageEditor({
       window.location.reload();
       return;
     }
-    const root = rootRef.current;
-    if (!root) return;
-    root.innerHTML = initialSnapshot.current;
+    setSnapshotHtml(initialSnapshot.current);
     setEditableDomState(false);
   };
 
   return (
     <>
-      <div ref={rootRef} onClick={handleRootClick}>
-        {children}
+      <div
+        ref={rootRef}
+        onClick={handleRootClick}
+        suppressHydrationWarning
+        {...(useHtmlSource ? { dangerouslySetInnerHTML: { __html: cleanedSnapshot } } : {})}
+      >
+        {!useHtmlSource ? children : null}
       </div>
 
       {editable && (
@@ -393,7 +436,7 @@ export function VisualPageEditor({
               lineHeight: 1.5,
             }}
           >
-            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传
+            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传。修改后请点「保存」。
           </p>
           <div
             style={{

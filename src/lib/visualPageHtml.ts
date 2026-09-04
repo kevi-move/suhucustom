@@ -1,5 +1,5 @@
 const TEXT_SELECTOR =
-  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote,a";
+  "h1,h2,h3,h4,h5,h6,p,span,strong,em,small,li,dt,dd,blockquote,a,summary";
 
 function stripEditArtifactsFromElement(root: ParentNode) {
   root.querySelectorAll(TEXT_SELECTOR).forEach((node) => {
