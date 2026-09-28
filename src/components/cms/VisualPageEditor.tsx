@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { useContactModal } from "@/contexts/ContactModalContext";
@@ -18,6 +19,38 @@ import {
   CASE_STUDY_IMAGE_IMG_CLASS,
   CASE_STUDY_IMAGE_SLOT_CLASS,
 } from "@/components/services/CaseStudyImage";
+
+type SelectedImageKey = {
+  alt: string;
+  optionId: string;
+  oldSrc: string;
+};
+
+function findImageByKey(root: HTMLElement, key: SelectedImageKey): HTMLImageElement | null {
+  if (key.optionId) {
+    const byOption = root.querySelector(
+      `img[data-vedit-customization-id="${CSS.escape(key.optionId)}"]`
+    );
+    if (byOption instanceof HTMLImageElement) return byOption;
+  }
+
+  if (key.alt) {
+    const byAlt = Array.from(root.querySelectorAll("img")).find(
+      (img) => (img.getAttribute("alt") || "").trim() === key.alt
+    );
+    if (byAlt) return byAlt;
+  }
+
+  if (key.oldSrc) {
+    const bySrc = Array.from(root.querySelectorAll("img")).find((img) => {
+      const src = img.getAttribute("src") || "";
+      return src === key.oldSrc || img.currentSrc === key.oldSrc;
+    });
+    if (bySrc) return bySrc;
+  }
+
+  return null;
+}
 
 interface VisualPageEditorProps {
   pageSlug: string;
@@ -279,7 +312,9 @@ export function VisualPageEditor({
   const editable = !loading && isAdmin && modeEnabled;
   const rootRef = useRef<HTMLDivElement>(null);
   const [saving, setSaving] = useState(false);
-  const [selectedImg, setSelectedImg] = useState<HTMLImageElement | null>(null);
+  const selectedImgRef = useRef<HTMLImageElement | null>(null);
+  const selectedImgKeyRef = useRef<SelectedImageKey | null>(null);
+  const uploadingRef = useRef(false);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -425,38 +460,116 @@ export function VisualPageEditor({
     return img;
   };
 
+  const lockDomToHtmlSnapshot = useCallback(() => {
+    const root = rootRef.current;
+    if (!root) return "";
+    const html = captureSanitizedHtml(root);
+    if (!html.trim()) return "";
+    initialSnapshot.current = html;
+    setSnapshotHtml(html);
+    return html;
+  }, []);
+
   const handleRootClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!editable) return;
     const img = resolveEditableImage(e.target as HTMLElement);
     if (!img) return;
     e.preventDefault();
     e.stopPropagation();
-    setSelectedImg(img);
+
+    const key: SelectedImageKey = {
+      alt: (img.getAttribute("alt") || "").trim(),
+      optionId: (img.getAttribute("data-vedit-customization-id") || "").trim(),
+      oldSrc: (img.currentSrc || img.getAttribute("src") || "").trim(),
+    };
+    selectedImgKeyRef.current = key;
+
+    // Promote React children to an HTML snapshot first so later setState
+    // (upload progress) cannot reset <img src> back to component defaults.
+    if (!useHtmlSource && rootRef.current) {
+      flushSync(() => {
+        lockDomToHtmlSnapshot();
+      });
+    }
+
+    const liveRoot = rootRef.current;
+    selectedImgRef.current =
+      (liveRoot && findImageByKey(liveRoot, key)) ||
+      (liveRoot?.contains(img) ? img : null) ||
+      img;
+
     fileInputRef.current?.click();
   };
 
   const uploadImageForSelected = async (file: File) => {
-    if (!selectedImg) return;
+    if (uploadingRef.current) return;
+
+    const root = rootRef.current;
+    const key = selectedImgKeyRef.current;
+    let img =
+      (selectedImgRef.current && root?.contains(selectedImgRef.current)
+        ? selectedImgRef.current
+        : null) ||
+      (root && key ? findImageByKey(root, key) : null);
+
+    if (!img) {
+      alert("未选中图片，请再点击一次图片后选择文件。");
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+
+    uploadingRef.current = true;
     setUploading(true);
     try {
       const url = await uploadImageFile(file);
-      selectedImg.src = url;
-      setSelectedImg(null);
+
+      // DOM may have been replaced while awaiting upload — resolve again.
+      const liveRoot = rootRef.current;
+      if (liveRoot && key) {
+        img = findImageByKey(liveRoot, key) || (liveRoot.contains(img) ? img : null);
+      }
+      if (!img) {
+        throw new Error("上传成功但找不到目标图片节点，请刷新后重试。");
+      }
+
+      img.src = url;
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+
+      flushSync(() => {
+        lockDomToHtmlSnapshot();
+      });
+
+      alert("图片已替换，请点击右下角「保存」写入网站。");
     } catch (error) {
       alert(error instanceof Error ? error.message : "上传失败");
     } finally {
+      uploadingRef.current = false;
       setUploading(false);
+      selectedImgRef.current = null;
+      selectedImgKeyRef.current = null;
       if (fileInputRef.current) fileInputRef.current.value = "";
     }
   };
 
   const save = async () => {
     const root = rootRef.current;
-    if (!root) return;
+    if (!root) {
+      alert("页面未就绪，请刷新后重试。");
+      return;
+    }
+    if (uploadingRef.current || uploading) {
+      alert("图片仍在上传，请稍后再保存。");
+      return;
+    }
+
     setSaving(true);
     try {
       setEditableDomState(false);
       const html = captureSanitizedHtml(root);
+      if (!html.trim()) {
+        throw new Error("没有可保存的页面内容");
+      }
 
       let existing: Record<string, unknown> = {};
       try {
@@ -548,7 +661,7 @@ export function VisualPageEditor({
               lineHeight: 1.5,
             }}
           >
-            点击文字修改；点击图片、Case Study 或 Hero 背景空白处可上传。修改后请点「保存」。
+            点击文字修改；点击图片可上传。上传成功后必须再点「保存」，刷新后才会保留。
           </p>
           <div
             style={{
@@ -563,7 +676,7 @@ export function VisualPageEditor({
             <button
               type="button"
               onClick={() => void save()}
-              disabled={saving}
+              disabled={saving || uploading}
               style={{
                 background: "#D09947",
                 color: "#111",
@@ -571,10 +684,10 @@ export function VisualPageEditor({
                 borderRadius: 8,
                 padding: "8px 12px",
                 fontSize: 13,
-                cursor: saving ? "wait" : "pointer",
+                cursor: saving || uploading ? "wait" : "pointer",
               }}
             >
-              {saving ? "保存中…" : "保存"}
+              {saving ? "保存中…" : uploading ? "上传中…" : "保存"}
             </button>
             <button
               type="button"
@@ -622,7 +735,7 @@ export function VisualPageEditor({
             style={{ display: "none" }}
             onChange={(e) => {
               const file = e.target.files?.[0];
-              if (file && !uploading) void uploadImageForSelected(file);
+              if (file && !uploadingRef.current) void uploadImageForSelected(file);
             }}
           />
         </div>
