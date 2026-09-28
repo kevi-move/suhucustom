@@ -9,8 +9,15 @@ import { getPublishedCustomizationItems } from "@/lib/navigation";
 function getPublishedSitemapPaths(): string[] {
   const hasCustomizationPages = getPublishedCustomizationItems().length > 0;
 
+  const noindexPaths = new Set([
+    "/search",
+    "/privacy-policy",
+    "/terms-and-conditions",
+  ]);
+
   return Object.keys(ALL_SEO_DEFAULTS).filter((path) => {
     if (isUnpublishedPath(path)) return false;
+    if (noindexPaths.has(path)) return false;
     if (path === "/customization" && !hasCustomizationPages) return false;
     return true;
   });
