@@ -9,6 +9,7 @@ import {
   isFormSubmittedTooFast,
   looksLikeSpam,
 } from "@/lib/inquiryProtection";
+import { notifyWecomInquiry } from "@/lib/wecomInquiryNotify";
 
 const inquirySchema = z.object({
   fullName: z.string().min(2).max(120),
@@ -160,10 +161,21 @@ export async function POST(request: Request) {
       }
     }
 
+    const wecomSent = await notifyWecomInquiry({
+      fullName: data.fullName,
+      email: data.email,
+      company: data.company,
+      phone: data.phone,
+      productCategory: data.productCategory,
+      estimatedQty: data.estimatedQty,
+      sourcePage: data.sourcePage,
+      message: data.message,
+    });
+
     return NextResponse.json({
       ok: true,
       ...(process.env.NODE_ENV !== "production"
-        ? { emailSent, notifyTo: toEmail, emailError }
+        ? { emailSent, notifyTo: toEmail, emailError, wecomSent }
         : {}),
     });
   } catch (error) {

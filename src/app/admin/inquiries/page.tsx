@@ -9,6 +9,7 @@ type SetupStatus = {
   supabasePublic: boolean;
   supabaseAdmin: boolean;
   emailNotify: boolean;
+  wecomNotify?: boolean;
   notifyToEmail?: string;
   siteContactEmail?: string;
   resendTestMode?: boolean;
@@ -158,6 +159,10 @@ export default function AdminInquiriesPage() {
               <StatusRow ok={setup.supabasePublic} label="Supabase 连接（用户能提交表单）" />
               <StatusRow ok={setup.supabaseAdmin} label="后台能查看询盘（service_role key）" />
               <StatusRow ok={setup.emailNotify} label="邮件通知（可选，配 Resend 后自动发到你邮箱）" />
+              <StatusRow
+                ok={Boolean(setup.wecomNotify)}
+                label="企业微信通知（可选，配 WECOM_WEBHOOK_URL 后即时推到群）"
+              />
             </div>
             {setup.emailNotify && setup.notifyToEmail && (
               <p style={{ color: "#aaa", fontSize: 13, marginTop: 12, lineHeight: 1.6 }}>

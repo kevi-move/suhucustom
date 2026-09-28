@@ -5,6 +5,7 @@ import { isDeepLConfigured, isTranslationConfigured, getActiveTranslationProvide
 import { isGeminiConfigured } from "@/lib/translate/gemini";
 import { resolveAdminEmail } from "@/lib/requestAdmin";
 import { SITE_EMAIL } from "@/lib/siteContact";
+import { isWecomNotifyConfigured } from "@/lib/wecomInquiryNotify";
 
 export async function GET(request: NextRequest) {
   const isProduction = process.env.NODE_ENV === "production";
@@ -28,6 +29,7 @@ export async function GET(request: NextRequest) {
     supabasePublic: isSupabaseConfigured,
     supabaseAdmin: isSupabaseAdminConfigured,
     emailNotify: hasEmail,
+    wecomNotify: isWecomNotifyConfigured(),
     notifyToEmail: process.env.NOTIFY_TO_EMAIL?.trim() || SITE_EMAIL,
     siteContactEmail: SITE_EMAIL,
     resendTestMode,
