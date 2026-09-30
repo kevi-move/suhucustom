@@ -14,6 +14,9 @@ export default function LanguageSwitcher({ variant = "header" }: LanguageSwitche
   const { locale, t } = useLocale();
   const { pathname: barePath } = stripLocalePrefix(pathname);
 
+  // Hide while only English is published.
+  if (LOCALES.length <= 1) return null;
+
   const selectClass =
     variant === "footer"
       ? "h-9 w-full min-w-0 rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-slate-200 hover:border-amber-400/50 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/30"

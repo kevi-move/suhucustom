@@ -50,7 +50,9 @@ async function fetchWithOptionalProxy(url: string, init: RequestInit): Promise<R
 
   const { ProxyAgent, fetch: undiciFetch } = await import("undici");
   return (await undiciFetch(url, {
-    ...init,
+    method: init.method,
+    headers: init.headers as Record<string, string>,
+    body: init.body as string | undefined,
     dispatcher: new ProxyAgent(proxy),
   })) as unknown as Response;
 }

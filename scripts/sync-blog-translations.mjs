@@ -72,7 +72,7 @@ async function httpFetch(url, init = {}) {
   return fetch(url, init);
 }
 
-const LOCALES = ["ja"];
+const LOCALES = ["ja"]; // paused on public site; keep for future `i18n:blog` runs
 const LOCALE_LANGUAGE_NAME = {
   ja: "Japanese",
 };

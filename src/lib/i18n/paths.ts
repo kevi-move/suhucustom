@@ -7,9 +7,12 @@ import {
   isLocale,
 } from "./locales";
 
-const LOCALE_PREFIX_PATTERN = new RegExp(
-  `^/(${NON_DEFAULT_LOCALES.map((l) => l.replace("-", "\\-")).join("|")})(?=/|$)`
-);
+const LOCALE_PREFIX_PATTERN =
+  NON_DEFAULT_LOCALES.length === 0
+    ? /a^/ // never matches while no public non-default locales
+    : new RegExp(
+        `^/(${NON_DEFAULT_LOCALES.map((l) => l.replace("-", "\\-")).join("|")})(?=/|$)`
+      );
 
 export function stripLocalePrefix(pathname: string): { locale: Locale; pathname: string } {
   const match = pathname.match(LOCALE_PREFIX_PATTERN);
@@ -61,9 +64,8 @@ export function localeFromAcceptLanguage(header: string | null): Locale | null {
   const parts = header.split(",").map((p) => p.trim().split(";")[0]?.toLowerCase());
   for (const part of parts) {
     if (!part) continue;
-    if (part.startsWith("ja")) return "ja";
-    if (part.startsWith("en")) return "en";
-    // Retired locales fall through; prefer English if listed later, else continue.
+    // Japanese is paused on the public site — treat as English for now.
+    if (part.startsWith("en") || part.startsWith("ja")) return "en";
   }
   return null;
 }
