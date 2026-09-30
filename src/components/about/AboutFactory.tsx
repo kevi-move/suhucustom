@@ -6,9 +6,9 @@ import { ABOUT_US_PLACEHOLDER, splitLines } from "@/lib/aboutUsDefaults";
 import { useCMS } from "@/contexts/CMSContext";
 
 export default function AboutFactory() {
-  const { getValue } = useCMS();
+  const { getDisplayValue } = useCMS();
   const capabilities = splitLines(
-    getValue<string>(
+    getDisplayValue<string>(
       "factory.capabilities",
       "Custom apparel\nEmbroidery & printing\nPrivate label manufacturing\nSmall-batch and bulk orders\nPackaging & labeling"
     )

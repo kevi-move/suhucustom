@@ -6,9 +6,9 @@ import { ABOUT_US_PLACEHOLDER, splitLines } from "@/lib/aboutUsDefaults";
 import { useCMS } from "@/contexts/CMSContext";
 
 export default function AboutStory() {
-  const { getValue } = useCMS();
+  const { getDisplayValue } = useCMS();
   const challenges = splitLines(
-    getValue<string>(
+    getDisplayValue<string>(
       "story.challenges",
       "Some suppliers communicated slowly.\nSome delivered inconsistent quality.\nOthers simply couldn't handle small or growing brands."
     )

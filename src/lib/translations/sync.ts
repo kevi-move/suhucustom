@@ -1,8 +1,9 @@
-import { translateTexts } from "@/lib/deepl/client";
+import { translateHtml, translateTexts } from "@/lib/deepl/client";
 import { getStaticUiStrings } from "@/lib/i18n/staticUiTranslations";
 import { NON_DEFAULT_LOCALES, type Locale } from "@/lib/i18n/locales";
 import { EN_UI_STRINGS, collectUiStringCatalog } from "@/lib/i18n/uiCatalog";
 import { ALL_SEO_DEFAULTS } from "@/lib/seoDefaults";
+import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
 import { getCachedTranslation, upsertTranslation } from "@/lib/translations/store";
 import { translateJsonStrings } from "@/lib/translations/jsonTranslator";
 import { syncBlogPostTranslation } from "@/lib/translations/blogSync";
@@ -57,8 +58,25 @@ export async function syncPageContentTranslation(
   content: Record<string, unknown>,
   version: number
 ): Promise<void> {
+  const autoHtml = typeof content.autoHtml === "string" ? content.autoHtml.trim() : "";
+  const isVisualHtml = content.mode === SERVICE_VISUAL_MODE && autoHtml.length > 0;
+
   for (const locale of NON_DEFAULT_LOCALES) {
-    const translated = await translateJsonStrings(content, (texts) => translateTexts(texts, locale));
+    // Huge visual HTML must use HTML translator; JSON leaf walk skips >50k strings.
+    const contentForJson: Record<string, unknown> = { ...content };
+    if (isVisualHtml) {
+      delete contentForJson.autoHtml;
+    }
+
+    const translated = (await translateJsonStrings(contentForJson, (texts) =>
+      translateTexts(texts, locale)
+    )) as Record<string, unknown>;
+
+    if (isVisualHtml) {
+      translated.autoHtml = await translateHtml(autoHtml, locale);
+      translated.mode = SERVICE_VISUAL_MODE;
+    }
+
     await upsertTranslation("page", pageSlug, locale, translated, version);
   }
 }

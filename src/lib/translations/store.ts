@@ -32,7 +32,13 @@ export async function getCachedTranslation(
     .maybeSingle();
 
   if (error || !data) return null;
-  if (sourceVersion != null && data.source_version !== sourceVersion) return null;
+  if (sourceVersion != null && data.source_version !== sourceVersion) {
+    // Prefer a slightly stale locale translation over silently falling back to English.
+    console.warn(
+      `Translation version mismatch for ${sourceType}:${sourceId}:${locale} ` +
+        `(have ${data.source_version}, want ${sourceVersion}); using cached translation anyway.`
+    );
+  }
 
   return (data.content as Record<string, unknown>) || null;
 }

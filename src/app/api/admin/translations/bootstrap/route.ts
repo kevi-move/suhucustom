@@ -5,6 +5,14 @@ import { bootstrapAllTranslations } from "@/lib/translations/sync";
 import { getPageContent } from "@/lib/pageContent";
 import { CMS_PAGE_SLUGS } from "@/lib/pageContentDefaults";
 import { getPublishedPosts } from "@/lib/blog";
+import { serviceGroups } from "@/lib/navigation";
+
+function allBootstrapPageSlugs(): string[] {
+  const serviceSlugs = serviceGroups.flatMap((group) =>
+    group.items.map((item) => `/services/${item.slug}`)
+  );
+  return [...CMS_PAGE_SLUGS, ...serviceSlugs];
+}
 
 export async function POST(request: NextRequest) {
   const userEmail = await resolveAdminEmail(request);
@@ -24,7 +32,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const result = await bootstrapAllTranslations(
-      CMS_PAGE_SLUGS,
+      allBootstrapPageSlugs(),
       async (slug) => {
         const { content, version } = await getPageContent(slug, "en");
         return { content, version };
@@ -34,7 +42,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       ok: true,
-      message: "Translations bootstrapped for UI, SEO, CMS pages, and blog posts.",
+      message:
+        "Translations bootstrapped for UI, SEO, CMS pages (incl. services), and blog posts → ja.",
       ...result,
     });
   } catch (error) {

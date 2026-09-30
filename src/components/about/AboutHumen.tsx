@@ -6,9 +6,9 @@ import { ABOUT_US_PLACEHOLDER, splitLines } from "@/lib/aboutUsDefaults";
 import { useCMS } from "@/contexts/CMSContext";
 
 export default function AboutHumen() {
-  const { getValue } = useCMS();
+  const { getDisplayValue } = useCMS();
   const benefits = splitLines(
-    getValue<string>(
+    getDisplayValue<string>(
       "humen.benefits",
       "Faster sampling\nBetter material sourcing\nFlexible production capacity\nStable lead times\nCompetitive pricing"
     )
