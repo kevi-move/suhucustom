@@ -38,6 +38,23 @@ type DeepLOptions = {
   tagHandling?: "html" | "xml";
 };
 
+async function fetchWithOptionalProxy(url: string, init: RequestInit): Promise<Response> {
+  const proxy =
+    process.env.TRANSLATE_HTTP_PROXY?.trim() ||
+    process.env.HTTPS_PROXY?.trim() ||
+    process.env.HTTP_PROXY?.trim();
+
+  if (!proxy) {
+    return fetch(url, init);
+  }
+
+  const { ProxyAgent, fetch: undiciFetch } = await import("undici");
+  return (await undiciFetch(url, {
+    ...init,
+    dispatcher: new ProxyAgent(proxy),
+  })) as unknown as Response;
+}
+
 async function callDeepL(
   texts: string[],
   targetLocale: Exclude<Locale, "en">,
@@ -58,7 +75,7 @@ async function callDeepL(
     body.append("tag_handling", options.tagHandling);
   }
 
-  const response = await fetch(`${getDeepLBaseUrl(apiKey)}/translate`, {
+  const response = await fetchWithOptionalProxy(`${getDeepLBaseUrl(apiKey)}/translate`, {
     method: "POST",
     headers: {
       Authorization: `DeepL-Auth-Key ${apiKey}`,

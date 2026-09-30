@@ -103,7 +103,7 @@ function stripCodeFence(text) {
 
 async function callGemini(prompt) {
   const apiKey = process.env.GEMINI_API_KEY.trim();
-  const model = process.env.GEMINI_MODEL?.trim() || "gemini-2.5-flash";
+  const model = process.env.GEMINI_MODEL?.trim() || "gemini-3.8-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
   const response = await httpFetch(url, {
     method: "POST",

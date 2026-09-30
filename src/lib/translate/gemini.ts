@@ -13,7 +13,7 @@ export function isGeminiConfigured(): boolean {
 }
 
 function getGeminiModel(): string {
-  return process.env.GEMINI_MODEL?.trim() || "gemini-2.5-flash";
+  return process.env.GEMINI_MODEL?.trim() || "gemini-3.8-flash";
 }
 
 function extractText(payload: unknown): string {
