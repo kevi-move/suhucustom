@@ -1,4 +1,4 @@
-import { DEEPL_TARGET_LANG, type Locale, isNonDefaultLocale } from "@/lib/i18n/locales";
+import { DEEPL_TARGET_LANG, NON_DEFAULT_LOCALES, type Locale, isNonDefaultLocale } from "@/lib/i18n/locales";
 import {
   geminiTranslateHtml,
   geminiTranslateTexts,
@@ -202,7 +202,7 @@ export async function translateHtml(
 
 export async function translateToAllLocales(text: string): Promise<Partial<Record<Locale, string>>> {
   const output: Partial<Record<Locale, string>> = { en: text };
-  for (const locale of ["zh-TW", "ko", "ja", "fr", "ru"] as const) {
+  for (const locale of NON_DEFAULT_LOCALES) {
     if (!isNonDefaultLocale(locale)) continue;
     output[locale] = await translateText(text, locale);
   }

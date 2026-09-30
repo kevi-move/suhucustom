@@ -42,7 +42,7 @@ export function buildMetadata(
       title: defaults.title,
       description: defaults.description,
       type: "website",
-      locale: locale === "zh-TW" ? "zh_TW" : locale,
+      locale: locale === "ja" ? "ja_JP" : "en_US",
     },
   };
 }

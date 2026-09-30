@@ -129,7 +129,7 @@ content_translations 表不存在。
   console.log(`\n触发 DeepL bootstrap (${baseUrl})...`);
   const result = await loginAndBootstrap();
   console.log("Bootstrap 成功:", JSON.stringify(result, null, 2));
-  console.log("\n请访问 http://localhost:3000/zh-TW 验证导航与页面标题。");
+  console.log("\n请访问 http://localhost:3000/ja 验证日语导航与页面标题。");
 }
 
 main().catch((err) => {

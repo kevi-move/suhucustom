@@ -1,11 +1,7 @@
 import type { Locale } from "@/lib/i18n/locales";
 
 export const LOCALE_LANGUAGE_NAME: Record<Exclude<Locale, "en">, string> = {
-  "zh-TW": "Traditional Chinese (zh-TW / 繁體中文)",
-  ko: "Korean",
   ja: "Japanese",
-  fr: "French",
-  ru: "Russian",
 };
 
 export function getGeminiApiKey(): string | null {

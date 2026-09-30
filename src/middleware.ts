@@ -8,14 +8,29 @@ import {
 import { isUserAdmin } from "@/lib/admin";
 import { stripLocalePrefix, localizePath } from "@/lib/i18n/paths";
 import { LOCALE_HEADER } from "@/lib/i18n/constants";
-import { DEFAULT_LOCALE } from "@/lib/i18n/locales";
+import { DEFAULT_LOCALE, RETIRED_LOCALE_PREFIXES } from "@/lib/i18n/locales";
 import { isUnpublishedPath } from "@/lib/unpublishedPaths";
 
 const isBypassEnabled = process.env.NEXT_PUBLIC_ADMIN_BYPASS === "true";
 
+const RETIRED_LOCALE_PREFIX_PATTERN = new RegExp(
+  `^/(${RETIRED_LOCALE_PREFIXES.map((l) => l.replace("-", "\\-")).join("|")})(?=/|$)`,
+  "i"
+);
+
 function normalizePathname(pathname: string): string {
   if (!pathname || pathname === "/") return "/";
   return pathname.replace(/\/+$/, "") || "/";
+}
+
+/** Map /zh-TW/services/t-shirts/ → /services/t-shirts/ (English default). */
+function redirectRetiredLocaleToEnglish(pathname: string): string | null {
+  const match = pathname.match(RETIRED_LOCALE_PREFIX_PATTERN);
+  if (!match) return null;
+  const rest = pathname.slice(match[0].length) || "/";
+  const englishPath = rest.startsWith("/") ? rest : `/${rest}`;
+  if (englishPath === "/") return "/";
+  return englishPath.endsWith("/") ? englishPath : `${englishPath}/`;
 }
 
 function isLocaleExcludedPath(pathname: string): boolean {
@@ -86,6 +101,15 @@ function applyLocaleRouting(request: NextRequest): {
 
 export async function middleware(request: NextRequest) {
   const { pathname: rawPathname } = request.nextUrl;
+
+  if (!isLocaleExcludedPath(rawPathname)) {
+    const englishTarget = redirectRetiredLocaleToEnglish(rawPathname);
+    if (englishTarget) {
+      const url = request.nextUrl.clone();
+      url.pathname = englishTarget;
+      return withSecurityHeaders(NextResponse.redirect(url, 301));
+    }
+  }
 
   if (needsTrailingSlashRedirect(rawPathname)) {
     const url = new URL(request.url);

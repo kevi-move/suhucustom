@@ -72,20 +72,12 @@ async function httpFetch(url, init = {}) {
   return fetch(url, init);
 }
 
-const LOCALES = ["zh-TW", "ko", "ja", "fr", "ru"];
+const LOCALES = ["ja"];
 const LOCALE_LANGUAGE_NAME = {
-  "zh-TW": "Traditional Chinese (zh-TW / 繁體中文)",
-  ko: "Korean",
   ja: "Japanese",
-  fr: "French",
-  ru: "Russian",
 };
 const DEEPL_TARGET_LANG = {
-  "zh-TW": "ZH-HANT",
-  ko: "KO",
   ja: "JA",
-  fr: "FR",
-  ru: "RU",
 };
 const HTML_CHUNK_CHARS = 12_000;
 const BATCH_SIZE = 20;

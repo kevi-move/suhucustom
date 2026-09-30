@@ -61,12 +61,9 @@ export function localeFromAcceptLanguage(header: string | null): Locale | null {
   const parts = header.split(",").map((p) => p.trim().split(";")[0]?.toLowerCase());
   for (const part of parts) {
     if (!part) continue;
-    if (part.startsWith("zh-tw") || part.startsWith("zh-hant")) return "zh-TW";
-    if (part.startsWith("ko")) return "ko";
     if (part.startsWith("ja")) return "ja";
-    if (part.startsWith("fr")) return "fr";
-    if (part.startsWith("ru")) return "ru";
     if (part.startsWith("en")) return "en";
+    // Retired locales fall through; prefer English if listed later, else continue.
   }
   return null;
 }
