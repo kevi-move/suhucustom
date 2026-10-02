@@ -40,8 +40,11 @@ export function localizePath(path: string, locale: Locale): string {
 }
 
 export function getSiteBaseUrl(): string {
-  const fromEnv = process.env.NEXT_PUBLIC_FRONTEND_URL?.trim();
-  if (fromEnv) return fromEnv.replace(/\/$/, "");
+  // Prefer the public production domain (set on Vercel after DNS is live).
+  const fromSite = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (fromSite) return fromSite.replace(/\/$/, "");
+  const fromFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL?.trim();
+  if (fromFrontend) return fromFrontend.replace(/\/$/, "");
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
   return "http://localhost:3000";
 }

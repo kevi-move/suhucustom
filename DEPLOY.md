@@ -23,7 +23,7 @@ Copy `.env.local.example` → production env. **Required:**
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public anon key |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server-only; inquiries + uploads |
-| `NEXT_PUBLIC_SITE_URL` | `https://yourdomain.com` |
+| `NEXT_PUBLIC_SITE_URL` | `https://www.suhucustom.com` (or apex). Used by sitemap/robots absolute URLs |
 | `NOTIFY_TO_EMAIL` | Inquiry notification inbox |
 | `RESEND_API_KEY` | Email delivery |
 | `INQUIRY_FROM_EMAIL` | Verified domain sender |

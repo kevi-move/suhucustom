@@ -126,8 +126,13 @@ export async function getPublishedPostBySlug(slug: string): Promise<BlogPost | n
 }
 
 export async function getPublishedPostSlugs(): Promise<string[]> {
-  const posts = await getPublishedPosts();
-  return posts.map((p) => p.slug);
+  try {
+    const posts = await getPublishedPosts();
+    return posts.map((p) => p.slug);
+  } catch (err) {
+    console.error("Error fetching published post slugs:", err);
+    return [];
+  }
 }
 
 async function enrichPostsForPublic(posts: BlogPost[]): Promise<BlogPostPublic[]> {

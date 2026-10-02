@@ -26,7 +26,14 @@ function getPublishedSitemapPaths(): string[] {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = getPublishedSitemapPaths();
   const now = new Date();
-  const blogSlugs = await getPublishedPostSlugs();
+
+  // Blog slugs need Supabase; never let a DB outage 500 the whole sitemap.
+  let blogSlugs: string[] = [];
+  try {
+    blogSlugs = await getPublishedPostSlugs();
+  } catch (err) {
+    console.error("sitemap: failed to load blog slugs (continuing without them)", err);
+  }
 
   const entries: MetadataRoute.Sitemap = [];
 
