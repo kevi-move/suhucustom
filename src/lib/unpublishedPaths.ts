@@ -1,4 +1,4 @@
-/** Paths that are not ready yet — visitors are redirected to the homepage. */
+/** Draft paths: not linked, not in the sitemap, and not served publicly. */
 export const UNPUBLISHED_PATHS = new Set([
   "/services/underwear-bras",
   "/services/swimwear",

@@ -11,6 +11,7 @@ import {
 import { getPostImageUrl } from "@/lib/blogUtils";
 import { extractBlogExtrasFromContent } from "@/lib/blogExtras";
 import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
+import { buildLocalizedUrl } from "@/lib/i18n/paths";
 
 export const revalidate = 60;
 
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = post.metaTitle?.trim() || `${post.title} | Suhu Custom Blog`;
   const description =
     post.metaDescription?.trim() || post.excerpt || "Read more on the SuhuCustom blog.";
+  const canonical = buildLocalizedUrl(`/blog/${slug}`, "en");
 
   return {
     title,
@@ -40,9 +42,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "Suhu Custom blog",
       ...(post.categoryId ? [] : []),
     ],
+    alternates: { canonical },
     openGraph: {
       title,
       description,
+      url: canonical,
       type: "article",
       publishedTime: post.publishedAt?.toISOString(),
       images: post.featuredImage ? [{ url: getPostImageUrl(post.featuredImage) }] : undefined,

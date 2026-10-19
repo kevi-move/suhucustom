@@ -4,6 +4,7 @@ import {
   customizationItems,
   serviceGroups,
 } from "@/lib/navigation";
+import { isUnpublishedPath } from "@/lib/unpublishedPaths";
 import type { SearchIndexEntry } from "@/types/search";
 
 function flattenAboutUsText(): string {
@@ -36,6 +37,7 @@ export function buildStaticSearchIndex(): SearchIndexEntry[] {
     type: SearchIndexEntry["type"],
     extra = ""
   ) => {
+    if (isUnpublishedPath(href)) return;
     entries.push({
       id,
       title,

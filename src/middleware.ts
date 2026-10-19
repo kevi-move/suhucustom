@@ -6,7 +6,7 @@ import {
   verifyAdminLocalGateFromRequest,
 } from "@/lib/adminLocalGate";
 import { isUserAdmin } from "@/lib/admin";
-import { stripLocalePrefix, localizePath } from "@/lib/i18n/paths";
+import { stripLocalePrefix, getSiteBaseUrl } from "@/lib/i18n/paths";
 import { LOCALE_HEADER } from "@/lib/i18n/constants";
 import { DEFAULT_LOCALE, RETIRED_LOCALE_PREFIXES } from "@/lib/i18n/locales";
 import { isUnpublishedPath } from "@/lib/unpublishedPaths";
@@ -51,6 +51,64 @@ function needsTrailingSlashRedirect(pathname: string): boolean {
   if (!pathname || pathname === "/" || pathname.endsWith("/")) return false;
   if (isLocaleExcludedPath(pathname)) return false;
   return true;
+}
+
+/** Production aliases that must not serve their own copy of the site. */
+function hostsToCanonical(canonicalHost: string): Set<string> {
+  const hosts = new Set<string>(["suhucustom.vercel.app"]);
+  if (canonicalHost.startsWith("www.")) hosts.add(canonicalHost.slice(4));
+  return hosts;
+}
+
+/**
+ * One 301 from a non-canonical host onto NEXT_PUBLIC_SITE_URL.
+ * Preview and deployment URLs (*.vercel.app other than the project alias) stay put.
+ * Skips non-GET so API writes are not redirected.
+ */
+function redirectToCanonicalHost(request: NextRequest): NextResponse | null {
+  if (request.method !== "GET" && request.method !== "HEAD") return null;
+
+  let canonical: URL;
+  try {
+    canonical = new URL(getSiteBaseUrl());
+  } catch {
+    return null;
+  }
+  if (!canonical.hostname || canonical.hostname === "localhost") return null;
+
+  const host = request.nextUrl.hostname.toLowerCase();
+  if (!hostsToCanonical(canonical.hostname).has(host)) return null;
+
+  const url = request.nextUrl.clone();
+  url.protocol = canonical.protocol;
+  url.hostname = canonical.hostname;
+  url.port = canonical.port;
+
+  const englishTarget = isLocaleExcludedPath(url.pathname)
+    ? null
+    : redirectRetiredLocaleToEnglish(url.pathname);
+  const pathname = englishTarget ?? url.pathname;
+  if (needsTrailingSlashRedirect(pathname)) {
+    url.pathname = `${normalizePathname(pathname)}/`;
+  } else {
+    url.pathname = pathname;
+  }
+
+  return withSecurityHeaders(NextResponse.redirect(url, 301));
+}
+
+/** Draft pages stay off the public site: no homepage redirect, no 404. */
+function unpublishedDraftResponse(): NextResponse {
+  const html = `<!DOCTYPE html><html lang="en"><head><meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><title>Draft</title></head><body><p>This page is not published yet.</p></body></html>`;
+  const response = new NextResponse(html, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "X-Robots-Tag": "noindex, nofollow",
+      "Cache-Control": "private, no-store",
+    },
+  });
+  return withSecurityHeaders(response);
 }
 
 function withSecurityHeaders(response: NextResponse) {
@@ -102,6 +160,16 @@ function applyLocaleRouting(request: NextRequest): {
 export async function middleware(request: NextRequest) {
   const { pathname: rawPathname } = request.nextUrl;
 
+  const canonicalHostRedirect = redirectToCanonicalHost(request);
+  if (canonicalHostRedirect) return canonicalHostRedirect;
+
+  if (!isLocaleExcludedPath(rawPathname)) {
+    const { pathname: internalPath } = stripLocalePrefix(rawPathname);
+    if (isUnpublishedPath(internalPath)) {
+      return unpublishedDraftResponse();
+    }
+  }
+
   if (!isLocaleExcludedPath(rawPathname)) {
     const englishTarget = redirectRetiredLocaleToEnglish(rawPathname);
     if (englishTarget) {
@@ -114,16 +182,7 @@ export async function middleware(request: NextRequest) {
   if (needsTrailingSlashRedirect(rawPathname)) {
     const url = new URL(request.url);
     url.pathname = `${normalizePathname(rawPathname)}/`;
-    return withSecurityHeaders(NextResponse.redirect(url, 308));
-  }
-
-  if (!isLocaleExcludedPath(rawPathname)) {
-    const { locale, pathname: internalPath } = stripLocalePrefix(rawPathname);
-    if (isUnpublishedPath(internalPath)) {
-      return withSecurityHeaders(
-        NextResponse.redirect(new URL(localizePath("/", locale), request.url))
-      );
-    }
+    return withSecurityHeaders(NextResponse.redirect(url, 301));
   }
 
   const { response: localeResponse, locale } = applyLocaleRouting(request);

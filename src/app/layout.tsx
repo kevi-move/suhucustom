@@ -5,7 +5,7 @@ import { Providers } from "@/components/Providers";
 import { STATIC_SEO } from "@/lib/seoDefaults";
 import { getRequestLocale } from "@/lib/i18n/server";
 import { LOCALE_HTML_LANG } from "@/lib/i18n/locales";
-import { buildHreflangAlternates } from "@/lib/i18n/paths";
+import { buildHreflangAlternates, getSiteBaseUrl } from "@/lib/i18n/paths";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteBaseUrl()),
   title: {
     default: STATIC_SEO["/"].title,
     template: "%s",
