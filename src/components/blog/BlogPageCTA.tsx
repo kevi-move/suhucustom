@@ -28,7 +28,7 @@ export default function BlogPageCTA() {
             <EditableText path="cta.primaryButton" value="Start Your Project" />
           </QuoteButton>
           <Link
-            href="/services"
+            href="/services/"
             className="inline-flex rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:border-amber-300 hover:text-amber-200"
           >
             <EditableText path="cta.secondaryButton" value="View Services" />

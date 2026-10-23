@@ -5,7 +5,7 @@ import { Providers } from "@/components/Providers";
 import { STATIC_SEO } from "@/lib/seoDefaults";
 import { getRequestLocale } from "@/lib/i18n/server";
 import { LOCALE_HTML_LANG } from "@/lib/i18n/locales";
-import { buildHreflangAlternates, getSiteBaseUrl } from "@/lib/i18n/paths";
+import { getSiteBaseUrl } from "@/lib/i18n/paths";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +25,8 @@ export const metadata: Metadata = {
   },
   description: STATIC_SEO["/"].description,
   keywords: STATIC_SEO["/"].keywords,
-  alternates: {
-    languages: buildHreflangAlternates("/"),
-  },
+  // Canonical + hreflang are set per-page (resolvePageMetadata / blog generateMetadata).
+  // Do not put homepage languages here — child pages would inherit them.
   verification: {
     google: "GWs3ZpEK1vKHSMhz4f1UfC8gsbyv0U2LGwIDOm2AN_0",
   },

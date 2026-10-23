@@ -70,7 +70,7 @@ export default function AboutHowToWork() {
           {STEPS.map((step) => (
             <li key={step.num}>
               <Link
-                href="/contact-us"
+                href="/contact-us/"
                 className="group flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-amber-300 hover:shadow-lg sm:p-7"
               >
                 <div className="flex items-center justify-between gap-3">

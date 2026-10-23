@@ -68,7 +68,7 @@ export default function TshirtFeatures() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/quality"
+              href="/quality/"
               className="rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
             >
               See all services

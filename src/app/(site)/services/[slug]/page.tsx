@@ -305,7 +305,7 @@ export default async function ServicePage({ params }: Props) {
   return withServiceCms(slug, (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <nav className="mb-8 text-sm text-slate-500">
-        <Link href="/services" className="hover:text-amber-600">Services</Link>
+        <Link href="/services/" className="hover:text-amber-600">Services</Link>
         <span className="mx-2">/</span>
         <span>{item.nameEn}</span>
       </nav>
@@ -334,7 +334,7 @@ export default async function ServicePage({ params }: Props) {
 
           <div className="mt-10 flex flex-wrap gap-3">
             <ServiceFallbackActions productCategory={item.nameEn} />
-            <Link href="/quality" className="inline-block rounded-full border border-slate-300 px-8 py-3 font-medium text-slate-700 hover:border-amber-300 hover:text-amber-600">
+            <Link href="/quality/" className="inline-block rounded-full border border-slate-300 px-8 py-3 font-medium text-slate-700 hover:border-amber-300 hover:text-amber-600">
               View Quality Process
             </Link>
           </div>

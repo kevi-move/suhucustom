@@ -22,7 +22,7 @@ export default function ActivewearHero() {
             Home
           </Link>
           <span className="mx-2">/</span>
-          <Link href="/services" className="hover:text-amber-400 transition">
+          <Link href="/services/" className="hover:text-amber-400 transition">
             Core Categories
           </Link>
           <span className="mx-2">/</span>

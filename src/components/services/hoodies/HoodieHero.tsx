@@ -16,11 +16,11 @@ export default function HoodieHero() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="pt-8 text-sm text-slate-400">
-          <Link href="/services" className="hover:text-amber-400 transition">
+          <Link href="/services/" className="hover:text-amber-400 transition">
             Services
           </Link>
           <span className="mx-2">/</span>
-          <Link href="/services" className="hover:text-amber-400 transition">
+          <Link href="/services/" className="hover:text-amber-400 transition">
             Tops &amp; Activewear
           </Link>
           <span className="mx-2">/</span>
@@ -47,7 +47,7 @@ export default function HoodieHero() {
               Get a Free Quote
             </QuoteButton>
             <Link
-              href="/contact-us"
+              href="/contact-us/"
               className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"
             >
               Request a Sample

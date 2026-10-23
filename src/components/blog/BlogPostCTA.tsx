@@ -18,7 +18,7 @@ export default function BlogPostCTA() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <BlogQuoteCTAButton />
           <Link
-            href="/services"
+            href="/services/"
             className="inline-flex rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:border-amber-300 hover:text-amber-200"
           >
             View Services

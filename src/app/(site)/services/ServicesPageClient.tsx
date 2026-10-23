@@ -45,7 +45,7 @@ export default function ServicesPageClient({
                 {group.items.map((item) => (
                   <Link
                     key={item.slug}
-                    href={`/services/${item.slug}`}
+                    href={`/services/${item.slug}/`}
                     className="rounded-lg border border-slate-200 p-4 hover:border-amber-300 hover:bg-amber-50/50"
                   >
                     <span className="font-medium text-slate-900">{item.nameEn}</span>

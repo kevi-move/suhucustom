@@ -20,7 +20,7 @@ export default function LeggingsHero() {
             Home
           </Link>
           <span className="mx-2">/</span>
-          <Link href="/services" className="hover:text-amber-400 transition">
+          <Link href="/services/" className="hover:text-amber-400 transition">
             Core Categories
           </Link>
           <span className="mx-2">/</span>
@@ -49,7 +49,7 @@ export default function LeggingsHero() {
               Get a Free Quote
             </QuoteButton>
             <Link
-              href="/contact-us"
+              href="/contact-us/"
               className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"
             >
               Request a Sample

@@ -16,7 +16,7 @@ export default function Customization() {
         {customizationItems.map((item) => (
           <Link
             key={item.slug}
-            href={`/customization/${item.slug}`}
+            href={`/customization/${item.slug}/`}
             className="rounded-lg border border-slate-200 p-6 hover:border-amber-300 hover:bg-amber-50/50"
           >
             <h2 className="font-semibold text-slate-900">{item.nameEn}</h2>

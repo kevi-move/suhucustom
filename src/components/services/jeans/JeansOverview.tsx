@@ -64,7 +64,7 @@ export default function JeansOverview() {
             </div>
 
             <Link
-              href="/about-us"
+              href="/about-us/"
               className="mt-6 inline-flex items-center text-sm font-semibold text-amber-600 hover:text-amber-700"
             >
               Learn More About Our Factory

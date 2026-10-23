@@ -9,7 +9,7 @@ export default function HeaderSearch() {
     <>
       <SearchForm variant="header" />
       <Link
-        href="/search"
+        href="/search/"
         className="rounded-full p-2 text-slate-600 transition hover:bg-slate-100 hover:text-amber-600 lg:hidden"
         aria-label="Open search page"
       >

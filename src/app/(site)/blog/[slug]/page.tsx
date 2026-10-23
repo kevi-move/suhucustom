@@ -11,7 +11,7 @@ import {
 import { getPostImageUrl } from "@/lib/blogUtils";
 import { extractBlogExtrasFromContent } from "@/lib/blogExtras";
 import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
-import { buildLocalizedUrl } from "@/lib/i18n/paths";
+import { buildHreflangAlternates, buildLocalizedUrl } from "@/lib/i18n/paths";
 
 export const revalidate = 60;
 
@@ -42,7 +42,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "Suhu Custom blog",
       ...(post.categoryId ? [] : []),
     ],
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: buildHreflangAlternates(`/blog/${slug}`),
+    },
     openGraph: {
       title,
       description,

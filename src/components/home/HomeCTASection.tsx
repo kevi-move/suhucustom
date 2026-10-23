@@ -40,7 +40,7 @@ export default function HomeCTASection() {
             <EditableText path="cta.primaryCtaText" value="Get a Factory Quote" />
           </QuoteButton>
           <Link
-            href="/company/case-studies"
+            href="/company/case-studies/"
             className="inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white/90 backdrop-blur-sm transition hover:border-amber-300 hover:text-amber-200"
           >
             <EditableText path="cta.secondaryCtaText" value="View More Case Studies" />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BlogPostPublic } from "@/types/blog";
 import { formatBlogDate, getPostImageUrl } from "@/lib/blogUtils";
+import { localizePath } from "@/lib/i18n/paths";
 
 export default function BlogRelatedPosts({
   posts,
@@ -20,7 +21,7 @@ export default function BlogRelatedPosts({
           {related.map((post) => (
             <Link
               key={post.id}
-              href={`/blog/${post.slug}`}
+              href={localizePath(`/blog/${post.slug}`, "en")}
               className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-amber-200 hover:shadow-md"
             >
               <div className="aspect-[16/10] overflow-hidden bg-slate-100">

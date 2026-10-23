@@ -124,7 +124,7 @@ export default function ServiceCustomizationPanel({
                     Get a Quote
                   </QuoteButton>
                   <Link
-                    href="/contact-us"
+                    href="/contact-us/"
                     className="flex w-full items-center justify-center rounded-full border border-slate-200 py-3 text-sm font-semibold text-amber-600 transition hover:border-amber-300 hover:bg-amber-50"
                   >
                     {opt.cta}

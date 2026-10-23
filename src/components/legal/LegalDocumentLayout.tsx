@@ -30,7 +30,7 @@ export function LegalDocumentLayout({
               {SITE_EMAIL}
             </a>
             {" · "}
-            <Link href="/contact-us" className="font-medium text-amber-600 hover:text-amber-700">
+            <Link href="/contact-us/" className="font-medium text-amber-600 hover:text-amber-700">
               Contact form
             </Link>
           </p>

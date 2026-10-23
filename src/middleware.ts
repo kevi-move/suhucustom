@@ -53,16 +53,33 @@ function needsTrailingSlashRedirect(pathname: string): boolean {
   return true;
 }
 
-/** Production aliases that must not serve their own copy of the site. */
+/**
+ * Hosts that must 301 onto the canonical hostname (from NEXT_PUBLIC_SITE_URL).
+ * Never includes the canonical host itself — that would loop.
+ */
 function hostsToCanonical(canonicalHost: string): Set<string> {
-  const hosts = new Set<string>(["suhucustom.vercel.app"]);
-  if (canonicalHost.startsWith("www.")) hosts.add(canonicalHost.slice(4));
-  return hosts;
+  const host = canonicalHost.toLowerCase();
+  const aliases = new Set<string>();
+
+  if (host !== "suhucustom.vercel.app") {
+    aliases.add("suhucustom.vercel.app");
+  }
+
+  if (host.startsWith("www.")) {
+    aliases.add(host.slice(4));
+  } else if (!host.endsWith(".vercel.app")) {
+    // Canonical is apex → also fold www onto apex.
+    aliases.add(`www.${host}`);
+  }
+
+  aliases.delete(host);
+  return aliases;
 }
 
 /**
- * One 301 from a non-canonical host onto NEXT_PUBLIC_SITE_URL.
- * Preview and deployment URLs (*.vercel.app other than the project alias) stay put.
+ * One 301 from a non-canonical host onto NEXT_PUBLIC_SITE_URL,
+ * fixing retired locales + trailing slash in the same hop.
+ * Preview URLs (*.vercel.app other than the project alias) stay put.
  * Skips non-GET so API writes are not redirected.
  */
 function redirectToCanonicalHost(request: NextRequest): NextResponse | null {
@@ -77,7 +94,9 @@ function redirectToCanonicalHost(request: NextRequest): NextResponse | null {
   if (!canonical.hostname || canonical.hostname === "localhost") return null;
 
   const host = request.nextUrl.hostname.toLowerCase();
-  if (!hostsToCanonical(canonical.hostname).has(host)) return null;
+  const canonicalHost = canonical.hostname.toLowerCase();
+  if (host === canonicalHost) return null;
+  if (!hostsToCanonical(canonicalHost).has(host)) return null;
 
   const url = request.nextUrl.clone();
   url.protocol = canonical.protocol;
@@ -94,6 +113,7 @@ function redirectToCanonicalHost(request: NextRequest): NextResponse | null {
     url.pathname = pathname;
   }
 
+  // Absolute Location avoids relative redirect ambiguity for crawlers.
   return withSecurityHeaders(NextResponse.redirect(url, 301));
 }
 
@@ -180,7 +200,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (needsTrailingSlashRedirect(rawPathname)) {
-    const url = new URL(request.url);
+    const url = request.nextUrl.clone();
     url.pathname = `${normalizePathname(rawPathname)}/`;
     return withSecurityHeaders(NextResponse.redirect(url, 301));
   }

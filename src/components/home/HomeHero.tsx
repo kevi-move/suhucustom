@@ -42,7 +42,7 @@ export default function HomeHero() {
               <EditableText path="hero.primaryCtaText" value="Get an Instant Quote" />
             </QuoteButton>
             <Link
-              href="/services/t-shirts"
+              href="/services/t-shirts/"
               className="inline-flex items-center justify-center rounded-full border border-white/60 px-7 py-3 text-sm font-medium text-white/90 backdrop-blur-sm transition hover:border-amber-300 hover:text-amber-200"
             >
               <EditableText path="hero.secondaryCtaText" value="View Manufacturing Services" />

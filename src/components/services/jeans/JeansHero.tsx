@@ -24,7 +24,7 @@ export default function JeansHero() {
             Home
           </Link>
           <span className="mx-2">&gt;</span>
-          <Link href="/services" className="transition hover:text-amber-400">
+          <Link href="/services/" className="transition hover:text-amber-400">
             Core Categories
           </Link>
           <span className="mx-2">&gt;</span>
@@ -50,7 +50,7 @@ export default function JeansHero() {
               Get a Free Quote
             </QuoteButton>
             <Link
-              href="/contact-us"
+              href="/contact-us/"
               className="inline-flex items-center rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-amber-400 hover:text-amber-300"
             >
               Request a Sample

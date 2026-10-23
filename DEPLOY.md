@@ -66,7 +66,30 @@ npm run start
 
 Recommended: Vercel with Node 20+, root directory `apex-main/figma-ref/suhucustom`.
 
-## 6. Post-deploy smoke test
+## 6. SEO host redirects (required for Google indexing)
+
+Canonical form: `https://www.suhucustom.com` + trailing slash (e.g. `/blog/slug/`).
+
+App middleware already does apex → www + trailing slash in **one** 301. Vercel’s domain-level “Redirect to www” adds a second hop with a `Refresh: 0` header, which Google reports as soft/auto redirects.
+
+**In Vercel → Project → Settings → Domains:**
+
+1. Confirm primary domain is `www.suhucustom.com`.
+2. For `suhucustom.com` (apex): do **not** use Vercel’s built-in “Redirect to www”. Leave apex pointing at the same project **without** a platform redirect, so middleware owns the 301.
+3. Env: `NEXT_PUBLIC_SITE_URL=https://www.suhucustom.com` (no trailing slash).
+
+**After deploy, verify (expect one 301, no `refresh` header):**
+
+```bash
+curl -sI "https://suhucustom.com/blog/leggings-size-chart" | grep -iE 'HTTP|location|refresh'
+# → 301 Location: https://www.suhucustom.com/blog/leggings-size-chart/
+curl -sI "https://www.suhucustom.com/blog/leggings-size-chart" | grep -iE 'HTTP|location|refresh'
+# → 301 Location: …/blog/leggings-size-chart/
+```
+
+Then in Google Search Console: URL Inspection on a few canonical URLs → Request indexing. Soft-redirect reports clear over days/weeks.
+
+## 7. Post-deploy smoke test
 
 - [ ] Homepage loads (no broken images)
 - [ ] `/robots.txt` and `/sitemap.xml` respond
@@ -74,8 +97,9 @@ Recommended: Vercel with Node 20+, root directory `apex-main/figma-ref/suhucusto
 - [ ] `/admin/login` — non-admin users blocked
 - [ ] Blog CRUD in admin works
 - [ ] CMS content save on homepage works
+- [ ] Apex + slashless URLs: single 301, no `Refresh` header (see §6)
 
-## 7. Content still to replace manually
+## 8. Content still to replace manually
 
 Placeholder SVGs are used until real photos are uploaded. Run when ready:
 

@@ -45,7 +45,7 @@ export default function BlogArticleHeader({
         {backLink ??
           (showBackToBlog ? (
             <Link
-              href="/blog"
+              href="/blog/"
               className="inline-flex items-center gap-1 text-sm font-medium text-[#b45309] transition hover:text-[#d97706]"
             >
               <ChevronLeft className="h-4 w-4" aria-hidden />

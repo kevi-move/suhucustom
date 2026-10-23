@@ -7,6 +7,7 @@ import {
   formatBlogDate,
   getPostImageUrl,
 } from "@/lib/blogUtils";
+import { localizePath } from "@/lib/i18n/paths";
 
 export default function BlogPostCard({
   post,
@@ -22,7 +23,7 @@ export default function BlogPostCard({
   if (featured) {
     return (
       <article className="group relative overflow-hidden rounded-3xl bg-slate-900 shadow-xl ring-1 ring-slate-800">
-        <Link href={`/blog/${post.slug}`} className="grid lg:grid-cols-2">
+        <Link href={localizePath(`/blog/${post.slug}`, "en")} className="grid lg:grid-cols-2">
           <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-[380px]">
             <img
               src={resolveImageSrc(imageUrl)}
@@ -63,7 +64,7 @@ export default function BlogPostCard({
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-lg">
-      <Link href={`/blog/${post.slug}`} className="flex h-full flex-col">
+      <Link href={localizePath(`/blog/${post.slug}`, "en")} className="flex h-full flex-col">
         <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
           <img
             src={resolveImageSrc(imageUrl)}

@@ -18,11 +18,11 @@ export default function CushionCoverHero() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="pt-8 text-center text-sm text-slate-400">
-          <Link href="/services" className="hover:text-amber-400 transition">
+          <Link href="/services/" className="hover:text-amber-400 transition">
             Services
           </Link>
           <span className="mx-2">/</span>
-          <Link href="/services" className="hover:text-amber-400 transition">
+          <Link href="/services/" className="hover:text-amber-400 transition">
             Specialized &amp; Home
           </Link>
           <span className="mx-2">/</span>
