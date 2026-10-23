@@ -77,6 +77,25 @@ function hostsToCanonical(canonicalHost: string): Set<string> {
 }
 
 /**
+ * Build a 301 with the platform URL API — not NextURL.
+ * NextURL drops trailing slashes when serializing Location and caused redirect loops.
+ */
+function permanentRedirect(
+  request: NextRequest,
+  pathname: string,
+  host?: Pick<URL, "protocol" | "hostname" | "port">
+): NextResponse {
+  const url = new URL(request.url);
+  if (host) {
+    url.protocol = host.protocol;
+    url.hostname = host.hostname;
+    url.port = host.port;
+  }
+  url.pathname = pathname;
+  return withSecurityHeaders(NextResponse.redirect(url.toString(), 301));
+}
+
+/**
  * One 301 from a non-canonical host onto NEXT_PUBLIC_SITE_URL,
  * fixing retired locales + trailing slash in the same hop.
  * Preview URLs (*.vercel.app other than the project alias) stay put.
@@ -98,23 +117,16 @@ function redirectToCanonicalHost(request: NextRequest): NextResponse | null {
   if (host === canonicalHost) return null;
   if (!hostsToCanonical(canonicalHost).has(host)) return null;
 
-  const url = request.nextUrl.clone();
-  url.protocol = canonical.protocol;
-  url.hostname = canonical.hostname;
-  url.port = canonical.port;
-
-  const englishTarget = isLocaleExcludedPath(url.pathname)
+  const rawPath = request.nextUrl.pathname;
+  const englishTarget = isLocaleExcludedPath(rawPath)
     ? null
-    : redirectRetiredLocaleToEnglish(url.pathname);
-  const pathname = englishTarget ?? url.pathname;
+    : redirectRetiredLocaleToEnglish(rawPath);
+  let pathname = englishTarget ?? rawPath;
   if (needsTrailingSlashRedirect(pathname)) {
-    url.pathname = `${normalizePathname(pathname)}/`;
-  } else {
-    url.pathname = pathname;
+    pathname = `${normalizePathname(pathname)}/`;
   }
 
-  // Absolute Location avoids relative redirect ambiguity for crawlers.
-  return withSecurityHeaders(NextResponse.redirect(url, 301));
+  return permanentRedirect(request, pathname, canonical);
 }
 
 /** Draft pages stay off the public site: no homepage redirect, no 404. */
@@ -193,16 +205,15 @@ export async function middleware(request: NextRequest) {
   if (!isLocaleExcludedPath(rawPathname)) {
     const englishTarget = redirectRetiredLocaleToEnglish(rawPathname);
     if (englishTarget) {
-      const url = request.nextUrl.clone();
-      url.pathname = englishTarget;
-      return withSecurityHeaders(NextResponse.redirect(url, 301));
+      return permanentRedirect(request, englishTarget);
     }
   }
 
   if (needsTrailingSlashRedirect(rawPathname)) {
-    const url = request.nextUrl.clone();
-    url.pathname = `${normalizePathname(rawPathname)}/`;
-    return withSecurityHeaders(NextResponse.redirect(url, 301));
+    return permanentRedirect(
+      request,
+      `${normalizePathname(rawPathname)}/`
+    );
   }
 
   const { response: localeResponse, locale } = applyLocaleRouting(request);
