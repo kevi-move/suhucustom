@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description =
     post.metaDescription?.trim() || post.excerpt || "Read more on the SuhuCustom blog.";
   const canonical = buildLocalizedUrl(`/blog/${slug}`, "en");
+  const languages = buildHreflangAlternates(`/blog/${slug}`);
 
   return {
     title,
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     alternates: {
       canonical,
-      languages: buildHreflangAlternates(`/blog/${slug}`),
+      ...(Object.keys(languages).length ? { languages } : {}),
     },
     openGraph: {
       title,

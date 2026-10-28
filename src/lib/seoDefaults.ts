@@ -28,6 +28,7 @@ export function buildMetadata(
   path?: string,
   locale: Locale = "en"
 ): Metadata {
+  const languages = path ? buildHreflangAlternates(path) : {};
   return {
     title: defaults.title,
     description: defaults.description,
@@ -35,7 +36,7 @@ export function buildMetadata(
     alternates: path
       ? {
           canonical: buildLocalizedUrl(path, locale),
-          languages: buildHreflangAlternates(path),
+          ...(Object.keys(languages).length ? { languages } : {}),
         }
       : undefined,
     openGraph: {

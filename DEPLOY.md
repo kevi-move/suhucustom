@@ -72,11 +72,14 @@ Canonical form: `https://www.suhucustom.com` + trailing slash (e.g. `/blog/slug/
 
 App middleware already does apex → www + trailing slash in **one** 301. Vercel’s domain-level “Redirect to www” adds a second hop with a `Refresh: 0` header, which Google reports as soft/auto redirects.
 
-**In Vercel → Project → Settings → Domains:**
+**Vercel `.vercel.app` alias:** keep `suhucustom.vercel.app` off Google. Production middleware 301s `*.vercel.app` to `www`. In team Domains, do not mark the `.vercel.app` alias as a second Production site if you can avoid it.
+
+**In Vercel → team sidebar → Domains:**
 
 1. Confirm primary domain is `www.suhucustom.com`.
 2. For `suhucustom.com` (apex): do **not** use Vercel’s built-in “Redirect to www”. Leave apex pointing at the same project **without** a platform redirect, so middleware owns the 301.
 3. Env: `NEXT_PUBLIC_SITE_URL=https://www.suhucustom.com` (no trailing slash).
+4. `suhucustom.vercel.app` should 301 to www (middleware). Do not treat it as a second public site.
 
 **After deploy, verify (expect one 301, no `refresh` header):**
 

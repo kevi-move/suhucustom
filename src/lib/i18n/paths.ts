@@ -53,7 +53,13 @@ export function buildLocalizedUrl(path: string, locale: Locale): string {
   return `${getSiteBaseUrl()}${localizePath(path, locale)}`;
 }
 
+/**
+ * Hreflang cluster for multilingual pages.
+ * English-only site: return {} — a self-only en/x-default cluster makes Google
+ * treat the URL as an "alternate" and pick a different canonical (vercel.app / slash variants).
+ */
 export function buildHreflangAlternates(path: string): Record<string, string> {
+  if (LOCALES.length <= 1) return {};
   const alternates: Record<string, string> = {};
   for (const locale of LOCALES) {
     alternates[LOCALE_HREFLANG[locale]] = buildLocalizedUrl(path, locale);

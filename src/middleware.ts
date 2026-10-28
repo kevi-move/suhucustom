@@ -92,7 +92,11 @@ function permanentRedirect(
     url.port = host.port;
   }
   url.pathname = pathname;
-  return withSecurityHeaders(NextResponse.redirect(url.toString(), 301));
+  const response = NextResponse.redirect(url.toString(), 301);
+  if (request.nextUrl.hostname.toLowerCase().endsWith(".vercel.app")) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
+  return withSecurityHeaders(response);
 }
 
 /**
@@ -115,7 +119,12 @@ function redirectToCanonicalHost(request: NextRequest): NextResponse | null {
   const host = request.nextUrl.hostname.toLowerCase();
   const canonicalHost = canonical.hostname.toLowerCase();
   if (host === canonicalHost) return null;
-  if (!hostsToCanonical(canonicalHost).has(host)) return null;
+
+  const isProductionVercelApp =
+    process.env.VERCEL_ENV === "production" && host.endsWith(".vercel.app");
+  if (!hostsToCanonical(canonicalHost).has(host) && !isProductionVercelApp) {
+    return null;
+  }
 
   const rawPath = request.nextUrl.pathname;
   const englishTarget = isLocaleExcludedPath(rawPath)
@@ -191,9 +200,23 @@ function applyLocaleRouting(request: NextRequest): {
 
 export async function middleware(request: NextRequest) {
   const { pathname: rawPathname } = request.nextUrl;
+  const host = request.nextUrl.hostname.toLowerCase();
 
   const canonicalHostRedirect = redirectToCanonicalHost(request);
   if (canonicalHostRedirect) return canonicalHostRedirect;
+
+  // Preview *.vercel.app must never be indexed as a second copy of the site.
+  if (host.endsWith(".vercel.app")) {
+    const { response } = applyLocaleRouting(request);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return withSecurityHeaders(response);
+  }
+
+  const normalizedPath = normalizePathname(rawPathname);
+  // Cookies on sitemap/robots make Google report "temporary processing error".
+  if (normalizedPath === "/sitemap.xml" || normalizedPath === "/robots.txt") {
+    return withSecurityHeaders(NextResponse.next());
+  }
 
   if (!isLocaleExcludedPath(rawPathname)) {
     const { pathname: internalPath } = stripLocalePrefix(rawPathname);
@@ -216,11 +239,17 @@ export async function middleware(request: NextRequest) {
     );
   }
 
-  const { response: localeResponse, locale } = applyLocaleRouting(request);
-  localeResponse.cookies.set("NEXT_LOCALE", locale, {
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-  });
+  const { response: localeResponse } = applyLocaleRouting(request);
+
+  const needsAuthCookies =
+    normalizedPath.startsWith("/admin") ||
+    normalizedPath.startsWith("/api") ||
+    normalizedPath.startsWith("/auth");
+  if (!needsAuthCookies) {
+    // English-only public pages: no NEXT_LOCALE cookie. Set-Cookie forces
+    // Cache-Control: private and Google treats cookie variants as duplicates.
+    return withSecurityHeaders(localeResponse);
+  }
 
   if (isBypassEnabled) {
     if (normalizePathname(request.nextUrl.pathname) === "/admin/login") {

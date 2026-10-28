@@ -44,11 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency: path === "/" ? "weekly" : "monthly",
         priority: path === "/" ? 1 : path.startsWith("/services/") ? 0.8 : 0.6,
-        alternates: {
-          languages: Object.fromEntries(
-            LOCALES.map((l) => [l, buildLocalizedUrl(path, l)])
-          ),
-        },
       });
     }
   }
@@ -61,11 +56,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency: "weekly",
         priority: 0.7,
-        alternates: {
-          languages: Object.fromEntries(
-            LOCALES.map((l) => [l, buildLocalizedUrl(blogPath, l)])
-          ),
-        },
       });
     }
   }
