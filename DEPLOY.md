@@ -35,7 +35,8 @@ Copy `.env.local.example` → production env. **Required:**
 | `GEMINI_API_KEY` | Free auto-translation (preferred) — https://aistudio.google.com/app/apikey |
 | `DEEPL_API_KEY` | Optional translation fallback |
 | `WECOM_WEBHOOK_URL` | WeCom group webhook for instant inquiry alerts |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | E.164 digits, e.g. `8613800138000` |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | E.164 digits, e.g. `8615767578180` |
+| `NEXT_PUBLIC_WHATSAPP_URL` | WhatsApp click-to-chat URL |
 | `NEXT_PUBLIC_ADMIN_LOCAL_GATE` | Use username/password gate instead of Supabase auth |
 
 **Never enable in production:**

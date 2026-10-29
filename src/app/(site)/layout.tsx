@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingContact from "@/components/contact/FloatingContact";
 import { LocaleProvider } from "@/contexts/LocaleContext";
 import { getRequestLocale } from "@/lib/i18n/server";
 import { getUiStrings } from "@/lib/translations/sync";
@@ -13,6 +14,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <Header />
       <main className="min-h-[calc(100vh-8rem)]">{children}</main>
       <Footer />
+      <FloatingContact />
     </LocaleProvider>
   );
 }

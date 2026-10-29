@@ -5,7 +5,13 @@ import { EditableText } from "@/components/cms";
 import { CMSProvider } from "@/contexts/CMSContext";
 import { PageEditToolbar } from "@/components/cms/PageEditToolbar";
 import { useAuth } from "@/contexts/AuthContext";
-import { SITE_COMPANY_ADDRESS, SITE_COMPANY_LEGAL_NAME, SITE_EMAIL } from "@/lib/siteContact";
+import {
+  SITE_COMPANY_ADDRESS,
+  SITE_COMPANY_LEGAL_NAME,
+  SITE_EMAIL,
+  SITE_WHATSAPP_DISPLAY,
+  SITE_WHATSAPP_URL,
+} from "@/lib/siteContact";
 
 const TRUST_ITEMS = [
   "MOQ from 100 pcs",
@@ -93,6 +99,14 @@ export default function ContactUsPageClient({
                     className="mt-3 inline-block font-medium text-amber-600 hover:text-amber-700"
                   >
                     {SITE_EMAIL}
+                  </a>
+                  <a
+                    href={SITE_WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 block font-medium text-amber-600 hover:text-amber-700"
+                  >
+                    WhatsApp {SITE_WHATSAPP_DISPLAY}
                   </a>
                 </p>
               </div>
