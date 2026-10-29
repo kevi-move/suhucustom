@@ -9,6 +9,14 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
+const itemClass =
+  "group flex h-11 flex-row-reverse items-center overflow-hidden rounded-l-lg text-white shadow-lg transition-colors";
+
+const labelClass =
+  "max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold tracking-wide opacity-0 transition-all duration-200 ease-out group-hover:max-w-[7.5rem] group-hover:pr-3 group-hover:opacity-100 group-focus-visible:max-w-[7.5rem] group-focus-visible:pr-3 group-focus-visible:opacity-100";
+
+const iconWrapClass = "flex h-11 w-11 shrink-0 items-center justify-center";
+
 export default function FloatingContact() {
   return (
     <div className="fixed right-0 top-[42%] z-40 flex -translate-y-1/2 flex-col items-end gap-2">
@@ -17,17 +25,22 @@ export default function FloatingContact() {
         target={SITE_WHATSAPP_URL.startsWith("http") ? "_blank" : undefined}
         rel={SITE_WHATSAPP_URL.startsWith("http") ? "noopener noreferrer" : undefined}
         aria-label="Chat on WhatsApp"
-        className="flex items-center gap-2 rounded-l-lg bg-[#25D366] py-2.5 pl-3 pr-3 text-white shadow-lg shadow-emerald-900/20 transition hover:bg-[#20bd5a] sm:pr-4"
+        className={`${itemClass} bg-[#25D366] shadow-emerald-900/20 hover:bg-[#20bd5a]`}
       >
-        <WhatsAppIcon className="h-6 w-6 shrink-0" />
-        <span className="hidden text-sm font-semibold tracking-wide sm:inline">WhatsApp</span>
+        <span className={iconWrapClass}>
+          <WhatsAppIcon className="h-6 w-6" />
+        </span>
+        <span className={labelClass}>WhatsApp</span>
       </a>
       <a
         href={`mailto:${SITE_EMAIL}`}
         aria-label={`Email ${SITE_EMAIL}`}
-        className="flex h-11 w-11 items-center justify-center rounded-l-lg bg-slate-800 text-white shadow-lg shadow-slate-900/20 transition hover:bg-slate-700"
+        className={`${itemClass} bg-slate-800 shadow-slate-900/20 hover:bg-slate-700`}
       >
-        <Mail className="h-5 w-5" strokeWidth={2} />
+        <span className={iconWrapClass}>
+          <Mail className="h-5 w-5" strokeWidth={2} />
+        </span>
+        <span className={labelClass}>Email</span>
       </a>
     </div>
   );
