@@ -39,14 +39,31 @@ export function localizePath(path: string, locale: Locale): string {
   return result.endsWith("/") ? result : `${result}/`;
 }
 
+const PRODUCTION_SITE_URL = "https://www.suhucustom.com";
+
+function asPublicBaseUrl(value: string | undefined): string | null {
+  const trimmed = value?.trim();
+  if (!trimmed) return null;
+  const normalized = trimmed.replace(/\/$/, "");
+  try {
+    const host = new URL(
+      normalized.includes("://") ? normalized : `https://${normalized}`
+    ).hostname.toLowerCase();
+    if (host.endsWith(".vercel.app") || host === "localhost") return null;
+  } catch {
+    return null;
+  }
+  return normalized;
+}
+
 export function getSiteBaseUrl(): string {
-  // Prefer the public production domain (set on Vercel after DNS is live).
-  const fromSite = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (fromSite) return fromSite.replace(/\/$/, "");
-  const fromFrontend = process.env.NEXT_PUBLIC_FRONTEND_URL?.trim();
-  if (fromFrontend) return fromFrontend.replace(/\/$/, "");
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:3000";
+  const fromEnv =
+    asPublicBaseUrl(process.env.NEXT_PUBLIC_SITE_URL) ||
+    asPublicBaseUrl(process.env.NEXT_PUBLIC_FRONTEND_URL);
+  if (fromEnv) return fromEnv;
+  if (process.env.NODE_ENV !== "production") return "http://localhost:3000";
+  // Never fall back to VERCEL_URL — Google will treat *.vercel.app as canonical.
+  return PRODUCTION_SITE_URL;
 }
 
 export function buildLocalizedUrl(path: string, locale: Locale): string {

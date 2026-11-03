@@ -1,5 +1,19 @@
 {
   "framework": "nextjs",
   "buildCommand": "npm run build",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "suhucustom.vercel.app" }],
+      "destination": "https://www.suhucustom.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "suhucustom.vercel.app" }],
+      "destination": "https://www.suhucustom.com/:path*",
+      "permanent": true
+    }
+  ]
 }

@@ -3,7 +3,15 @@ import { headers } from "next/headers";
 import { getSiteBaseUrl } from "@/lib/i18n/paths";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const host = (await headers()).get("host")?.split(":")[0]?.toLowerCase() ?? "";
+  const headerStore = await headers();
+  const host = (
+    headerStore.get("x-forwarded-host") ||
+    headerStore.get("host") ||
+    ""
+  )
+    .split(",")[0]
+    .split(":")[0]
+    .toLowerCase();
   if (host.endsWith(".vercel.app")) {
     return {
       rules: [{ userAgent: "*", disallow: "/" }],

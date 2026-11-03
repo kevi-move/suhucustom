@@ -334,6 +334,9 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    // "/" is not matched by the catch-all below; without it the vercel.app
+    // homepage stays 200 and Google treats it as the site canonical.
+    "/",
     "/admin/:path*",
     "/api/:path*",
     "/((?!_next/static|_next/image|favicon.ico).*)",
