@@ -14,6 +14,7 @@ import {
   stripVisualEditArtifacts,
 } from "@/lib/visualPageHtml";
 import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
+import { isBrowserTranslatedDocument, isCjkDominantHtml } from "@/lib/visualHtmlLanguage";
 import {
   CASE_STUDY_IMAGE_FRAME_CLASS,
   CASE_STUDY_IMAGE_IMG_CLASS,
@@ -569,6 +570,11 @@ export function VisualPageEditor({
       const html = captureSanitizedHtml(root);
       if (!html.trim()) {
         throw new Error("没有可保存的页面内容");
+      }
+      if (isBrowserTranslatedDocument() || isCjkDominantHtml(html)) {
+        throw new Error(
+          "检测到页面被翻译成中文。请关闭浏览器翻译后刷新，再用英文保存。"
+        );
       }
 
       let existing: Record<string, unknown> = {};

@@ -124,7 +124,7 @@ export async function generateMetadata({ params }: SlugProps): Promise<Metadata>
 async function withServiceCms(slug: string, children: ReactNode) {
   const pageSlug = `/services/${slug}`;
   const [{ content }, modeEnabled] = await Promise.all([
-    getPageContent(pageSlug),
+    getPageContent(pageSlug, "en"),
     getCmsModeEnabled(),
   ]);
 

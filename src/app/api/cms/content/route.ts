@@ -5,6 +5,8 @@ import { upsertPageContent, getPageContent } from "@/lib/pageContent";
 import { resolveAdminEmail } from "@/lib/requestAdmin";
 import { isTranslationConfigured } from "@/lib/deepl/client";
 import { syncPageContentTranslation } from "@/lib/translations/sync";
+import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
+import { isCjkDominantHtml } from "@/lib/visualHtmlLanguage";
 
 function validateContent(content: unknown): { valid: boolean; error?: string } {
   if (!content || typeof content !== "object") {
@@ -69,6 +71,18 @@ export async function PUT(request: NextRequest) {
     const validation = validateContent(content);
     if (!validation.valid) {
       return NextResponse.json({ error: validation.error }, { status: 400 });
+    }
+
+    const payload = content as Record<string, unknown>;
+    const html = typeof payload.autoHtml === "string" ? payload.autoHtml : "";
+    if (payload.mode === SERVICE_VISUAL_MODE && isCjkDominantHtml(html)) {
+      return NextResponse.json(
+        {
+          error:
+            "This snapshot is Chinese. Turn off browser translate, reload the English page, then save.",
+        },
+        { status: 400 }
+      );
     }
 
     const result = await upsertPageContent(pageSlug, content, userEmail);

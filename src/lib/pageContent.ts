@@ -6,6 +6,8 @@ import { DEFAULT_LOCALE, type Locale } from "./i18n/locales";
 import { getCachedTranslation } from "./translations/store";
 import { mergePageContent } from "./pageContentDefaults";
 import { deepMerge } from "./deepMerge";
+import { SERVICE_VISUAL_MODE } from "./serviceVisualMode";
+import { isCjkDominantHtml } from "./visualHtmlLanguage";
 
 const TABLE_NAME = "page_content";
 
@@ -79,6 +81,12 @@ export async function getPageContent(
   const englishContent = mergePageContent(pageSlug, dbContent);
 
   if (activeLocale === DEFAULT_LOCALE) {
+    const html =
+      typeof englishContent.autoHtml === "string" ? englishContent.autoHtml : "";
+    if (englishContent.mode === SERVICE_VISUAL_MODE && isCjkDominantHtml(html)) {
+      const { autoHtml: _autoHtml, mode: _mode, ...rest } = englishContent;
+      return { content: rest, version };
+    }
     return { content: englishContent, version };
   }
 

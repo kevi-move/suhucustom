@@ -2,6 +2,7 @@
 
 import { VisualPageEditor } from "@/components/cms/VisualPageEditor";
 import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
+import { isCjkDominantHtml } from "@/lib/visualHtmlLanguage";
 
 export default function ServicePageClient({
   pageSlug,
@@ -21,8 +22,11 @@ export default function ServicePageClient({
 
   // Only visual-v2 is trusted as full-page HTML. Older snapshots may be scrambled;
   // those are still passed as imageHtml so uploaded photos keep working.
+  // Ignore CJK snapshots on the English site (usually Chrome auto-translate + Save).
   const pageHtml =
-    initialContent.mode === SERVICE_VISUAL_MODE ? autoHtml : undefined;
+    initialContent.mode === SERVICE_VISUAL_MODE && !isCjkDominantHtml(autoHtml)
+      ? autoHtml
+      : undefined;
 
   return (
     <VisualPageEditor
