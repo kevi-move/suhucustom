@@ -12,7 +12,9 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     .split(",")[0]
     .split(":")[0]
     .toLowerCase();
-  if (host.endsWith(".vercel.app")) {
+  // The old production alias must be crawlable so Google can see its redirects.
+  // Only independent preview deployments are blocked.
+  if (host.endsWith(".vercel.app") && host !== "suhucustom.vercel.app") {
     return {
       rules: [{ userAgent: "*", disallow: "/" }],
     };

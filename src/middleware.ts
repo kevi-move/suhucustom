@@ -93,9 +93,8 @@ function permanentRedirect(
   }
   url.pathname = pathname;
   const response = NextResponse.redirect(url.toString(), 301);
-  if (request.nextUrl.hostname.toLowerCase().endsWith(".vercel.app")) {
-    response.headers.set("X-Robots-Tag", "noindex, nofollow");
-  }
+  // Let crawlers follow permanent redirects and consolidate the old URL.
+  // Preview pages that remain 200 are protected separately below.
   return withSecurityHeaders(response);
 }
 

@@ -57,6 +57,9 @@ function asPublicBaseUrl(value: string | undefined): string | null {
 }
 
 export function getSiteBaseUrl(): string {
+  // Production redirects and metadata must share the same, fixed origin.
+  // A stale environment value must not point canonicals at another hostname.
+  if (process.env.NODE_ENV === "production") return PRODUCTION_SITE_URL;
   const fromEnv =
     asPublicBaseUrl(process.env.NEXT_PUBLIC_SITE_URL) ||
     asPublicBaseUrl(process.env.NEXT_PUBLIC_FRONTEND_URL);
@@ -72,8 +75,7 @@ export function buildLocalizedUrl(path: string, locale: Locale): string {
 
 /**
  * Hreflang cluster for multilingual pages.
- * English-only site: return {} — a self-only en/x-default cluster makes Google
- * treat the URL as an "alternate" and pick a different canonical (vercel.app / slash variants).
+ * English-only site: no alternate-language cluster is needed.
  */
 export function buildHreflangAlternates(path: string): Record<string, string> {
   if (LOCALES.length <= 1) return {};
