@@ -100,10 +100,21 @@ export function captureSanitizedHtml(root: HTMLElement): string {
   return stripVisualEditArtifacts(root.innerHTML);
 }
 
+export function unwrapImageSrc(src: string): string {
+  const value = src.trim();
+  if (!value.startsWith("/_next/image")) return value;
+  try {
+    const inner = new URL(value, "https://www.suhucustom.com").searchParams.get("url");
+    return inner ? decodeURIComponent(inner) : value;
+  } catch {
+    return value;
+  }
+}
+
 function isPersistedImageSrc(src: string | null | undefined): boolean {
-  const value = (src ?? "").trim();
-  if (!value) return false;
-  return /^https?:\/\//i.test(value);
+  const value = unwrapImageSrc(src ?? "");
+  if (!value || value.includes("placeholder")) return false;
+  return /^https?:\/\//i.test(value) || value.startsWith("/");
 }
 
 function findLiveImageForSaved(
@@ -145,7 +156,7 @@ export function applySavedVisualOverrides(liveRoot: HTMLElement, savedHtml: stri
   const liveImgs = Array.from(liveRoot.querySelectorAll("img"));
 
   savedImgs.forEach((savedImg, index) => {
-    const savedSrc = savedImg.getAttribute("src")?.trim();
+    const savedSrc = unwrapImageSrc(savedImg.getAttribute("src")?.trim() || "");
     if (!savedSrc || !isPersistedImageSrc(savedSrc)) return;
 
     const liveImg = findLiveImageForSaved(liveRoot, liveImgs, savedImg, index);

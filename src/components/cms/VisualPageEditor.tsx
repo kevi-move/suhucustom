@@ -12,6 +12,7 @@ import {
   captureSanitizedHtml,
   stripEditArtifactsFromDom,
   stripVisualEditArtifacts,
+  unwrapImageSrc,
 } from "@/lib/visualPageHtml";
 import { SERVICE_VISUAL_MODE } from "@/lib/serviceVisualMode";
 import { isBrowserTranslatedDocument, isCjkDominantHtml } from "@/lib/visualHtmlLanguage";
@@ -85,7 +86,8 @@ function extractHeroImageSrc(html: string): string | undefined {
   const hero = root.querySelector(HERO_ROOT_SELECTOR);
   if (!hero) return undefined;
 
-  return findHeroBackgroundImg(hero)?.getAttribute("src")?.trim() || undefined;
+  const src = findHeroBackgroundImg(hero)?.getAttribute("src")?.trim();
+  return src ? unwrapImageSrc(src) : undefined;
 }
 
 function restoreSavedHeroImage(root: HTMLElement, savedHtml: string) {
