@@ -64,9 +64,7 @@ export function getSiteBaseUrl(): string {
     asPublicBaseUrl(process.env.NEXT_PUBLIC_SITE_URL) ||
     asPublicBaseUrl(process.env.NEXT_PUBLIC_FRONTEND_URL);
   if (fromEnv) return fromEnv;
-  if (process.env.NODE_ENV !== "production") return "http://localhost:3000";
-  // Never fall back to VERCEL_URL — Google will treat *.vercel.app as canonical.
-  return PRODUCTION_SITE_URL;
+  return "http://localhost:3000";
 }
 
 export function buildLocalizedUrl(path: string, locale: Locale): string {
