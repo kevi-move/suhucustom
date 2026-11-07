@@ -51,6 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: canonical,
+      siteName: "Suhu Custom",
       type: "article",
       publishedTime: post.publishedAt?.toISOString(),
       images: post.featuredImage ? [{ url: getPostImageUrl(post.featuredImage) }] : undefined,

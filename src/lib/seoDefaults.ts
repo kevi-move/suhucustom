@@ -44,6 +44,7 @@ export function buildMetadata(
       description: defaults.description,
       type: "website",
       locale: locale === "ja" ? "ja_JP" : "en_US",
+      siteName: BRAND,
     },
   };
 }
