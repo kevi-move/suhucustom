@@ -10,16 +10,16 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const itemClass =
-  "group flex h-11 flex-row-reverse items-center overflow-hidden rounded-l-lg text-white shadow-lg transition-colors";
+  "group flex h-12 flex-row-reverse items-center overflow-hidden rounded-l-xl text-white shadow-lg transition-colors";
 
 const labelClass =
-  "max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold tracking-wide opacity-0 transition-all duration-200 ease-out group-hover:max-w-[7.5rem] group-hover:pr-3 group-hover:opacity-100 group-focus-visible:max-w-[7.5rem] group-focus-visible:pr-3 group-focus-visible:opacity-100";
+  "inline-flex max-w-0 items-center overflow-hidden whitespace-nowrap text-sm font-semibold tracking-wide opacity-0 transition-all duration-200 ease-out group-hover:max-w-[8.5rem] group-hover:pl-4 group-hover:pr-2.5 group-hover:opacity-100 group-focus-visible:max-w-[8.5rem] group-focus-visible:pl-4 group-focus-visible:pr-2.5 group-focus-visible:opacity-100";
 
-const iconWrapClass = "flex h-11 w-11 shrink-0 items-center justify-center";
+const iconWrapClass = "flex h-12 w-12 shrink-0 items-center justify-center";
 
 export default function FloatingContact() {
   return (
-    <div className="fixed right-0 top-[42%] z-40 flex -translate-y-1/2 flex-col items-end gap-2">
+    <div className="fixed right-0 top-[42%] z-40 flex -translate-y-1/2 flex-col items-end gap-2.5">
       <a
         href={SITE_WHATSAPP_URL}
         target={SITE_WHATSAPP_URL.startsWith("http") ? "_blank" : undefined}
