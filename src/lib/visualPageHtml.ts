@@ -79,7 +79,9 @@ export function stripVisualEditArtifacts(html: string): string {
   if (typeof DOMParser === "undefined") {
     return trimmed
       .replace(/\scontenteditable="(?:true|false)"/gi, "")
-      .replace(/\scontenteditable='(?:true|false)'/gi, "");
+      .replace(/\scontenteditable='(?:true|false)'/gi, "")
+      .replace(/\sdata-vedit-bound="[^"]*"/gi, "")
+      .replace(/\sdata-vedit-bound='[^']*'/gi, "");
   }
 
   const doc = new DOMParser().parseFromString(`<div id="__vedit_root__">${trimmed}</div>`, "text/html");
@@ -87,6 +89,11 @@ export function stripVisualEditArtifacts(html: string): string {
   if (!root) return trimmed;
 
   stripEditArtifactsFromElement(root);
+  // Runtime hydrate marker — must never persist. If left in CMS HTML,
+  // reload skips re-binding quote / tabs / carousel clicks.
+  root.querySelectorAll("[data-vedit-bound]").forEach((node) => {
+    (node as HTMLElement).removeAttribute("data-vedit-bound");
+  });
   repairTextContrast(root);
   return root.innerHTML;
 }
